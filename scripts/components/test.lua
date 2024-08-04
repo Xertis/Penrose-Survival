@@ -6,7 +6,7 @@ local OPTIONS = {
     damage = 0,
     velocity = 10,
     fraction = math.random(0, 1000),
-    pattern = "bird",
+    pattern = "walker",
     behaviour = "agressive"
 }
 

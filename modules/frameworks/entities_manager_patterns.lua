@@ -25,7 +25,9 @@ local PATHFINDER_OPTIONS_WALKER = {
     radius = 20,
     pathPieceRadius = 4,
     algorithm = AStar,
-    pathPiece = true
+    pathPiece = true,
+    maxAscent = 1,
+    maxDescent = 2
 }
 
 function agressive.on_sensor(uid, options, other_uid)
@@ -55,6 +57,7 @@ function agressive.on_sensor(uid, options, other_uid)
             local id = entities.def_name(entities.get_def(uid))
             local entity = entities.get(uid)
             entity:get_component(id).on_attacked()
+            --print('ATTACK')
         end
     end
 end
