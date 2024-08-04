@@ -1,0 +1,10 @@
+{
+  "root": {
+    "nodes": [
+      {
+        "name": "test",
+        "model": "test"
+      }
+    ]
+  }
+}

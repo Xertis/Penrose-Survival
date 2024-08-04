@@ -33,6 +33,16 @@ function table_utils.find(table, element)
     return false
 end
 
+function table_utils.get_id(table, element)
+    local i = 1
+    for _, value in pairs(table) do
+        if value == element then
+            return i
+        end
+        i = i + 1
+    end
+end
+
 function table_utils.insert_unique(tbl, elem)
     if tbl ~= nil then
         if table_utils.find(tbl, elem) == false then
