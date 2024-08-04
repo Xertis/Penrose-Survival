@@ -55,8 +55,8 @@ function agressive.on_sensor(uid, options, other_uid)
 
         if distance.chebyshev(path.x, path.y, path.z, other_pos[1], other_pos[2], other_pos[3]) < 2 then
             local id = entities.def_name(entities.get_def(uid))
-            local entity = entities.get(uid)
-            entity:get_component(id).on_attacked()
+            local e = entities.get(uid)
+            e:get_component(id).on_attacked()
             --print('ATTACK')
         end
     end
