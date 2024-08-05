@@ -23,6 +23,13 @@ local function get_options(uid)
     end
 end
 
+local function get_random_postion(pos, radius, if_array)
+    local rX = pos[1] + math.random(-radius, radius)
+    local rY = pos[2] + math.random(-radius, radius)
+    local rZ = pos[3] + math.random(-radius, radius)
+    if if_array == true then return {rX, rY, rZ} else return {x = rX, y = rY, z = rZ} end
+end
+
 local function base_attack(uid, options, other_uid)
     local other = entities.get(other_uid)
     local other_tsf = other.transform
@@ -49,6 +56,23 @@ local function base_attack(uid, options, other_uid)
     end
 end
 
+local function wander(uid, options)
+    local it = entities.get(uid)
+    local it_tsf = it.transform
+    local it_pos = vec3.round(it_tsf:get_pos())
+    local random_pos = nil
+    if options.wander_radius == nil then random_pos = get_random_postion(it_pos, 4, true) else random_pos = get_random_postion(it_pos, options.wander_radius, true) end
+
+    local path_options = nil
+    if options.pathOptions == nil then path_options = PATHFINDER_OPTIONS_DEFAULT else path_options = options.pathOptions end
+
+    local path = pathfinder.find_path(it_pos[1], it_pos[2], it_pos[3], random_pos[1], random_pos[2], random_pos[3], path_options)
+
+    if path ~= nil and #path > 1 then
+        return path
+    end
+end
+
 function agressive.on_sensor(uid, options, other_uid)
     local other_options = get_options(other_uid)
     if other_options == nil or other_options.fraction == nil or other_options.fraction == options.fraction then
@@ -68,8 +92,9 @@ function friendlyfire.on_sensor(uid, options, other_uid)
     base_attack(uid, options, other_uid)
 end
 
-function peaceful.on_render(uid, options, other_uid)
-end
+friendlyfire.wander = wander
+agressive.wander = wander
+peaceful.wander = wander
 
 local patterns = {}
 

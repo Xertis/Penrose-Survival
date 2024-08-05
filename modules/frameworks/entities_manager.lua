@@ -10,7 +10,8 @@ local options_example = {
     velocity = 10,
     fraction = "birds",
     behaviour = "peaceful",
-    pathOptions = {}
+    pathOptions = {},
+    wander_radius = 3
 }
 
 --behaviour: peaceful, neutral, agressive, friendlyfire
