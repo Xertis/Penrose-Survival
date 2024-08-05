@@ -3,6 +3,7 @@ local distance = require 'noname:utils/distance_utils'
 
 local agressive = {}
 local peaceful = {}
+local friendlyfire = {}
 
 local AStar, BFS, DFS = pathfinder.AStar, pathfinder.BFS, pathfinder.DFS
 local PATHFINDER_OPTIONS_DEFAULT = {
@@ -22,12 +23,7 @@ local function get_options(uid)
     end
 end
 
-function agressive.on_sensor(uid, options, other_uid)
-    local other_options = get_options(other_uid)
-    if other_options == nil or other_options.fraction == nil or other_options.fraction == options.fraction then
-        return
-    end
-
+local function base_attack(uid, options, other_uid)
     local other = entities.get(other_uid)
     local other_tsf = other.transform
     local other_pos = vec3.round(other_tsf:get_pos())
@@ -48,10 +44,28 @@ function agressive.on_sensor(uid, options, other_uid)
         if distance.chebyshev(path.x, path.y, path.z, other_pos[1], other_pos[2], other_pos[3]) < 2 then
             local id = entities.def_name(entities.get_def(uid))
             local e = entities.get(uid)
-            e:get_component(id).on_attacked()
             --print('ATTACK')
         end
     end
+end
+
+function agressive.on_sensor(uid, options, other_uid)
+    local other_options = get_options(other_uid)
+    if other_options == nil or other_options.fraction == nil or other_options.fraction == options.fraction then
+        return
+    end
+
+    base_attack(uid, options, other_uid)
+
+end
+
+function friendlyfire.on_sensor(uid, options, other_uid)
+    local other_options = get_options(other_uid)
+    if other_options == nil or other_options.fraction ~= options.fraction then
+        return
+    end
+
+    base_attack(uid, options, other_uid)
 end
 
 function peaceful.on_render(uid, options, other_uid)
@@ -65,6 +79,8 @@ function patterns.get(options)
             return agressive
         elseif options.behaviour == 'peaceful' then
             return peaceful
+        elseif options.behaviour == 'friendlyfire' then
+            return friendlyfire
         end
     end
 end

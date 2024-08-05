@@ -16,8 +16,8 @@ local OPTIONS = {
     hp = 5,
     damage = 0,
     velocity = 10,
-    fraction = "Monsters",
-    behaviour = "agressive",
+    fraction = "Players2",
+    behaviour = "friendlyfire",
     pathOptions = PATHFINDER_OPTIONS_WALKER
 }
 
@@ -25,12 +25,15 @@ local PLAYER = {
     hp = 5,
     damage = 0,
     velocity = 10,
-    fraction = "Monsters444",
+    fraction = "Players",
     behaviour = "agressive"
 }
 
 
 manager.reg(player.get_entity(0), PLAYER)
+
+local body = entity.rigidbody
+body:set_body_type('static')
 
 local pattern = manager.reg(entity:get_uid(), OPTIONS)
 
@@ -44,15 +47,9 @@ function on_render()
 end
 
 function on_sensor_enter(index, e)
-    print('ENTER')
     other_uid = e
 end
 
 function on_sensor_exit(index, e)
-    print('EXIT')
     other_uid = nil
-end
-
-function on_attacked()
-    
 end

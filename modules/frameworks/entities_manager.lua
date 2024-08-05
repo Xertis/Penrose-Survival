@@ -13,8 +13,7 @@ local options_example = {
     pathOptions = {}
 }
 
---behaviour: peaceful, neutral, agressive
---patterns: bird, walker
+--behaviour: peaceful, neutral, agressive, friendlyfire
 
 
 function framework.reg(uid, options)
