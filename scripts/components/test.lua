@@ -1,19 +1,41 @@
 local manager = require 'noname:frameworks/entities_manager'
+local pathfinder = require 'starpath:pathfinder'
 local other_uid = nil
 local sept = 0
+
+local AStar, BFS, DFS = pathfinder.AStar, pathfinder.BFS, pathfinder.DFS
+
+local PATHFINDER_OPTIONS_WALKER = {
+    radius = 20,
+    pathPieceRadius = 4,
+    algorithm = AStar,
+    pathPiece = true,
+}
+
 local OPTIONS = {
     hp = 5,
     damage = 0,
     velocity = 10,
-    fraction = math.random(0, 1000),
-    pattern = "walker",
+    fraction = "Monsters",
+    behaviour = "agressive",
+    pathOptions = PATHFINDER_OPTIONS_WALKER
+}
+
+local PLAYER = {
+    hp = 5,
+    damage = 0,
+    velocity = 10,
+    fraction = "Monsters444",
     behaviour = "agressive"
 }
+
+
+manager.reg(player.get_entity(0), PLAYER)
 
 local pattern = manager.reg(entity:get_uid(), OPTIONS)
 
 function on_render()
-    if other_uid == nil or sept < 20 then
+    if other_uid == nil or sept < 10 then
         sept = sept + 1
         return
     end
@@ -22,10 +44,12 @@ function on_render()
 end
 
 function on_sensor_enter(index, e)
+    print('ENTER')
     other_uid = e
 end
 
 function on_sensor_exit(index, e)
+    print('EXIT')
     other_uid = nil
 end
 

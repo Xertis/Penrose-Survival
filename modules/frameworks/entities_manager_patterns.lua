@@ -1,27 +1,11 @@
 local pathfinder = require 'starpath:pathfinder'
 local distance = require 'noname:utils/distance_utils'
 
-local AStar, BFS, DFS = pathfinder.AStar, pathfinder.BFS, pathfinder.DFS
-
 local agressive = {}
 local peaceful = {}
 
-local function get_options(uid)
-    for i=1, #registered_entities do
-        if registered_entities[i][1] == uid then
-            return registered_entities[i][2]
-        end
-    end
-end
-
-local PATHFINDER_OPTIONS_BIRD = {
-    radius = 20,
-    pathPieceRadius = 4,
-    algorithm = AStar,
-    pathPiece = true
-}
-
-local PATHFINDER_OPTIONS_WALKER = {
+local AStar, BFS, DFS = pathfinder.AStar, pathfinder.BFS, pathfinder.DFS
+local PATHFINDER_OPTIONS_DEFAULT = {
     radius = 20,
     pathPieceRadius = 4,
     algorithm = AStar,
@@ -29,6 +13,14 @@ local PATHFINDER_OPTIONS_WALKER = {
     maxAscent = 1,
     maxDescent = 2
 }
+
+local function get_options(uid)
+    for i=1, #REGISTERED_ENTITIES do
+        if REGISTERED_ENTITIES[i][1] == uid then
+            return REGISTERED_ENTITIES[i][2]
+        end
+    end
+end
 
 function agressive.on_sensor(uid, options, other_uid)
     local other_options = get_options(other_uid)
@@ -45,7 +37,7 @@ function agressive.on_sensor(uid, options, other_uid)
     local it_pos = vec3.round(it_tsf:get_pos())
 
     local path_options = nil
-    if options.pattern == 'bird' then path_options = PATHFINDER_OPTIONS_BIRD else path_options = PATHFINDER_OPTIONS_WALKER end
+    if options.pathOptions == nil then path_options = PATHFINDER_OPTIONS_DEFAULT else path_options = options.pathOptions end
 
     local path = pathfinder.find_path(it_pos[1], it_pos[2], it_pos[3], other_pos[1], other_pos[2], other_pos[3], path_options)
 
