@@ -1,5 +1,6 @@
 local pathfinder = require 'starpath:pathfinder'
 local distance = require 'noname:utils/distance_utils'
+local tblu_u = require 'noname:utils/table_utils'
 
 local agressive = {}
 local peaceful = {}
@@ -61,12 +62,46 @@ local function wander(uid, options)
     local it_tsf = it.transform
     local it_pos = vec3.round(it_tsf:get_pos())
     local random_pos = nil
-    if options.wander_radius == nil then random_pos = get_random_postion(it_pos, 4, true) else random_pos = get_random_postion(it_pos, options.wander_radius, true) end
+    if options.wanderRadius == nil then random_pos = get_random_postion(it_pos, 4, true) else random_pos = get_random_postion(it_pos, options.wanderRadius, true) end
 
     local path_options = nil
     if options.pathOptions == nil then path_options = PATHFINDER_OPTIONS_DEFAULT else path_options = options.pathOptions end
 
     local path = pathfinder.find_path(it_pos[1], it_pos[2], it_pos[3], random_pos[1], random_pos[2], random_pos[3], path_options)
+
+    if path ~= nil and #path > 1 then
+        return path
+    end
+end
+
+local function panic(uid, options, other_uid)
+    local other = entities.get(other_uid)
+    local other_tsf = other.transform
+    local other_pos = vec3.round(other_tsf:get_pos())
+
+    local it = entities.get(uid)
+    local it_tsf = it.transform
+    local it_pos = vec3.round(it_tsf:get_pos())
+
+    local panic_direction = vec3.sub(it_pos, other_pos)
+    local normalized_direction = vec3.normalize(panic_direction)
+    if tblu_u.equals(panic_direction, {0, 0, 0}) then
+        normalized_direction = {0, 0, 0}
+    end
+
+    local panic_distance = nil
+    if options.panicRadius == nil then panic_distance = 6 else panic_distance = options.panicRadius end
+
+    local target_pos = {
+        it_pos[1] + normalized_direction[1] * panic_distance,
+        it_pos[2] + normalized_direction[2] * panic_distance,
+        it_pos[3] + normalized_direction[3] * panic_distance
+    }
+
+    local path_options = nil
+    if options.pathOptions == nil then path_options = PATHFINDER_OPTIONS_DEFAULT else path_options = options.pathOptions end
+
+    local path = pathfinder.find_path(it_pos[1], it_pos[2], it_pos[3], target_pos[1], target_pos[2], target_pos[3], path_options)
 
     if path ~= nil and #path > 1 then
         return path
@@ -95,6 +130,10 @@ end
 friendlyfire.wander = wander
 agressive.wander = wander
 peaceful.wander = wander
+
+friendlyfire.panic = panic
+agressive.panic = panic
+peaceful.panic = panic
 
 local patterns = {}
 

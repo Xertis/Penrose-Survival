@@ -8,10 +8,11 @@ local options_example = {
     hp = 5,
     damage = 0,
     velocity = 10,
-    fraction = "birds",
-    behaviour = "peaceful",
+    fraction = "Duraki",
+    behaviour = "agressive",
     pathOptions = {},
-    wander_radius = 3
+    wanderRadius = 3,
+    panicRadius = 6
 }
 
 --behaviour: peaceful, neutral, agressive, friendlyfire

@@ -20,7 +20,7 @@ local OPTIONS = {
     velocity = 10,
     fraction = "Players",
     behaviour = "friendlyfire",
-    wander_radius = 15,
+    wanderRadius = 15,
     pathOptions = PATHFINDER_OPTIONS_WALKER
 }
 
@@ -48,12 +48,12 @@ function on_render()
     sept = 0
     if path == nil or #path == 0 then
         max_sept = 10
-        path = pattern.wander(entity:get_uid(), OPTIONS, other_uid)
+        path = pattern.panic(entity:get_uid(), OPTIONS, other_uid)
     else
         entity.transform:set_pos({path[1].x, path[1].y, path[1].z})
         table.remove(path, 1)
         if #path == 0 then
-            max_sept = 100
+            max_sept = 10
         end
     end
 end
