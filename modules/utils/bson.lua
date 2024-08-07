@@ -47,9 +47,9 @@ function module.return_type_number(num)
     else
         if num <= MAX_BYTE then
             return TYPES_STRUCTURE.byte
-        elseif num <= MIN_INT16 then
+        elseif num <= MAX_UINT16 then
             return TYPES_STRUCTURE.uint16
-        elseif num <= MIN_INT32 then
+        elseif num <= MAX_UINT32 then
             return TYPES_STRUCTURE.uint32
         end
     end
@@ -70,9 +70,9 @@ function module.put_num(buf, num)
     else
         if num <= MAX_BYTE then
             buf:put_byte(num)
-        elseif num <= MIN_INT16 then
+        elseif num <= MAX_UINT16 then
             buf:put_uint16(num)
-        elseif num <= MIN_INT32 then
+        elseif num <= MAX_UINT32 then
             buf:put_uint32(num)
         end
     end
