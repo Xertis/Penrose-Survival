@@ -39,7 +39,7 @@ local body = entity.rigidbody
 body:set_body_type('static')
 
 local pattern = manager.reg(entity:get_uid(), OPTIONS)
-local max_sept = 10
+local max_sept = 4
 function on_render()
     if other_uid == nil or sept < max_sept then
         sept = sept + 1
@@ -47,14 +47,10 @@ function on_render()
     end
     sept = 0
     if path == nil or #path == 0 then
-        max_sept = 10
         path = pattern.panic(entity:get_uid(), OPTIONS, other_uid)
     else
         entity.transform:set_pos({path[1].x, path[1].y, path[1].z})
         table.remove(path, 1)
-        if #path == 0 then
-            max_sept = 10
-        end
     end
 end
 

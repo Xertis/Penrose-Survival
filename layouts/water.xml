@@ -1,0 +1,17 @@
+<container size="534, 230" position-func="on_resize" color="#00000000" interactive="false">
+    <container pos="26, 206" size="1000, 500" interactive="false">
+        <image pos="0, 0" size="508, 20" src="layouts/hp_background"/>
+        <container pos="2, 2" size="504, 16" color="#ff000088" interactive="false"/>
+        <container pos="2, 2" size="504, 16" interactive="false">
+            <container pos="-2, -2" size="508, 20" interactive="false">
+                <image id="water" pos="0, 0" size="508, 20" color="#ff0000" src="layouts/img3"/>
+            </container>
+        </container>
+        <image pos="0, 0" size="508, 20" src="layouts/hp_shader"/>
+
+    </container>
+    <image pos="0, 200" size="32, 30" src="layouts/water"/>
+
+    <!--    <button coord="0, -50" size="100, 100">-->
+    <!--    </button>-->
+</container>
