@@ -1,5 +1,5 @@
 require("noname:player/blocked")
-
+local invu = require "noname:utils/inventory"
 
 
 function on_world_tick( ... )
@@ -12,4 +12,9 @@ function on_block_broken(id, x, y, z)
         id=id,
         count=1
     }})
+end
+
+function on_block_placed(id, x, y, z, pid)
+    x, y, z = math.floor(x), math.floor(y), math.floor(z)
+    invu.del_item(id .. ".item", pid)
 end
