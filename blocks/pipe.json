@@ -1,0 +1,14 @@
+{
+    "texture-faces": [
+        "pipe_side_maybe",
+        "pipe_side_maybe",
+        "pipe_hole_maybe",
+        "pipe_hole_maybe",
+        "pipe_side_maybe",
+        "pipe_side_maybe"
+    ],
+    "model": "aabb",
+    "hitbox": [0.38, 0.0, 0.38, 0.25, 1.0, 0.25],
+    "light-passing": true,
+    "rotation": "pipe"
+}

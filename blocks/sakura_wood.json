@@ -1,0 +1,12 @@
+{
+    "rotation": "pipe",
+    "material": "base:wood",
+    "texture-faces": [
+        "white_sakura_wood",
+        "white_sakura_wood",
+        "white_sakura_wood_top",
+        "white_sakura_wood_top",
+        "white_sakura_wood",
+        "white_sakura_wood"
+    ]
+}

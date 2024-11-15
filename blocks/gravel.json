@@ -1,0 +1,5 @@
+{
+    "texture": "gravel",
+    "material": "base:sand",
+    "script-name": "falling_block"
+}

@@ -3,8 +3,12 @@
       ["base:dirt", 5],
       ["base:planks", 1]
     ],
-
+    "base:stone": [["noname:cobblestone", 1]],
     "base:glass": [],
-    "base:grass": []
+    "base:grass": [],
+    "noname:snow_grass": [],
+    "noname:snow_4": [],
+    "noname:snow_3": [],
+    "noname:snow_2": []
 }
   

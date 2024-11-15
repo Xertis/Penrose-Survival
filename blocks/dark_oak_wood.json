@@ -1,0 +1,12 @@
+{
+    "rotation": "pipe",
+    "material": "base:wood",
+    "texture-faces": [
+        "dark_oak_wood",
+        "dark_oak_wood",
+        "dark_oak_wood_top",
+        "dark_oak_wood_top",
+        "dark_oak_wood",
+        "dark_oak_wood"
+    ]
+}
