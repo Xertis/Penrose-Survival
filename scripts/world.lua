@@ -12,12 +12,10 @@ function on_block_broken(id, x, y, z)
     local drop = dropu.get_drops_ids(block.name(id))
     for _, v in ipairs(drop) do
         local count = v[2]
-        for i=1, count do
-            entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
-                id=item.index(v[1] .. '.item'),
-                count=1
-            }})
-        end
+        entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
+            id=item.index(v[1] .. '.item'),
+            count=count
+        }})
     end
 end
 
