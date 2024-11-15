@@ -1,0 +1,10 @@
+{
+    "example": [
+      ["base:dirt", 5],
+      ["base:planks", 1]
+    ],
+
+    "base:glass": [],
+    "base:grass": []
+}
+  
