@@ -10,7 +10,7 @@ function module.chebyshev(x1, y1, z1, x2, y2, z2)
 end
 
 function module.euclidean(x1, y1, z1, x2, y2, z2)
-    vec3_len(vec3_add({x1,y1,z1},{x2,y2,z2}))
+    return vec3_len(vec3_add({x1,y1,z1},{x2,y2,z2}))
 end
 
 return module

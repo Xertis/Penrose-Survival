@@ -4,6 +4,9 @@
       ["base:planks", 1]
     ],
     "base:stone": [["noname:cobblestone", 1]],
+    "base:grass_block": [["base:dirt", 1]],
+    "chests:doublechest_left": [["chests:chest", 1]],
+    "chests:doublechest_right": [["chests:chest", 1]],
     "base:glass": [],
     "base:grass": [],
     "noname:snow_grass": [],

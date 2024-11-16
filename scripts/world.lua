@@ -1,10 +1,12 @@
-require("noname:player/blocked")
+--require("noname:player/blocked")
 local dropu = require "noname:utils/drop"
 local invu = require "noname:utils/inventory"
 
-
-function on_world_tick( ... )
-    BlockedFunc.update()
+function on_world_open()
+    local rules_tbl = json.parse(file.read(PACK_ID .. ":data/rules.json"))
+    for id, v in pairs(rules_tbl) do
+        rules.set(id, v)
+    end
 end
 
 function on_block_broken(id, x, y, z)
