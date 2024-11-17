@@ -1,0 +1,7 @@
+{
+    "craft": 
+        [
+        [["base:planks.item", 1], ["base:planks.item", 1]], [["base:planks.item", 1], ["base:planks.item", 1]], [["base:planks.item", 1], ["base:planks.item", 1]]
+        ],
+    "count": 4
+}

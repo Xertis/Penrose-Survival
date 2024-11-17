@@ -6,14 +6,14 @@ function module.path.parse_file_extension(path)
     return str:match("%.(%w+)$")
 end
 
-function module.path.parse_file_name(path)
-    str = str:match("([^/]+)$")
-    return str:match("([^%.]+)")
+function module.path.parse_filename(path)
+    path = path:match("([^/]+)$")
+    return path:match("([^%.]+)")
 end
 
 function module.path.filename_repair(str)
     --Заменяет первый % строке на :
-    return str:gsub("^(%%)", ":")
+    return str:gsub("%%", ":", 1)
 end
 
 function module.replace(str, a, b)

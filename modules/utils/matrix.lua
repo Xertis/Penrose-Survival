@@ -56,10 +56,11 @@ function module.crop2D(matrix)
     return cropped_matrix
 end
 
-function matrix.equals(matrix1, matrix2)
+function module.equals(matrix1, matrix2)
     if type(matrix1) ~= type(matrix2) then
         return false
     end
+
     if type(matrix1) ~= 'table' then
         return matrix1 == matrix2
     end
@@ -76,7 +77,13 @@ function matrix.equals(matrix1, matrix2)
     end
 
     for k in pairs(keys1) do
-        if not keys2[k] or not matrix.equals(matrix1[k], matrix2[k]) then
+        if not keys2[k] or not module.equals(matrix1[k], matrix2[k]) then
+            return false
+        end
+    end
+
+    for k in pairs(keys2) do
+        if not keys1[k] then
             return false
         end
     end

@@ -1,0 +1,4 @@
+<inventory size="524,236">
+    <slots-grid updatefunc="check" rows="3" cols="3"  start-index="0" pos="182,36" />
+    <slots-grid updatefunc="clear" count="1" rows="1" start-index="9" pos="366,88" />
+</inventory>
