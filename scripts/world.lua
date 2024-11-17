@@ -1,6 +1,7 @@
 --require("noname:player/blocked")
 local dropu = require "noname:utils/drop"
 local invu = require "noname:utils/inventory"
+require "noname:utils/craft"
 
 function on_world_open()
     local rules_tbl = json.parse(file.read(PACK_ID .. ":data/rules.json"))
