@@ -3,7 +3,7 @@ local module = {
 }
 
 function module.path.parse_file_extension(path)
-    return str:match("%.(%w+)$")
+    return path:match("%.(%w+)$")
 end
 
 function module.path.parse_filename(path)

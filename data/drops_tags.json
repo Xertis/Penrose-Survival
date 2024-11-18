@@ -1,0 +1,36 @@
+{
+    "no_drop": {
+      "drop": []
+    },
+
+    "leaves": { 
+      "drop": [["noname:stick", 1]],
+      "placeholder": [],
+      "chances": [0.5]
+    },
+
+    "stone": {
+      "drop": [["noname:cobblestone.item", 1]]
+    },
+
+    "coal_ore": {
+      "drop": [["noname:coal", 1], ["noname:coal", 1]],
+      "chances": [1, 0.5]
+    },
+
+    "grass_block": {
+      "drop": [["base:dirt.item", 1]]
+    },
+
+    "gravel": {
+      "drop": [["noname:flint", 1]],
+      "placeholder": [["noname:gravel.item", 1]],
+      "chances": [0.15]
+    },
+    "string": { 
+      "drop": [["noname:string", 1]],
+      "placeholder": [],
+      "chances": [0.05]
+    }
+}
+  

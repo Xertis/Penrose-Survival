@@ -2,6 +2,7 @@
 local dropu = require "noname:utils/drop"
 local invu = require "noname:utils/inventory"
 require "noname:utils/craft"
+require "noname:std/math"
 
 function on_world_open()
     local rules_tbl = json.parse(file.read(PACK_ID .. ":data/rules.json"))
@@ -16,7 +17,7 @@ function on_block_broken(id, x, y, z)
     for _, v in ipairs(drop) do
         local count = v[2]
         entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
-            id=item.index(v[1] .. '.item'),
+            id=item.index(v[1]),
             count=count
         }})
     end

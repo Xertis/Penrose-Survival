@@ -50,10 +50,16 @@
     "wool_green",
     "wool_red",
     "wool_white",
-    "wool_yellow"
+    "wool_yellow",
+    "craft_table"
   ],
   "items": [
-    "spawner"
+    "spawner",
+    "coal",
+    "stick",
+    "yellow_dye",
+    "flint",
+    "string"
   ],
   "entities": [
     "test"

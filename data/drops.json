@@ -1,17 +1,18 @@
 {
-    "example": [
-      ["base:dirt", 5],
-      ["base:planks", 1]
-    ],
-    "base:stone": [["noname:cobblestone", 1]],
-    "base:grass_block": [["base:dirt", 1]],
-    "chests:doublechest_left": [["chests:chest", 1]],
-    "chests:doublechest_right": [["chests:chest", 1]],
-    "base:glass": [],
-    "base:grass": [],
-    "noname:snow_grass": [],
-    "noname:snow_4": [],
-    "noname:snow_3": [],
-    "noname:snow_2": []
+    "base:stone": "stone",
+    "base:grass_block": "grass_block",
+    "base:leaves": "leaves",
+    "base:coal_ore": "coal_ore",
+    "noname:withered_bush": "leaves",
+    "base:glass": "no_drop",
+    "base:grass": "string",
+    "noname:snow_grass": "no_drop",
+    "noname:snow_4": "no_drop",
+    "noname:snow_3": "no_drop",
+    "noname:snow_2": "no_drop",
+    "noname:gravel": "gravel",
+    "noname:sakura_leaves": "leaves",
+    "noname:white_sakura_leaves": "leaves",
+    "noname:teak_leaves": "leaves"
 }
   
