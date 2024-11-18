@@ -38,8 +38,8 @@ function module.equals(craft1, craft2)
 
             if type(e1) == "table" then c1 = e1[2] e1 = e1[1] end
             if type(e2) == "table" then c2 = e2[2] e2 = e2[1] end
-
             local material = MATERIALS[e1] or {}
+
             if (e1 ~= e2 and not table.has(material, e2)) or c2 < c1 then
                 return false
             end
@@ -61,7 +61,6 @@ end
 
 function module.find_craft(slots)
     local bounds = nil
-    print(json.tostring({slots = slots}))
     slots, bounds = matrixu.crop2D(slots)
 
     for _, craft in ipairs(CRAFTS) do

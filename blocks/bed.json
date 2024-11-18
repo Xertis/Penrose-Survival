@@ -1,0 +1,17 @@
+{
+    "texture-faces": [
+        "bed_side_1",
+        "bed_side_2",
+        "bed_top",
+        "bed_top",
+        "bed_side_3",
+        "bed_side_4"
+    ],
+    "light-passing": true,
+    "sky-light-passing": true,
+    "draw-group": 2,
+    "size": [1, 1, 2],
+    "rotation": "pane",
+    "model": "aabb",
+    "hitbox": [0, 0, 0, 1, 0.6, 2]
+}

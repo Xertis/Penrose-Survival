@@ -51,7 +51,8 @@
     "wool_red",
     "wool_white",
     "wool_yellow",
-    "craft_table"
+    "craft_table",
+    "bed"
   ],
   "items": [
     "spawner",
