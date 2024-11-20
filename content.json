@@ -52,7 +52,10 @@
     "wool_white",
     "wool_yellow",
     "craft_table",
-    "bed"
+    "bed",
+    "barrel",
+    "spruce_leaves",
+    "furnace"
   ],
   "items": [
     "spawner",

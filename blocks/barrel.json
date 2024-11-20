@@ -1,0 +1,13 @@
+{
+    "rotation": "pipe",
+    "material": "base:wood",
+    "texture-faces": [
+        "box",
+        "box",
+        "box",
+        "box_top",
+        "box",
+        "box"
+    ],
+    "inventory-size": 40
+}

@@ -1,0 +1,68 @@
+
+[desert]
+parameters = [
+    {weight=1.0, value=1},
+    {weight=0.8, value=0}
+]
+layers = [
+    {height=6, block="base:sand"},
+    {height=-1, block="base:stone"},
+    {height=1, block="base:bazalt"}
+]
+sea-layers = [
+    {height=-1, block="base:water"}
+]
+
+
+[plains]
+parameters = [
+    {weight=0.8, value=0.5},
+    {weight=0.8, value=0.0}
+]
+layers = [
+    {below-sea-level=false, height=1, block="base:grass_block"},
+    {below-sea-level=false, height=5, block="base:dirt"},
+    {height=-1, block="base:stone"},
+    {height=1, block="base:bazalt"}
+]
+sea-layers = [
+    {height=-1, block="base:water"}
+]
+plant-chance = 0.3
+plants = [
+    {weight=1, block="base:grass"},
+    {weight=0.03, block="base:flower"}
+]
+structure-chance=0.0005
+structures = [
+    {name="tree0", weight=1},
+    {name="tree1", weight=1},
+]
+
+
+[taiga]
+parameters = [
+    {weight=1, value=0},
+    {weight=0.5, value=0.2}
+]
+layers = [
+    {below-sea-level=false, height=2, block="noname:snow_1"},
+    {below-sea-level=false, height=4, block="noname:rocky_dirt"},
+    {height=-1, block="base:stone"},
+    {height=1, block="base:bazalt"}
+]
+sea-layers = [
+    {height=1, block="noname:ice"},
+    {height=-1, block="base:water"}
+]
+plant-chance = 0.4
+plants = [
+    {weight=1, block="noname:snow_grass"},
+    {weight=0.5, block="noname:snow_4"},
+    {weight=0.03, block="noname:withered_bush"}
+]
+structure-chance = 0.0112
+structures = [
+    {name="taiga_tree0", weight=1},
+    {name="tower1", weight=0.002},
+]

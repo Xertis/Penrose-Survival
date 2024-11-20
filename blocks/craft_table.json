@@ -1,4 +1,5 @@
 {
     "texture": "craft_table",
-    "inventory-size": 10
+    "inventory-size": 10,
+    "script-name": "inv_block"
 }

@@ -1,5 +1,6 @@
 local craftu = require "noname:utils/craft"
 local matrixu = require "noname:utils/matrix"
+local ctable = require "noname:frameworks/craft/table"
 local const = nil
 local CRAFT = nil
 
@@ -11,7 +12,7 @@ end
 
 function check(invid, slot)
     if not ITEMS_AVAILABLE then
-        ITEMS_AVAILABLE = const.session_const.items_available
+        ITEMS_AVAILABLE = const.session.items_available
     end
     local slots = {}
     local raw = {}
@@ -32,7 +33,7 @@ function check(invid, slot)
         end
     end
 
-    local craft, bounds = craftu.find_craft(slots)
+    local craft, bounds = craftu.table.find_craft(slots)
     if craft then
         local id = nil
         if ITEMS_AVAILABLE[craft[1]] then id = craft[1] else id = craft[1] .. ".item" end
@@ -48,8 +49,8 @@ function clear(invid)
     if CRAFT then
         local enlarged_craft = matrixu.uncrop2D(CRAFT[1][2]["craft"], CRAFT[2])
 
-        if craftu.equals(enlarged_craft, CRAFT[3]) then
-            local slots = craftu.sub(CRAFT[3], enlarged_craft)
+        if ctable.equals(enlarged_craft, CRAFT[3]) then
+            local slots = ctable.sub(CRAFT[3], enlarged_craft)
             local count_row = #slots
             local count_col = #slots[1]
 
@@ -77,13 +78,13 @@ function all(invid)
     if CRAFT then
         local enlarged_craft = matrixu.uncrop2D(CRAFT[1][2]["craft"], CRAFT[2])
         local res = 0
-        if craftu.equals(enlarged_craft, CRAFT[3]) then
+        if ctable.equals(enlarged_craft, CRAFT[3]) then
             local slots = CRAFT[3]
             local temp = nil
-            while craftu.equals(enlarged_craft, slots) do
+            while ctable.equals(enlarged_craft, slots) do
                 temp = slots
                 res = res + 1
-                slots = craftu.sub(slots, enlarged_craft)
+                slots = ctable.sub(slots, enlarged_craft)
             end
             local id = nil
             if ITEMS_AVAILABLE[CRAFT[1][1]] then id = CRAFT[1][1] else id = CRAFT[1][1] .. ".item" end

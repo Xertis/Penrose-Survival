@@ -1,14 +1,27 @@
 --require("noname:player/blocked")
 local dropu = require "noname:utils/drop"
 local invu = require "noname:utils/inventory"
+local events = require "noname:events/events"
+local constants = require "noname:constants"
+local metadata = require "noname:files/metadata"
+local furnaces = require "noname:utils/furnaces"
 require "noname:utils/craft"
 require "noname:std/math"
+require "noname:std/table"
 
 function on_world_open()
+    metadata.world.load()
+    constants.init()
     local rules_tbl = json.parse(file.read(PACK_ID .. ":data/rules.json"))
     for id, v in pairs(rules_tbl) do
         rules.set(id, v)
     end
+    furnaces.load()
+end
+
+function on_world_quit()
+    events.quit()
+    metadata.world.save()
 end
 
 function on_block_broken(id, x, y, z)
@@ -21,6 +34,10 @@ function on_block_broken(id, x, y, z)
             count=count
         }})
     end
+end
+
+function on_world_tick(tps)
+    events.tick(tps)
 end
 
 function on_block_placed(id, x, y, z, pid)
