@@ -93,6 +93,10 @@ function module.check(invid, slot, x, y, z)
                 FURNACES[reg_id][4] = energy
                 --print(cooking_lvl, "кук левеле")
             end
+        else
+            FURNACES[reg_id][4] = 0.05
+            FURNACES[reg_id][5] = 0.05
+            return
         end
     end
 
@@ -122,7 +126,7 @@ function module.check(invid, slot, x, y, z)
         end
     end
 
-    if fuel_lvl > 0 and cooking_lvl <= 0 then
+    if fuel_lvl > 0 and cooking_lvl <= 0 and inventory.get(invid, INPUT_SLOT) ~= 0 then
         FURNACES[reg_id][5] = 10
     end
 end
