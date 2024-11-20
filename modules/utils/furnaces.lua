@@ -18,6 +18,7 @@ function module.unreg(x, y, z)
     for i, b in ipairs(FURNACES) do
         if b[1] == x and b[2] == y and b[3] == z then
             table.remove(FURNACES, i)
+            return
         end
     end
 end
@@ -32,6 +33,7 @@ end
 
 function module.tick()
     for i, b in ipairs(FURNACES) do
+        module.check(inventory.get_block(b[1], b[2], b[3]), 0, b[1], b[2], b[3])
         if b[5] > 0 then
            b[5] = b[5] - 0.05
         end
@@ -39,7 +41,6 @@ function module.tick()
         if b[4] > 0 then
             b[4] = b[4] - 0.05
         end
-        module.check(inventory.get_block(b[1], b[2], b[3]), 0, b[1], b[2], b[3])
     end
 end
 
@@ -56,42 +57,73 @@ function module.on_open(invid, x, y, z, doc)
 end
 
 function module.check(invid, slot, x, y, z)
+    local function get_craft()
+        local id, count = inventory.get(invid, 0)
+        local slots = {
+            craft = {item.name(id), count}
+        }
+
+        local craft = craftu.furnace.find_craft(slots)
+        if craft then
+            if const.session.items_available[craft[1]] == nil then craft[1] = craft[1] .. '.item' end
+            return craft
+        end
+    end
+
     local furnace = {module.get(x, y, z)}
-    print(json.tostring({d=furnace}))
-    local id, count = inventory.get(invid, slot)
-    local slots = {
-        craft = {item.name(id), count}
-    }
 
-    local craft = craftu.furnace.find_craft(slots)
+    print(json.tostring({d = furnace}))
 
-    if craft and furnace[1] > 0 and furnace[2] <= 0 then
-        if const.session.items_available[craft[1]] == nil then craft[1] = craft[1] .. '.item' end
-        local in_slot_id, in_slot_count = inventory.get(invid, 2)
-        if in_slot_id == item.index(craft[1]) or in_slot_id == 0 then
-            if in_slot_id == 0 then in_slot_count = 0 end
-            inventory.set(invid, 2, item.index(craft[1]), craft[2].count + in_slot_count)
+    local INPUT_SLOT = 0
+    local FUEL_SLOT = 1
+    local OUTPU_SLOT = 2
 
-            count = slots.craft[2] - craft[2].craft[2]
-            in_slot_id, in_slot_count = inventory.get(invid, 0)
-            if count <= 0 then
-                inventory.set(invid, 0)
-            elseif in_slot_id == id then
-                inventory.set(invid, 0, id, count)
+    local fuel_lvl = furnace[1]
+    local cooking_lvl = furnace[2]
+    local reg_id = furnace[3]
+
+    if fuel_lvl <= 0 then
+        local fuel_id, fuel_count = inventory.get(invid, FUEL_SLOT)
+
+        if fuel_id ~= 0 and fuel_count > 0 then
+            local in_input_id, in_input_count = inventory.get(invid, INPUT_SLOT)
+            local energy = FUELS[item.name(fuel_id)]
+            if in_input_id ~= 0 and energy then
+                inventory.set(invid, FUEL_SLOT, fuel_id, fuel_count-1)
+                FURNACES[reg_id][4] = energy
+                --print(cooking_lvl, "кук левеле")
+            end
+        end
+    end
+
+    fuel_lvl = FURNACES[reg_id][4]
+
+    if (fuel_lvl > 0 and cooking_lvl < 0) then
+        local craft = get_craft()
+        print(fuel_lvl, cooking_lvl)
+        if craft then
+            --Уменьшаем кол-во предметов в печке
+            local in_input_id, in_input_count = inventory.get(invid, INPUT_SLOT)
+            if in_input_count-craft[2].craft[2] > 0 then
+                inventory.set(invid, INPUT_SLOT, in_input_id, in_input_count-craft[2].craft[2])
+            else
+                inventory.set(invid, INPUT_SLOT, 0, 0)
+            end
+
+            --Увеличиваем кол-во предметов на выходе
+            local in_output_id, in_output_count = inventory.get(invid, OUTPU_SLOT)
+            local craft_id, craft_count = craft[1], craft[2].count
+            if item.name(in_output_id) == craft_id then
+                inventory.set(invid, OUTPU_SLOT, in_output_id, in_output_count+craft_count)
+            else
+                inventory.set(invid, OUTPU_SLOT, item.index(craft_id), craft_count)
             end
 
         end
     end
-    if furnace[1] <= 0 and inventory.get(invid, 0) ~= 0 then
-        id, count = inventory.get(invid, 1)
-        local energy = FUELS[item.name(id)]
-        if energy then
-            FURNACES[furnace[3]][4] = energy
-            inventory.set(invid, 1, id, count-1)
-        end
-    end
-    if furnace[2] <= 0 and furnace[3] > 0 and inventory.get(invid, 0) ~= 0 then
-        FURNACES[furnace[3]][5] = 10
+
+    if fuel_lvl > 0 and cooking_lvl <= 0 then
+        FURNACES[reg_id][5] = 10
     end
 end
 
