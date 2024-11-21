@@ -9,9 +9,13 @@ local FURNACES = {}
 
 --Тики до того, как закончится топливо
 --Тики до того, как сготовится предмет
+--Тики до того, 
 
 function module.reg(x, y, z)
-    table.insert(FURNACES, {x, y, z, 0, 0})
+    if module.get(x, y, z) ~= nil then
+        return
+    end
+    table.insert(FURNACES, {x, y, z, 0, 0, false})
 end
 
 function module.unreg(x, y, z)
@@ -26,7 +30,7 @@ end
 function module.get(x, y, z)
     for i, b in ipairs(FURNACES) do
         if b[1] == x and b[2] == y and b[3] == z then
-            return b[4], b[5], i
+            return b[4], b[5], b[6], i
         end
     end
 end
@@ -72,7 +76,7 @@ function module.check(invid, slot, x, y, z)
 
     local furnace = {module.get(x, y, z)}
 
-    print(json.tostring({d = furnace}))
+    --print(json.tostring({d = furnace}))
 
     local INPUT_SLOT = 0
     local FUEL_SLOT = 1
@@ -80,7 +84,8 @@ function module.check(invid, slot, x, y, z)
 
     local fuel_lvl = furnace[1]
     local cooking_lvl = furnace[2]
-    local reg_id = furnace[3]
+    local is_not_start = furnace[3]
+    local reg_id = furnace[4]
 
     if fuel_lvl <= 0 then
         local fuel_id, fuel_count = inventory.get(invid, FUEL_SLOT)
@@ -102,9 +107,9 @@ function module.check(invid, slot, x, y, z)
 
     fuel_lvl = FURNACES[reg_id][4]
 
-    if (fuel_lvl > 0 and cooking_lvl < 0) then
+    if fuel_lvl > 0 and cooking_lvl < 0 and is_not_start then
         local craft = get_craft()
-        print(fuel_lvl, cooking_lvl)
+        FURNACES[reg_id][6] = false
         if craft then
             --Уменьшаем кол-во предметов в печке
             local in_input_id, in_input_count = inventory.get(invid, INPUT_SLOT)
@@ -125,9 +130,9 @@ function module.check(invid, slot, x, y, z)
 
         end
     end
-
     if fuel_lvl > 0 and cooking_lvl <= 0 and inventory.get(invid, INPUT_SLOT) ~= 0 then
         FURNACES[reg_id][5] = 10
+        FURNACES[reg_id][6] = true
     end
 end
 
