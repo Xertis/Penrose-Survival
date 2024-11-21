@@ -1,16 +1,5 @@
 {
     "textures": [
-        "layouts/heart",
-        "layouts/water",
-        "layouts/mind",
-        "layouts/food",
-        "layouts/armor",
-        "layouts/mana",
-        "layouts/hp",
-        "layouts/hp_background",
-        "layouts/hp_border",
-        "layouts/img",
-        "layouts/hp_shader",
-        "layouts/img3"
+        "layouts/bg"
     ]
 }

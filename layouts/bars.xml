@@ -1,0 +1,11 @@
+<container size="525,70" position-func="gui.get_viewport()[1]/2-262.5,gui.get_viewport()[2]-100">
+    <container size="257, 25" gravity="top-left">
+        <image size="257, 25" src="layouts/bg" z-index="1"/>
+      <container color="#FF0000D4" size="257, 25" id="hp" z-index="-1"/>
+    </container>
+
+    <container size="257, 25" gravity="top-right">
+      <image size="257, 25" src="layouts/bg" z-index="1"/>
+      <container color="#9F591DD4" size="257, 25" id="food" z-index="-1"/>
+    </container>
+</container>

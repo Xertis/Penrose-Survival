@@ -5,6 +5,7 @@ local events = require "noname:events/events"
 local constants = require "noname:constants"
 local metadata = require "noname:files/metadata"
 local furnaces = require "noname:utils/furnaces"
+local player_bars = require "noname:player/bars_manager"
 require "noname:utils/craft"
 require "noname:std/math"
 require "noname:std/table"
@@ -17,6 +18,7 @@ function on_world_open()
         rules.set(id, v)
     end
     furnaces.load()
+    player_bars.load()
 end
 
 function on_world_quit()
