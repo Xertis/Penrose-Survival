@@ -5,7 +5,7 @@ function on_interact(x, y, z, pid)
     if time < 0.25 or time > 0.7 then
         world.set_day_time(0.25)
     else
-        pop_up.open("You can't sleep")
+        pop_up.open("You can't sleep at the day")
     end
     return true
 end

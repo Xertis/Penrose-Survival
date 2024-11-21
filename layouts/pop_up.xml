@@ -1,3 +1,3 @@
-<panel pos="540,600" size='200,40'>
-    <label id='label'>234</label>
+<panel size="230,40" position-func="gui.get_viewport()[1]/2-115,gui.get_viewport()[2]-120">
+    <label id='label' gravity="top-center">234</label>
 </panel>
