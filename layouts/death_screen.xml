@@ -1,0 +1,4 @@
+<container size="400,100" position-func="gui.get_viewport()[1]/2-110,gui.get_viewport()[2]-700">
+    <image size="257, 40" src="layouts/death_screen_label" z-index="1"/>
+    <button pos="0,50" size="257, 40" id='saving'>Respawn</button>
+</container>

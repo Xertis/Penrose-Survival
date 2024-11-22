@@ -1,5 +1,6 @@
 {
     "textures": [
-        "layouts/bg"
+        "layouts/bg",
+        "layouts/death_screen_label"
     ]
 }

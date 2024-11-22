@@ -3,7 +3,7 @@ local player_events = require "noname:events/player"
 
 function on_hud_open(pid)
     hud.open_permanent("noname:bars")
-    events.world.reg(player_events.falling, {pid}, true)
+    events.world.reg(player_events.base, {pid}, true)
 
     input.add_callback("noname.craft", function ()
         local x, y, z = player.get_selected_block(pid)
