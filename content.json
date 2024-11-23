@@ -64,7 +64,9 @@
     "stick",
     "yellow_dye",
     "flint",
-    "string"
+    "string",
+    "kupple",
+    "apple"
   ],
   "entities": [
     "test"

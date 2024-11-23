@@ -8,6 +8,7 @@ local items_available = {}
 local blocks_available = {}
 local crafts_available = {table = {}, furnace = {}}
 local fuels_available = {}
+local food_available = {}
 local materials_available = {}
 
 local function init()
@@ -22,6 +23,7 @@ local function init()
     local crafts = file.list("noname:data/crafts/table")
     local materials = file.list("noname:data/crafts/materials")
     local fuel = file.read("noname:data/fuels.json")
+    local food = file.read("noname:data/food.json")
 
     for i, path in ipairs(crafts) do
         if stru.path.parse_file_extension(path) then
@@ -53,6 +55,10 @@ local function init()
     for i, v in pairs(json.parse(fuel)) do
         fuels_available[i] = v
     end
+
+    for i, v in pairs(json.parse(food)) do
+        food_available[i] = v
+    end
 end
 
 local session_const = {
@@ -60,6 +66,7 @@ local session_const = {
     blocks_available = blocks_available,
     materials_available = materials_available,
     crafts_available = crafts_available,
-    fuels_available = fuels_available
+    fuels_available = fuels_available,
+    food_available = food_available
 }
 return {init = init, const = const, session = session_const}

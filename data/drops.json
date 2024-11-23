@@ -1,7 +1,7 @@
 {
     "base:stone": "stone",
     "base:grass_block": "grass_block",
-    "base:leaves": "leaves",
+    "base:leaves": "apple_tree",
     "base:coal_ore": "coal_ore",
     "noname:withered_bush": "leaves",
     "base:glass": "no_drop",

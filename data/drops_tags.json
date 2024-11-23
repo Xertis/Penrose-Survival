@@ -9,6 +9,12 @@
       "chances": [0.5]
     },
 
+    "apple_tree": { 
+      "drop": [["noname:stick", 1], ["noname:apple", 1]],
+      "placeholder": [],
+      "chances": [0.5, -0.2]
+    },
+
     "stone": {
       "drop": [["noname:cobblestone.item", 1]]
     },

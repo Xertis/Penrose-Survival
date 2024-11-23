@@ -30,11 +30,11 @@ function module.set_hunger(hunger)
 end
 
 function module.set_hp(hp)
-    doc.hp.size = {SIZE * (hp / 100), doc.hp.size[2]}
+    doc.hp.size = {SIZE * (math.clamp(hp,0,100) / 100), doc.hp.size[2]}
 end
 
 function module.set_food(food)
-    doc.food.size = {SIZE * (food / 100), doc.food.size[2]}
+    doc.food.size = {SIZE * (math.clamp(food,0,100) / 100), doc.food.size[2]}
 end
 
 function module.get_hp()
