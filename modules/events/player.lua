@@ -1,4 +1,5 @@
 local player_bars = require "noname:player/bars_manager"
+local pop_up = require "noname:frontend/pop_up"
 local PLAYERS = {}
 local module = {}
 
@@ -59,6 +60,7 @@ function module.death(pid)
         player.set_pos(pid, unpack({player.get_spawnpoint(pid)}))
         player_bars.set_hp(100)
         player_bars.set_food(100)
+        pop_up.open("You died.")
     end
 end
 
