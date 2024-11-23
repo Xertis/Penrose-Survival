@@ -55,7 +55,8 @@
     "bed",
     "barrel",
     "spruce_leaves",
-    "furnace"
+    "furnace",
+    "wet_dirt"
   ],
   "items": [
     "spawner",

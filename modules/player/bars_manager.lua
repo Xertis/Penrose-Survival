@@ -25,6 +25,10 @@ function module.set_damage(damage)
     module.set_hp(module.get_hp() - damage)
 end
 
+function module.set_hunger(hunger)
+    module.set_food(module.get_food() - hunger)
+end
+
 function module.set_hp(hp)
     doc.hp.size = {SIZE * (hp / 100), doc.hp.size[2]}
 end

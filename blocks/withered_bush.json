@@ -1,6 +1,7 @@
 {
     "caption": "withered bush",
     "texture": "withered_bush",
+    "material": "base:grass",
     "draw-group": 4,
     "light-passing": true,
     "obstacle": false,

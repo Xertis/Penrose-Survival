@@ -1,6 +1,7 @@
 {
     "caption": "snow grass",
     "texture": "snow_grass",
+    "material": "base:grass",
     "draw-group": 1,
     "light-passing": true,
     "obstacle": false,
