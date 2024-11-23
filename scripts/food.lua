@@ -9,6 +9,6 @@ function on_use(pid)
     if saturation and player_bars.get_food() < 100 then
         if item_count <= 0 then item_id = 0 item_count = 1 end
         inventory.set(inv, slot, item_id, item_count-1)
-        player_bars.set_hunger(-10)
+        player_bars.set_hunger(-saturation)
     end
 end
