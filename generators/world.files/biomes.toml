@@ -86,7 +86,7 @@ plants = [
     {weight=1, block="base:grass"},
     {weight=0.03, block="base:flower"}
 ]
-structure-chance=0.0001
+structure-chance=0.0002
 structures = [
     {name="boulder0", weight=1},
     {name="boulder1", weight=1},
