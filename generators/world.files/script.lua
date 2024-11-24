@@ -1,5 +1,5 @@
 local _, dir = parse_path(__DIR__)
-local ores = require "base:generation/ores"
+local ores = require "noname:generation/ores"
 ores.load(dir)
 
 function place_structures(x, z, w, d, hmap, chunk_height)

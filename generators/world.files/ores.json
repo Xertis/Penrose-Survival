@@ -1,4 +1,9 @@
 [
     {"struct": "coal_ore0", "rarity": 4400},
-    {"struct": "iron_ore0", "rarity": 6400}
+    {"struct": "iron_ore0", "rarity": 6400},
+    {"struct": "andesit_vein", "rarity": 45400, "max-depth": 30},
+    {"struct": "granit_vein", "rarity": 45400, "max-depth": 30},
+    {"struct": "diorit_vein", "rarity": 45400, "max-depth": 30},
+    {"struct": "tuff_vein", "rarity": 45400, "max-depth": 30},
+    {"struct": "gravel_vein", "rarity": 45400, "max-depth": 30}
 ]
