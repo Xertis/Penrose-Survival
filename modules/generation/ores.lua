@@ -11,6 +11,7 @@ function ores.place(placements, x, z, w, d, seed, hmap, chunk_height)
 
         -- average count is less than 1
         local addchance = math.fmod(count, 1.0)
+        math.seed = seed
         if math.random() < addchance then
             count = count + 1
         end
