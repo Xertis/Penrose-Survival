@@ -1,3 +1,4 @@
 [
-    {"struct": "coal_ore0", "rarity": 4400}
+    {"struct": "coal_ore0", "rarity": 4400},
+    {"struct": "iron_ore0", "rarity": 6400}
 ]

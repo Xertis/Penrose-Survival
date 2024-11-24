@@ -56,7 +56,8 @@
     "barrel",
     "spruce_leaves",
     "furnace",
-    "wet_dirt"
+    "wet_dirt",
+    "iron_ore"
   ],
   "items": [
     "spawner",
