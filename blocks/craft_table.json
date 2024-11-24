@@ -1,5 +1,13 @@
 {
-    "texture": "craft_table",
     "inventory-size": 10,
-    "script-name": "inv_block"
+    "script-name": "inv_block",
+    "material": "base:wood",
+    "texture-faces": [
+        "craft_table",
+        "craft_table",
+        "box",
+        "craft_table_top",
+        "craft_table",
+        "craft_table"
+    ]
 }

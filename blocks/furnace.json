@@ -1,4 +1,12 @@
 {
-    "texture": "craft_table",
+    "texture-faces": [
+        "furnace",
+        "furnace",
+        "brick",
+        "cobblestone",
+        "furnace",
+        "furnace_side"
+    ],
+    "rotation": "pane",
     "inventory-size": 4
 }

@@ -40,6 +40,10 @@ function module.saturation(pid)
     if player_bars.get_food() < 1 then
         player_bars.set_damage(0.2)
     end
+
+    if player_bars.get_food() >= 100 then
+        player_bars.set_damage(-0.01)
+    end
 end
 
 function module.death(pid)
