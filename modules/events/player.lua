@@ -1,4 +1,6 @@
 local player_bars = require "noname:player/bars_manager"
+local events = require "noname:events/events"
+local metadata = require "noname:files/metadata"
 local pop_up = require "noname:frontend/pop_up"
 local PLAYERS = {}
 local module = {}
@@ -11,6 +13,14 @@ function module.base(pid)
     module.falling(pid)
     module.death(pid)
     module.saturation(pid)
+end
+
+function module.quit()
+    metadata.world.set("players_stats", PLAYERS)
+end
+
+function module.open()
+   PLAYERS = metadata.world.get("players_stats") or {}
 end
 
 function module.falling(pid)
@@ -42,7 +52,7 @@ function module.saturation(pid)
     end
 
     if player_bars.get_food() >= 100 then
-        player_bars.set_damage(-0.01)
+        player_bars.set_damage(-0.02)
     end
 end
 
@@ -67,5 +77,7 @@ function module.death(pid)
         pop_up.open("You died.")
     end
 end
+
+events.world.quit.reg(module.quit, {})
 
 return module

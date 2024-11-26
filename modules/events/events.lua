@@ -1,4 +1,3 @@
-local metadata = require "noname:files/metadata"
 
 local module = {
     world = {

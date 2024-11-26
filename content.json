@@ -57,7 +57,8 @@
     "spruce_leaves",
     "furnace",
     "wet_dirt",
-    "iron_ore"
+    "iron_ore",
+    "bamboo"
   ],
   "items": [
     "spawner",

@@ -1,0 +1,15 @@
+{
+    "texture-faces": [
+        "bamboo_side",
+        "bamboo_side",
+        "bamboo_top",
+        "bamboo_top",
+        "bamboo_side",
+        "bamboo_side"
+    ],
+    "model": "aabb",
+    "hitbox": [0.38, 0.0, 0.38, 0.25, 1.0, 0.25],
+    "light-passing": true,
+    "material": "base:wood",
+    "rotation": "pipe"
+}

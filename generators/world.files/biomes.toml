@@ -64,7 +64,7 @@ plants = [
 structure-chance = 0.0112
 structures = [
     {name="taiga_tree0", weight=1},
-    {name="tower1", weight=0.002},
+    {name="tower1", weight=0.0002},
 ]
 
 [boulders_plains]
@@ -117,4 +117,28 @@ structures = [
     {name="tree0", weight=1},
     {name="tree1", weight=1},
     {name="bone0", weight=0.05}
+]
+
+[bamboo_forest]
+parameters = [
+    {weight=0.5, value=1},
+    {weight=0.5, value=0.5}
+]
+layers = [
+    {below-sea-level=false, height=1, block="base:grass_block"},
+    {below-sea-level=false, height=7, block="base:dirt"},
+    {height=-1, block="base:stone"},
+    {height=1, block="base:bazalt"}
+]
+sea-layers = [
+    {height=-1, block="base:water"}
+]
+plant-chance = 0.4
+plants = [
+    {weight=1, block="base:grass"},
+    {weight=0.03, block="base:flower"}
+]
+structure-chance = 0.092
+structures = [
+    {name="bamboo", weight=1},
 ]
