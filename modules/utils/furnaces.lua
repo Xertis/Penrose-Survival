@@ -60,7 +60,21 @@ function module.on_open(invid, x, y, z, doc)
     FUELS = const.session.fuels_available
 end
 
+function module.find_fuel(fuel)
+    local materials = const.session.materials_available
+    for i, m in pairs(materials) do
+        if table.has(m, fuel) then
+            print(FUELS[i])
+            return FUELS[i]
+        end
+    end
+end
+
 function module.check(invid, slot, x, y, z)
+    if invid == 0 then
+        return
+    end
+
     local function get_craft()
         local id, count = inventory.get(invid, 0)
         local slots = {
@@ -92,7 +106,7 @@ function module.check(invid, slot, x, y, z)
 
         if fuel_id ~= 0 and fuel_count > 0 then
             local in_input_id, in_input_count = inventory.get(invid, INPUT_SLOT)
-            local energy = FUELS[item.name(fuel_id)]
+            local energy = module.find_fuel(item.name(fuel_id))
             if in_input_id ~= 0 and energy then
                 inventory.set(invid, FUEL_SLOT, fuel_id, fuel_count-1)
                 FURNACES[reg_id][4] = energy

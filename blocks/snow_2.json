@@ -1,6 +1,6 @@
 {
     "texture": "snow",
-    "material": "maybeblocks:snow",
+    "material": "noname:snow",
     "texture-faces": [
         "snow",
         "snow",

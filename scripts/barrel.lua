@@ -6,9 +6,9 @@ end
 
 function on_broken(x, y, z)
     local inv = inventory.get_block(x, y, z)
-    local size = inventory.size(inv)
 
     if inv ~= 0 then
+        local size = inventory.size(inv)
         for slot=0, size-1 do
             local id, count = inventory.get(inv, slot)
             x, y, z = math.floor(x), math.floor(y), math.floor(z)

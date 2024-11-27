@@ -38,8 +38,3 @@ end
 function on_world_tick(tps)
     events.tick(tps)
 end
-
-function on_block_placed(id, x, y, z, pid)
-    x, y, z = math.floor(x), math.floor(y), math.floor(z)
-    invu.del_item(id .. ".item", pid)
-end

@@ -7,4 +7,5 @@ end
 function on_interact(x, y, z)
     furnaces.reg(x, y, z)
     hud.open_block(x, y, z)
+    return true
 end

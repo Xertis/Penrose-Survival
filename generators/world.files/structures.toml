@@ -10,10 +10,10 @@ taiga_house0 = { }
 boulder0 = { }
 boulder1 = { }
 boulder2 = { }
-bone0 = { }
+bone0 = {lowering=-3}
 andesit_vein = { }
 granit_vein = { }
 diorit_vein = { }
 tuff_vein = { }
 gravel_vein = { }
-bamboo = { }
+bamboo = {lowering=-1}
