@@ -8,7 +8,7 @@ function module.table.find_craft(slots)
     local bounds = nil
     slots, bounds = matrixu.crop2D(slots)
     for _, craft in ipairs(const.session.crafts_available.table) do
-        if ctable.equals(craft[2]["craft"], slots, const.session.materials_available) then
+        if craft[2]["craft"] and ctable.equals(craft[2]["craft"], slots, const.session.materials_available) then
             return craft, bounds
         end
     end
