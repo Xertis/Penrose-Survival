@@ -6,6 +6,11 @@ local agressive = {}
 local peaceful = {}
 local friendlyfire = {}
 
+function vec3.floor(a)
+    local x, y, z = unpack(a)
+    return {math.floor(x), math.floor(y), math.floor(z)}
+end
+
 local AStar, BFS, DFS = pathfinder.AStar, pathfinder.BFS, pathfinder.DFS
 local PATHFINDER_OPTIONS_DEFAULT = {
     radius = 20,
@@ -34,33 +39,24 @@ end
 local function base_attack(uid, options, other_uid)
     local other = entities.get(other_uid)
     local other_tsf = other.transform
-    local other_pos = vec3.round(other_tsf:get_pos())
+    local other_pos = vec3.floor(other_tsf:get_pos())
 
     local it = entities.get(uid)
     local it_tsf = it.transform
-    local it_pos = vec3.round(it_tsf:get_pos())
+    local it_pos = vec3.floor(it_tsf:get_pos())
 
     local path_options = nil
     if options.pathOptions == nil then path_options = PATHFINDER_OPTIONS_DEFAULT else path_options = options.pathOptions end
-
     local path = pathfinder.find_path(it_pos[1], it_pos[2], it_pos[3], other_pos[1], other_pos[2], other_pos[3], path_options)
-
     if path ~= nil and #path > 1 then
-        path = path[2]
-        it_tsf:set_pos({path.x, path.y, path.z})
-
-        if distance.chebyshev(path.x, path.y, path.z, other_pos[1], other_pos[2], other_pos[3]) < 2 then
-            local id = entities.def_name(entities.get_def(uid))
-            local e = entities.get(uid)
-            --print('ATTACK')
-        end
+        return path
     end
 end
 
 local function wander(uid, options)
     local it = entities.get(uid)
     local it_tsf = it.transform
-    local it_pos = vec3.round(it_tsf:get_pos())
+    local it_pos = vec3.floor(it_tsf:get_pos())
     local random_pos = nil
     if options.wanderRadius == nil then random_pos = get_random_postion(it_pos, 4, true) else random_pos = get_random_postion(it_pos, options.wanderRadius, true) end
 
@@ -77,11 +73,11 @@ end
 local function panic(uid, options, other_uid)
     local other = entities.get(other_uid)
     local other_tsf = other.transform
-    local other_pos = vec3.round(other_tsf:get_pos())
+    local other_pos = vec3.floor(other_tsf:get_pos())
 
     local it = entities.get(uid)
     local it_tsf = it.transform
-    local it_pos = vec3.round(it_tsf:get_pos())
+    local it_pos = vec3.floor(it_tsf:get_pos())
 
     local panic_direction = vec3.sub(it_pos, other_pos)
     local normalized_direction = vec3.normalize(panic_direction)
@@ -108,23 +104,23 @@ local function panic(uid, options, other_uid)
     end
 end
 
-function agressive.on_sensor(uid, options, other_uid)
+function agressive.attack(uid, options, other_uid)
     local other_options = get_options(other_uid)
-    if other_options == nil or other_options.fraction == nil or other_options.fraction == options.fraction then
+    if other_options == nil or (other_options.fraction == options.fraction or table.has(options.allies, other_options.fraction)) then
         return
     end
 
-    base_attack(uid, options, other_uid)
+    return base_attack(uid, options, other_uid)
 
 end
 
-function friendlyfire.on_sensor(uid, options, other_uid)
+function friendlyfire.attack(uid, options, other_uid)
     local other_options = get_options(other_uid)
-    if other_options == nil or other_options.fraction ~= options.fraction then
+    if other_options == nil or (other_options.fraction ~= options.fraction and not table.has(options.allies, other_options.fraction)) then
         return
     end
 
-    base_attack(uid, options, other_uid)
+    return base_attack(uid, options, other_uid)
 end
 
 friendlyfire.wander = wander
@@ -139,6 +135,7 @@ local patterns = {}
 
 function patterns.get(options)
     if options then
+        options.allies = options.aliies or {}
         if options.behaviour == 'agressive' then
             return agressive
         elseif options.behaviour == 'peaceful' then

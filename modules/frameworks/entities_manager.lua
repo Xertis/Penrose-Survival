@@ -2,6 +2,7 @@ local table_u = require 'noname:utils/table_utils'
 local patterns = require 'noname:frameworks/entities_manager_patterns'
 
 local framework = {}
+local defaults_options = {}
 REGISTERED_ENTITIES = {}
 
 local options_example = {
@@ -10,13 +11,38 @@ local options_example = {
     velocity = 10,
     fraction = "Duraki",
     behaviour = "agressive",
+    allies = {"NeDuraci", "Otlichniki"},
     pathOptions = {},
     wanderRadius = 3,
     panicRadius = 6
 }
 
---behaviour: peaceful, neutral, agressive, friendlyfire
+defaults_options.players = {
+    hp = 100,
+    damage = 1,
+    fraction = "Players",
+    behaviour = "peaceful"
+}
 
+defaults_options.monsters = {
+    hp = 100,
+    damage = 1,
+    fraction = "Monsters",
+    behaviour = "agressive"
+}
+
+defaults_options.ambient = {
+    hp = 100,
+    damage = 1,
+    fraction = "Ambient",
+    behaviour = "peaceful"
+}
+
+--behaviour: peaceful, agressive, friendlyfire
+
+function framework.get_default_options()
+    return table.copy(defaults_options)
+end
 
 function framework.reg(uid, options)
     table.insert(REGISTERED_ENTITIES, {uid, options})

@@ -1,7 +1,8 @@
 --require("noname:player/blocked")
 local dropu = require "noname:utils/drop"
 local invu = require "noname:utils/inventory"
-local events = require "noname:events/events"
+local block_destroy = require "player/block_destroy"
+local events_ = require "noname:events/events"
 local constants = require "noname:constants"
 local metadata = require "noname:files/metadata"
 require "noname:utils/craft"
@@ -19,7 +20,7 @@ function on_world_open()
 end
 
 function on_world_quit()
-    events.quit()
+    events_.quit()
     metadata.world.save()
 end
 
@@ -36,5 +37,9 @@ function on_block_broken(id, x, y, z)
 end
 
 function on_world_tick(tps)
-    events.tick(tps)
+    events_.tick(tps)
+end
+
+function on_player_tick(pid, tps)
+    events.emit(PACK_ID..":player_tick", pid, tps)
 end
