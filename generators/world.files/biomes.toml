@@ -63,7 +63,9 @@ plants = [
 ]
 structure-chance = 0.0112
 structures = [
-    {name="taiga_tree0", weight=1},
+    {name="taiga_tree1", weight=1},
+    {name="taiga_tree2", weight=1},
+    {name="taiga_tree3", weight=1},
     {name="tower1", weight=0.0002},
 ]
 
@@ -138,7 +140,10 @@ plants = [
     {weight=1, block="base:grass"},
     {weight=0.03, block="base:flower"}
 ]
-structure-chance = 0.092
+structure-chance = 0.072
 structures = [
     {name="bamboo", weight=1},
+    {name="sakura0", weight=0.01},
+    {name="sakura1", weight=0.01},
+    {name="sakura2", weight=0.01},
 ]
