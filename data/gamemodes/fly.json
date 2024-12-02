@@ -4,5 +4,6 @@
     "allow-flight": true,
     "allow-cheat-movement": true,
     "allow-debug-cheats": true,
-    "allow-fast-interaction": true
+    "allow-fast-interaction": true,
+    "allow-noclip": true
 }

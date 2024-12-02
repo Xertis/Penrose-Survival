@@ -1,4 +1,5 @@
 local const = require "constants"
+local tools = require "player/tools"
 
 -- not_survival необходимо изменить под себя.
 local PACK_ID = PACK_ID or "noname";
@@ -16,13 +17,17 @@ end
 
 local breaking_blocks = {};
 
-local function get_durability(id)
+local function get_durability(id, pid)
   local durabilities = const.session.blocks_durability
   local materials = const.session.materials_available
   local block_durability = nil
+  local inv, slot = player.get_inventory(pid)
+  local item_in_slot = inventory.get(inv, slot)
 
   local str_id = block.name(id)
   local str_id_item = str_id .. ".item"
+
+  local material = nil
 
   if durabilities[str_id] then
     block_durability = durabilities[str_id]
@@ -30,12 +35,16 @@ local function get_durability(id)
     for m, i in pairs(materials) do
       if table.has(i, str_id_item) then
         block_durability = durabilities[m]
+        material = m
         break
       end
     end
   end
 
   local durability = block_durability or block.properties[id]["base:durability"]
+  local n_durability = tools.get_durability(material, durability, item.name(item_in_slot))
+  durability = n_durability or durability
+
   if durability ~= nil then
     return durability
   end
@@ -66,7 +75,7 @@ events.on(resource("player_tick"), function(pid, tps)
           x ~= target.x or y ~= target.y or z ~= target.z then
         return stop_breaking(pid, target)
       end
-      local speed = 1.0 / math.max(get_durability(target.id), 0.00001)
+      local speed = 1.0 / math.max(get_durability(target.id, pid), 0.00001)
       target.progress = target.progress + (1.0 / tps) * speed
       target.tick = target.tick + 1
       if target.progress >= 1.0 then
