@@ -1,7 +1,14 @@
 {
     "model": "aabb",
-    "hitbox": [0.1, 0.0, 0.1, 0.8, 0.0001, 0.8],
-    "texture": "fallen_sakura_flower",
+    "hitbox": [0.1, 0.0, 0.1, 0.8, 0.01, 0.8],
+    "texture-faces": [
+        "clean_texture",
+        "clean_texture",
+        "fallen_sakura_flower",
+        "fallen_sakura_flower",
+        "clean_texture",
+        "clean_texture"
+    ],
     "obstacle": false,
     "light-passing": true,
     "sky-light-passing": true,

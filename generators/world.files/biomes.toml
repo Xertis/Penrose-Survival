@@ -138,7 +138,8 @@ sea-layers = [
 plant-chance = 0.4
 plants = [
     {weight=1.2, block="noname:fallen_sakura_flower"},
-    {weight=1, block="base:grass"}
+    {weight=1, block="base:grass"},
+    {weight=0.001, block="noname:sakura_leaves"}
 ]
 structure-chance = 0.072
 structures = [
@@ -146,4 +147,5 @@ structures = [
     {name="sakura0", weight=0.01},
     {name="sakura1", weight=0.01},
     {name="sakura2", weight=0.01},
+    {name="sakura3", weight=0.01},
 ]
