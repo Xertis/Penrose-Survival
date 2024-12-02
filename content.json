@@ -58,7 +58,8 @@
     "furnace",
     "wet_dirt",
     "iron_ore",
-    "bamboo"
+    "bamboo",
+    "fallen_sakura_flower"
   ],
   "items": [
     "spawner",

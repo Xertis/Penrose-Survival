@@ -1,0 +1,9 @@
+{
+    "cheat-commands": false,
+    "allow-content-access": false,
+    "allow-flight": false,
+    "allow-noclip": false,
+    "allow-cheat-movement": false,
+    "allow-debug-cheats": false,
+    "allow-fast-interaction": false
+}

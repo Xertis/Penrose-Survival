@@ -11,6 +11,7 @@ function on_open()
 end
 
 function check(invid, slot)
+    print(invid)
     if not ITEMS_AVAILABLE then
         ITEMS_AVAILABLE = const.session.items_available
     end

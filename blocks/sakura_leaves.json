@@ -1,9 +1,9 @@
 {
     "texture": "sakura_leaves",
-    "draw-group": 2,
     "light-passing": true,
     "sky-light-passing": true,
     "material": "base:grass",
     "model": "aabb",
+    "translucent": true,
     "hitbox": [0, 0, 0, 1, 1, 1]
 }

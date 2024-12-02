@@ -7,6 +7,7 @@ local CRAFT = nil
 local ITEMS_AVAILABLE = nil
 
 function on_open()
+    print(hud.get_player())
     const = require "noname:constants"
 end
 

@@ -1,8 +1,4 @@
---[[ Для начала в world.lua пропишите следующее:
-function on_player_tick(player_id, tps)
-  events.emit(PACK_ID..":player_tick", player_id, tps)
-end
-]]
+local const = require "constants"
 
 -- not_survival необходимо изменить под себя.
 local PACK_ID = PACK_ID or "noname";
@@ -21,7 +17,25 @@ end
 local breaking_blocks = {};
 
 local function get_durability(id)
-  local durability = block.properties[id]["base:durability"]
+  local durabilities = const.session.blocks_durability
+  local materials = const.session.materials_available
+  local block_durability = nil
+
+  local str_id = block.name(id)
+  local str_id_item = str_id .. ".item"
+
+  if durabilities[str_id] then
+    block_durability = durabilities[str_id]
+  else
+    for m, i in pairs(materials) do
+      if table.has(i, str_id_item) then
+        block_durability = durabilities[m]
+        break
+      end
+    end
+  end
+
+  local durability = block_durability or block.properties[id]["base:durability"]
   if durability ~= nil then
     return durability
   end
@@ -92,9 +106,11 @@ events.on(resource("progress_destroy"), function(playerid, target)
     "cracks/cracks_%s", math.floor(target.progress * 11)
   ))
   if target.tick % 12 == 0 then
-    audio.play_sound(block.materials[block.material(target.id)].stepsSound,
-      x + 0.5, y + 0.5, z + 0.5, 1.0, 1.0, "regular"
-    )
+    if block.materials[block.material(target.id)] then
+      audio.play_sound(block.materials[block.material(target.id)].stepsSound,
+        x + 0.5, y + 0.5, z + 0.5, 1.0, 1.0, "regular"
+      )
+    end
     local camera = cameras.get("core:first-person")
     local ray = block.raycast(camera:get_pos(), camera:get_front(), 64.0)
     gfx.particles.emit(ray.endpoint, 4, {

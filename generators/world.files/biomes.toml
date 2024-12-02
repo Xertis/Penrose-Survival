@@ -137,8 +137,8 @@ sea-layers = [
 ]
 plant-chance = 0.4
 plants = [
-    {weight=1, block="base:grass"},
-    {weight=0.03, block="base:flower"}
+    {weight=1.2, block="noname:fallen_sakura_flower"},
+    {weight=1, block="base:grass"}
 ]
 structure-chance = 0.072
 structures = [

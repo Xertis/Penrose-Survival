@@ -1,5 +1,6 @@
 {
     "texture": "glass_red",
     "draw-group": 2,
+    "translucent": true,
     "light-passing": true
 }

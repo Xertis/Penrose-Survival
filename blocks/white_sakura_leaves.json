@@ -4,6 +4,7 @@
     "light-passing": true,
     "sky-light-passing": true,
     "material": "base:grass",
+    "translucent": true,
     "model": "aabb",
     "hitbox": [0, 0, 0, 1, 1, 1]
 }

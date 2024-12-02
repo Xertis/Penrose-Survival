@@ -10,6 +10,7 @@ local crafts_available = {table = {}, furnace = {}}
 local fuels_available = {}
 local food_available = {}
 local materials_available = {}
+local blocks_durability = {}
 
 local function init()
     for i=0, item.defs_count()-1 do
@@ -23,6 +24,7 @@ local function init()
     local crafts = file.list("noname:data/crafts/table")
     local materials = file.list("noname:data/crafts/materials")
     local fuel = file.read("noname:data/fuels.json")
+    local __blocks_durability = file.read("noname:data/blocks_durability.json")
     local food = file.read("noname:data/food.json")
 
     for i, path in ipairs(crafts) do
@@ -56,6 +58,10 @@ local function init()
         fuels_available[i] = v
     end
 
+    for i, v in pairs(json.parse(__blocks_durability)) do
+        blocks_durability[i] = v
+    end
+
     for i, v in pairs(json.parse(food)) do
         food_available[i] = v
     end
@@ -67,6 +73,7 @@ local session_const = {
     materials_available = materials_available,
     crafts_available = crafts_available,
     fuels_available = fuels_available,
-    food_available = food_available
+    food_available = food_available,
+    blocks_durability = blocks_durability
 }
 return {init = init, const = const, session = session_const}

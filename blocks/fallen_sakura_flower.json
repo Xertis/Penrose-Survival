@@ -1,0 +1,13 @@
+{
+    "model": "aabb",
+    "hitbox": [0.1, 0.0, 0.1, 0.8, 0.0001, 0.8],
+    "texture": "fallen_sakura_flower",
+    "obstacle": false,
+    "light-passing": true,
+    "sky-light-passing": true,
+    "rotation": "pane",
+    "grounded": true,
+    "translucent": true,
+    "replaceable": true,
+    "material": "base:grass"
+}

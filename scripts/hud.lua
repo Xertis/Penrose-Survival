@@ -14,7 +14,7 @@ function on_hud_open(pid)
         end
 
         if not hud.is_paused() then
-            hud.open(player.get_inventory(pid), "noname:sand_craft")
+            local inv = hud.open("noname:sand_craft", false)
         end
     end)
 end
