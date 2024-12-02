@@ -1,4 +1,5 @@
 {
     "texture": "rocky_dirt",
-    "material": "base:ground"
+    "material": "base:ground",
+    "base:durability": 1.0
 }
