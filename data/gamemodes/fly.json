@@ -2,7 +2,6 @@
     "cheat-commands": true,
     "allow-content-access": true,
     "allow-flight": true,
-    "allow-noclip": true,
     "allow-cheat-movement": true,
     "allow-debug-cheats": true,
     "allow-fast-interaction": true

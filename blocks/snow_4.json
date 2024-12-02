@@ -12,5 +12,6 @@
     "grounded": true,
     "obstacle": false,
     "hitbox": [0.0, 0.0, 0.0, 1.0, 0.1, 1.0],
+    "replaceable": true,
     "light-passing": true
 }

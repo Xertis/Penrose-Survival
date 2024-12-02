@@ -15,6 +15,8 @@ console.add_command(
             for id, v in pairs(mode) do
                 rules.set(id, v)
             end
+            return "[SYS.GAME] The game mode has been changed to " .. args[1]
         end
+        return string.format("[SYS.GAME] The %s game mode was not found", args[1])
     end
 )
