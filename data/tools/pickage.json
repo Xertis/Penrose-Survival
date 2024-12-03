@@ -1,6 +1,7 @@
 {
     "blocks_cracks": [
-        "!stone"
+        "!stone",
+        "!ores"
     ], 
-    "levels": ["noname:stick", "axe2", "axe3"]
+    "levels": ["noname:wooden_pickage", "noname:stone_pickage", "noname:iron_pickage"]
 }

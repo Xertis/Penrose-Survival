@@ -27,7 +27,7 @@ local function get_durability(id, pid)
   local str_id = block.name(id)
   local str_id_item = str_id .. ".item"
 
-  local material = nil
+  local material = str_id
 
   if durabilities[str_id] then
     block_durability = durabilities[str_id]

@@ -3,7 +3,7 @@ local stru = require "utils/string"
 local module = {}
 
 local TOOLS = {}
-local levels_power = {0.5}
+local levels_power = {0.75, 0.5, 0.25}
 
 for _, ttype in ipairs(file.list("noname:data/tools")) do
     local name = stru.path.parse_filename(ttype)
@@ -32,7 +32,6 @@ function module.get_durability(material, durability, item)
         level = levels_power[level]
         return durability * level
     end
-
     return durability
 end
 

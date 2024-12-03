@@ -5,7 +5,7 @@
     "base:coal_ore": "coal_ore",
     "noname:withered_bush": "leaves",
     "base:glass": "no_drop",
-    "base:grass": "string",
+    "base:grass": "no_drop",
     "noname:snow_grass": "no_drop",
     "noname:snow_4": "no_drop",
     "noname:snow_3": "no_drop",
@@ -15,6 +15,7 @@
     "noname:white_sakura_leaves": "leaves",
     "noname:teak_leaves": "leaves",
     "noname:spruce_leaves": "leaves",
-    "noname:fallen_sakura_flower": "no_drop"
+    "noname:fallen_sakura_flower": "no_drop",
+    "noname:wet_dirt": "strings"
 }
   

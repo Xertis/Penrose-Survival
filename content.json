@@ -59,7 +59,8 @@
     "wet_dirt",
     "iron_ore",
     "bamboo",
-    "fallen_sakura_flower"
+    "fallen_sakura_flower",
+    "water"
   ],
   "items": [
     "spawner",
@@ -69,7 +70,11 @@
     "flint",
     "string",
     "kupple",
-    "apple"
+    "apple",
+    "stone_pickage",
+    "wooden_pickage",
+    "iron_ingot",
+    "iron_pickage"
   ],
   "entities": [
     "test"

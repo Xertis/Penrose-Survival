@@ -64,7 +64,6 @@ function module.find_fuel(fuel)
     local materials = const.session.materials_available
     for i, m in pairs(materials) do
         if table.has(m, fuel) then
-            print(FUELS[i])
             return FUELS[i]
         end
     end

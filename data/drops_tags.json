@@ -3,6 +3,11 @@
       "drop": []
     },
 
+    "strings": {
+      "drop": [["noname:string", 1], ["noname:string", 1]],
+      "chances": [1, 0.5]
+    },
+
     "leaves": { 
       "drop": [["noname:stick", 1]],
       "placeholder": [],
@@ -32,11 +37,6 @@
       "drop": [["noname:flint", 1]],
       "placeholder": [["noname:gravel.item", 1]],
       "chances": [0.15]
-    },
-    "string": { 
-      "drop": [["noname:string", 1]],
-      "placeholder": [],
-      "chances": [0.05]
     }
 }
   
