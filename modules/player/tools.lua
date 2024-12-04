@@ -20,6 +20,19 @@ local function find_tool(material, item)
     end
 end
 
+function module.is_tool(item)
+    for _, t in pairs(TOOLS) do
+        local i = table.index(t.levels, item)
+        if i ~= -1 then
+            return i
+        end
+    end
+end
+
+function module.get_tools()
+    return TOOLS
+end
+
 function module.get_durability(material, durability, item)
     local tool = find_tool(material, item)
     local level = nil

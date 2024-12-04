@@ -3,6 +3,7 @@
     "base:grass_block": "grass_block",
     "base:leaves": "apple_tree",
     "base:coal_ore": "coal_ore",
+    "noname:iron_ore": "iron_ore",
     "noname:withered_bush": "leaves",
     "base:glass": "no_drop",
     "base:grass": "no_drop",

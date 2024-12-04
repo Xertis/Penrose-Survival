@@ -9,7 +9,7 @@ local FURNACES = {}
 
 --Тики до того, как закончится топливо
 --Тики до того, как сготовится предмет
---Тики до того, 
+--Тики до того, а, ой, не тики, а bool
 
 function module.reg(x, y, z)
     if module.get(x, y, z) ~= nil then

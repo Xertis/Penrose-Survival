@@ -21,12 +21,14 @@
     },
 
     "stone": {
-      "drop": [["noname:cobblestone.item", 1]]
+      "drop": [["noname:cobblestone.item", 1]],
+      "start-level": 1
     },
 
     "coal_ore": {
       "drop": [["noname:coal", 1], ["noname:coal", 1]],
-      "chances": [1, 0.5]
+      "chances": [1, 0.5],
+      "start-level": 1
     },
 
     "grass_block": {
@@ -37,6 +39,11 @@
       "drop": [["noname:flint", 1]],
       "placeholder": [["noname:gravel.item", 1]],
       "chances": [0.15]
+    },
+
+    "iron_ore": {
+      "drop": [["noname:iron_ore.item", 1]],
+      "start-level": 2
     }
 }
   

@@ -24,9 +24,9 @@ function on_world_quit()
     metadata.world.save()
 end
 
-function on_block_broken(id, x, y, z)
+function on_block_broken(id, x, y, z, pid)
     x, y, z = math.floor(x), math.floor(y), math.floor(z)
-    local drop = dropu.get_drops_ids(block.name(id))
+    local drop = dropu.get_drops_ids(block.name(id), pid)
     for _, v in ipairs(drop) do
         local count = v[2]
         entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
