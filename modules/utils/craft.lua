@@ -7,7 +7,7 @@ local module = {table = {}, furnace = {}}
 function module.table.find_craft(slots)
     local bounds = nil
     slots, bounds = matrixu.crop2D(slots)
-    print(json.tostring(slots))
+    --print(json.tostring(slots))
     for _, craft in ipairs(const.session.crafts_available.table) do
         if craft[2]["craft"] and ctable.equals(craft[2]["craft"], slots, const.session.materials_available) then
             return craft, bounds
