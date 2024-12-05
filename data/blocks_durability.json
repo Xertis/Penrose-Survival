@@ -8,5 +8,7 @@
     "noname:snow_4": 0.4,
     "noname:fallen_sakura_flower": 0,
     "!ores": 3.5,
-    "noname:wet_dirt": 1
+    "noname:wet_dirt": 1,
+    "base:torch": 0,
+    "!glass": 0.36
 }

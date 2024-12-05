@@ -1,0 +1,9 @@
+{
+    "craft": [
+      [["noname:string", 1], ["!plank", 1], ["!plank", 1]], 
+      [0, ["noname:stick", 1], ["!plank", 1]], 
+      [0, ["noname:stick", 1], 0]
+    ],
+    "count": 1
+}
+  

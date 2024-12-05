@@ -20,44 +20,42 @@ local breaking_blocks = {};
 local function get_durability(id, pid)
   local durabilities = const.session.blocks_durability
   local materials = const.session.materials_available
-  local block_durability = nil
   local inv, slot = player.get_inventory(pid)
   local item_in_slot = inventory.get(inv, slot)
-
   local str_id = block.name(id)
   local str_id_item = str_id .. ".item"
 
+  local block_durability = durabilities[str_id]
   local material = str_id
 
-  if durabilities[str_id] then
-    block_durability = durabilities[str_id]
-  else
-    for m, i in pairs(materials) do
-      if table.has(i, str_id_item) then
-        block_durability = durabilities[m]
-        material = m
-        break
+  if not block_durability then
+      for m, i in pairs(materials) do
+          if table.has(i, str_id_item) then
+              block_durability = durabilities[m]
+              material = m
+              break
+          end
       end
-    end
   end
 
   local durability = block_durability or block.properties[id]["base:durability"]
 
   if block.properties[id]["breakable"] == false then
-    return 2^64
+      return 2^64
   end
 
   local n_durability = tools.get_durability(material, durability, item.name(item_in_slot))
   durability = n_durability or durability
 
-  if durability ~= nil then
-    return durability
+  if durability then
+      return durability
+  elseif block.get_model(id) == "X" then
+      return 0.0
   end
-  if block.get_model(id) == "X" then
-    return 0.0
-  end
+
   return 2.0
 end
+
 
 local function stop_breaking(pid, target)
   events.emit(resource("stop_destroy"), pid, target)

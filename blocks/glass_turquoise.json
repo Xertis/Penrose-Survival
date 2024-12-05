@@ -1,5 +1,6 @@
 {
     "texture": "glass_turquoise",
+    "material": "base:glass",
     "draw-group": 2,
     "translucent": true,
     "light-passing": true

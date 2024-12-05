@@ -1,5 +1,6 @@
 local toolsu = require "player/tools"
 local invu = require "utils/inventory"
+local const = require "constants"
 local module = {}
 local drops = nil
 
@@ -36,12 +37,26 @@ local function check_self(drop, id)
     return drop
 end
 
+local function get_material_drop(block_id)
+    for i, m in pairs(const.session.materials_available) do
+        if table.has(m, block_id) then
+            return i
+        end
+    end
+end
+
 function module.get_drops_ids(id, pid)
     if not drops then
         parse_drop()
     end
 
     local drop_info = drops[id]
+    local t_id = nil
+
+    if not drop_info then
+        t_id = get_material_drop(id .. ".item")
+        drop_info = drops[t_id]
+    end
 
     if not drop_info then return {{id .. ".item", 1}} end
 

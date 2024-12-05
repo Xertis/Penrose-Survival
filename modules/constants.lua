@@ -22,7 +22,7 @@ local function init()
     end
 
     local crafts = file.list("noname:data/crafts/table")
-    local materials = file.list("noname:data/crafts/materials")
+    local materials = file.list("noname:data/materials")
     local fuel = file.read("noname:data/fuels.json")
     local __blocks_durability = file.read("noname:data/blocks_durability.json")
     local food = file.read("noname:data/food.json")

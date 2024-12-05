@@ -1,7 +1,8 @@
 {
     "blocks_cracks": [
-        "!planks",
-        "!wood"
+        "!plank",
+        "!wood",
+        "noname:bamboo"
     ], 
-    "levels": ["noname:stick", "axe2", "axe3"]
+    "levels": ["noname:wooden_axe", "noname:stone_axe", "noname:iron_axe"]
 }

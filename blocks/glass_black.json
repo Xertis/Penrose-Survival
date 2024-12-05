@@ -1,6 +1,7 @@
 {
     "texture": "glass_black",
     "translucent": true,
+    "material": "base:glass",
     "draw-group": 2,
     "light-passing": true
 }

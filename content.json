@@ -74,7 +74,10 @@
     "stone_pickage",
     "wooden_pickage",
     "iron_ingot",
-    "iron_pickage"
+    "iron_pickage",
+    "iron_axe",
+    "stone_axe",
+    "wooden_axe"
   ],
   "entities": [
     "test"

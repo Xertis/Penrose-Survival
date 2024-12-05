@@ -62,6 +62,11 @@ end
 
 function module.find_fuel(fuel)
     local materials = const.session.materials_available
+
+    if FUELS[fuel] then
+        return FUELS[fuel]
+    end
+
     for i, m in pairs(materials) do
         if table.has(m, fuel) then
             return FUELS[i]
@@ -106,6 +111,7 @@ function module.check(invid, slot, x, y, z)
         if fuel_id ~= 0 and fuel_count > 0 then
             local in_input_id, in_input_count = inventory.get(invid, INPUT_SLOT)
             local energy = module.find_fuel(item.name(fuel_id))
+
             if in_input_id ~= 0 and energy then
                 inventory.set(invid, FUEL_SLOT, fuel_id, fuel_count-1)
                 FURNACES[reg_id][4] = energy

@@ -5,7 +5,7 @@
     "base:coal_ore": "coal_ore",
     "noname:iron_ore": "iron_ore",
     "noname:withered_bush": "leaves",
-    "base:glass": "no_drop",
+    "!glass": "no_drop",
     "base:grass": "no_drop",
     "noname:snow_grass": "no_drop",
     "noname:snow_4": "no_drop",
