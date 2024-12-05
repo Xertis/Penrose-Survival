@@ -16,7 +16,7 @@ local paths = file.list("penrose:generators/world.files/fragments")
     --local names = data['block-names']
 
     --for i, str in ipairs(names) do
-    --    data["block-names"][i] = str:gsub("noname", "penrose")
+    --    data["block-names"][i] = str:gsub("penrose", "penrose")
     --end
     --file.write_bytes(path, bjson.tobytes(data))
 --end

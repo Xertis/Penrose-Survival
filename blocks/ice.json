@@ -1,5 +1,6 @@
 {
     "texture": "ice",
+    "material": "base:glass",
     "draw-group": 2,
     "light-passing": true
 }

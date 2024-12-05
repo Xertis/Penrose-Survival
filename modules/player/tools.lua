@@ -34,6 +34,7 @@ function module.get_tools()
 end
 
 function module.get_durability(material, durability, item)
+    durability = durability or 2
     local tool = find_tool(material, item)
     local level = nil
 
@@ -41,7 +42,7 @@ function module.get_durability(material, durability, item)
         level = table.index(tool.levels, item)
     end
 
-    if tool and level then
+    if tool and level and durability then
         level = levels_power[level]
         return durability * level
     end

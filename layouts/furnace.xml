@@ -15,6 +15,6 @@
     />
     <slots-grid 
         rows="1" cols="1" 
-        start-index="2" pos="344,78"
+        start-index="2" pos="344,78" placing="false"
     />
 </inventory>

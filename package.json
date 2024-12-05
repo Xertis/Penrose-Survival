@@ -2,6 +2,6 @@
     "id": "penrose",
     "title": "Penrose",
     "version": "0.1.0",
-    "creator": "Cogitary & Xertis & Onran",
+    "creators": ["Cogitary", "Xertis", "Onran"],
     "description": "NoText"
 }

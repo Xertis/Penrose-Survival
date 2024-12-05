@@ -3,17 +3,19 @@ local module = {
     world = {
         quit = {},
         open = {}
+    },
+
+    player = {
     }
 }
 
 local WORLD_EVENTS = {
-    quit = {},
-    open = {}
+    quit = {}
 }
 
-function module.tick()
-    module.world.tick()
-end
+local PLAYER_EVENTS = {
+
+}
 
 function module.quit()
     module.world.world_quit()
@@ -29,8 +31,22 @@ function module.world.tick()
     end
 end
 
+function module.player.tick(pid)
+    for i, event in ipairs(PLAYER_EVENTS) do
+        local args = event[2]
+        local x = event[1](pid, unpack(args))
+        if x == event[3] then
+            table.remove(PLAYER_EVENTS, i)
+        end
+    end
+end
+
 function module.world.reg(event, args, die_value)
     table.insert(WORLD_EVENTS, {event, args, die_value})
+end
+
+function module.player.reg(event, args, die_value)
+    table.insert(PLAYER_EVENTS, {event, args, die_value})
 end
 
 function module.world.world_quit()

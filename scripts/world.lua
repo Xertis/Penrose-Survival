@@ -37,9 +37,10 @@ function on_block_broken(id, x, y, z, pid)
 end
 
 function on_world_tick(tps)
-    events_.tick(tps)
+    events_.world.tick()
 end
 
 function on_player_tick(pid, tps)
+    events_.player.tick(pid)
     events.emit(PACK_ID..":player_tick", pid, tps)
 end
