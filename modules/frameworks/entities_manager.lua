@@ -1,5 +1,5 @@
-local table_u = require 'noname:utils/table_utils'
-local patterns = require 'noname:frameworks/entities_manager_patterns'
+local table_u = require 'penrose:utils/table_utils'
+local patterns = require 'penrose:frameworks/entities_manager_patterns'
 
 local framework = {}
 local defaults_options = {}

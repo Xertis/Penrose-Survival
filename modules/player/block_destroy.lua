@@ -2,7 +2,7 @@ local const = require "constants"
 local tools = require "player/tools"
 
 -- not_survival необходимо изменить под себя.
-local PACK_ID = PACK_ID or "noname";
+local PACK_ID = PACK_ID or "penrose";
 local function resource(name) return PACK_ID .. ":" .. name end;
 
 local function is_survival(pid)

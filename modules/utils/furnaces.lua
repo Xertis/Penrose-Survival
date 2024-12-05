@@ -1,8 +1,8 @@
-local craftu = require "noname:utils/craft"
-local const = require "noname:constants"
+local craftu = require "penrose:utils/craft"
+local const = require "penrose:constants"
 local FUELS = {}
-local events = require "noname:events/events"
-local metadata = require "noname:files/metadata"
+local events = require "penrose:events/events"
+local metadata = require "penrose:files/metadata"
 local module = {}
 
 local FURNACES = {}

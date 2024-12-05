@@ -8,3 +8,15 @@ furnaces.load()
 player_bars.load()
 player_events.open()
 not_crafting.load()
+
+local paths = file.list("penrose:generators/world.files/fragments")
+
+--for _, path in ipairs(paths) do
+    --local data = bjson.frombytes(file.read_bytes(path))
+    --local names = data['block-names']
+
+    --for i, str in ipairs(names) do
+    --    data["block-names"][i] = str:gsub("noname", "penrose")
+    --end
+    --file.write_bytes(path, bjson.tobytes(data))
+--end

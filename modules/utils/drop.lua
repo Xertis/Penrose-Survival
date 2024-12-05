@@ -6,8 +6,8 @@ local drops = nil
 
 local function parse_drop()
     if not drops then
-        drops = json.parse(file.read("noname:data/drops.json"))
-        local tags = json.parse(file.read("noname:data/drops_tags.json"))
+        drops = json.parse(file.read("penrose:data/drops.json"))
+        local tags = json.parse(file.read("penrose:data/drops_tags.json"))
 
         for i, tag in pairs(drops) do
             drops[i] = tags[tag]

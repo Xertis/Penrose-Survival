@@ -1,13 +1,13 @@
---require("noname:player/blocked")
-local dropu = require "noname:utils/drop"
-local invu = require "noname:utils/inventory"
+--require("penrose:player/blocked")
+local dropu = require "penrose:utils/drop"
+local invu = require "penrose:utils/inventory"
 local block_destroy = require "player/block_destroy"
-local events_ = require "noname:events/events"
-local constants = require "noname:constants"
-local metadata = require "noname:files/metadata"
-require "noname:utils/craft"
-require "noname:std/math"
-require "noname:std/table"
+local events_ = require "penrose:events/events"
+local constants = require "penrose:constants"
+local metadata = require "penrose:files/metadata"
+require "penrose:utils/craft"
+require "penrose:std/math"
+require "penrose:std/table"
 
 function on_world_open()
     metadata.world.load()
@@ -16,7 +16,7 @@ function on_world_open()
     for id, v in pairs(rules_tbl) do
         rules.set(id, v)
     end
-    require "noname:std/on_open"
+    require "penrose:std/on_open"
 end
 
 function on_world_quit()

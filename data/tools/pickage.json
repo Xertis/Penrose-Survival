@@ -3,5 +3,5 @@
         "!stone",
         "!ores"
     ], 
-    "levels": ["noname:wooden_pickage", "noname:stone_pickage", "noname:iron_pickage"]
+    "levels": ["penrose:wooden_pickage", "penrose:stone_pickage", "penrose:iron_pickage"]
 }

@@ -46,20 +46,20 @@ parameters = [
     {weight=0.8, value=0.3}
 ]
 layers = [
-    {below-sea-level=false, height=2, block="noname:snow_1"},
-    {below-sea-level=false, height=4, block="noname:rocky_dirt"},
+    {below-sea-level=false, height=2, block="penrose:snow_1"},
+    {below-sea-level=false, height=4, block="penrose:rocky_dirt"},
     {height=-1, block="base:stone"},
     {height=1, block="base:bazalt"}
 ]
 sea-layers = [
-    {height=1, block="noname:ice"},
+    {height=1, block="penrose:ice"},
     {height=-1, block="base:water"}
 ]
 plant-chance = 0.4
 plants = [
-    {weight=1, block="noname:snow_grass"},
-    {weight=0.5, block="noname:snow_4"},
-    {weight=0.03, block="noname:withered_bush"}
+    {weight=1, block="penrose:snow_grass"},
+    {weight=0.5, block="penrose:snow_4"},
+    {weight=0.03, block="penrose:withered_bush"}
 ]
 structure-chance = 0.0112
 structures = [
@@ -137,9 +137,9 @@ sea-layers = [
 ]
 plant-chance = 0.4
 plants = [
-    {weight=1.2, block="noname:fallen_sakura_flower"},
+    {weight=1.2, block="penrose:fallen_sakura_flower"},
     {weight=1, block="base:grass"},
-    {weight=0.001, block="noname:sakura_leaves"}
+    {weight=0.001, block="penrose:sakura_leaves"}
 ]
 structure-chance = 0.072
 structures = [

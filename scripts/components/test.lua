@@ -1,4 +1,4 @@
-local manager = require 'noname:frameworks/entities_manager'
+local manager = require 'penrose:frameworks/entities_manager'
 local pathfinder = require 'starpath:pathfinder'
 local other_uid = nil
 local sept = 0

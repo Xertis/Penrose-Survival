@@ -1,4 +1,4 @@
 {
-    "craft": ["noname:iron_ore.item", 1],
+    "craft": ["penrose:iron_ore.item", 1],
     "count": 1
 }

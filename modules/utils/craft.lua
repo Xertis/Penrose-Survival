@@ -1,7 +1,7 @@
-local matrixu = require "noname:utils/matrix"
-local ctable = require "noname:frameworks/craft/table"
-local cfurnace = require "noname:frameworks/craft/furnace"
-local const = require "noname:constants"
+local matrixu = require "penrose:utils/matrix"
+local ctable = require "penrose:frameworks/craft/table"
+local cfurnace = require "penrose:frameworks/craft/furnace"
+local const = require "penrose:constants"
 local module = {table = {}, furnace = {}}
 
 function module.table.find_craft(slots)

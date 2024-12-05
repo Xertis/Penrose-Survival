@@ -1,4 +1,4 @@
-local c = require "noname:constants"
+local c = require "penrose:constants"
 local module = {}
 
 local craft_example = {

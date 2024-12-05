@@ -1,6 +1,6 @@
 {
     "texture": "snow",
-    "material": "noname:snow",
+    "material": "penrose:snow",
     "texture-faces": [
         "snow",
         "snow",

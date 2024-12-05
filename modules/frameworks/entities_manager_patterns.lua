@@ -1,6 +1,6 @@
 local pathfinder = require 'starpath:pathfinder'
-local distance = require 'noname:utils/distance_utils'
-local tblu_u = require 'noname:utils/table_utils'
+local distance = require 'penrose:utils/distance_utils'
+local tblu_u = require 'penrose:utils/table_utils'
 
 local agressive = {}
 local peaceful = {}

@@ -1,9 +1,9 @@
-local pop_up = require "noname:frontend/pop_up"
-local w_tick = require "noname:events/events"
+local pop_up = require "penrose:frontend/pop_up"
+local w_tick = require "penrose:events/events"
 
 function close_label(t, seconds)
     if time.uptime() > t+seconds then
-        hud.close("noname:pop_up")
+        hud.close("penrose:pop_up")
         return "Done"
     end
 end

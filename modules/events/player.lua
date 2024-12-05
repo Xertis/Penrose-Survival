@@ -1,7 +1,7 @@
-local player_bars = require "noname:player/bars_manager"
-local events = require "noname:events/events"
-local metadata = require "noname:files/metadata"
-local pop_up = require "noname:frontend/pop_up"
+local player_bars = require "penrose:player/bars_manager"
+local events = require "penrose:events/events"
+local metadata = require "penrose:files/metadata"
+local pop_up = require "penrose:frontend/pop_up"
 local PLAYERS = {}
 local module = {}
 

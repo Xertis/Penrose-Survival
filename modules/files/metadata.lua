@@ -22,12 +22,12 @@ function module.world.get(key)
 end
 
 function module.world.save()
-   local path = pack.data_file("noname", "world_metadata.bjson")
+   local path = pack.data_file("penrose", "world_metadata.bjson")
    file.write_bytes(path, bjson.tobytes(WORLD_META, true))
 end
 
 function module.world.load()
-    local path = pack.data_file("noname", "world_metadata.bjson")
+    local path = pack.data_file("penrose", "world_metadata.bjson")
     if file.exists(path) then
         local bytes = file.read_bytes(path)
         WORLD_META = bjson.frombytes(bytes)

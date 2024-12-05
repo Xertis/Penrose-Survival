@@ -1,5 +1,5 @@
-local pop_up = require "noname:frontend/pop_up"
-local dist = require "noname:utils/distance_utils".euclidean
+local pop_up = require "penrose:frontend/pop_up"
+local dist = require "penrose:utils/distance_utils".euclidean
 
 function on_interact(x, y, z, pid)
     local pX, pY, pZ = player.get_pos(pid)

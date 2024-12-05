@@ -1,4 +1,4 @@
-local stru = require "noname:utils/string"
+local stru = require "penrose:utils/string"
 
 local const = {
 
@@ -21,11 +21,11 @@ local function init()
         blocks_available[block.name(i)] = i
     end
 
-    local crafts = file.list("noname:data/crafts/table")
-    local materials = file.list("noname:data/materials")
-    local fuel = file.read("noname:data/fuels.json")
-    local __blocks_durability = file.read("noname:data/blocks_durability.json")
-    local food = file.read("noname:data/food.json")
+    local crafts = file.list("penrose:data/crafts/table")
+    local materials = file.list("penrose:data/materials")
+    local fuel = file.read("penrose:data/fuels.json")
+    local __blocks_durability = file.read("penrose:data/blocks_durability.json")
+    local food = file.read("penrose:data/food.json")
 
     for i, path in ipairs(crafts) do
         if stru.path.parse_file_extension(path) then
@@ -37,7 +37,7 @@ local function init()
         end
     end
 
-    crafts = file.list("noname:data/crafts/furnace")
+    crafts = file.list("penrose:data/crafts/furnace")
 
     for i, path in ipairs(crafts) do
         if stru.path.parse_file_extension(path) then

@@ -1,6 +1,6 @@
-local const = require "noname:constants"
-local player_bars = require "noname:player/bars_manager"
-local pop_up = require "noname:frontend/pop_up"
+local const = require "penrose:constants"
+local player_bars = require "penrose:player/bars_manager"
+local pop_up = require "penrose:frontend/pop_up"
 
 function on_use(pid)
     local inv, slot = player.get_inventory(pid)

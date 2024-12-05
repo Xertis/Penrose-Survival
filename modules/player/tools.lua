@@ -5,7 +5,7 @@ local module = {}
 local TOOLS = {}
 local levels_power = {0.75, 0.5, 0.25}
 
-for _, ttype in ipairs(file.list("noname:data/tools")) do
+for _, ttype in ipairs(file.list("penrose:data/tools")) do
     local name = stru.path.parse_filename(ttype)
     local data = json.parse(file.read(ttype))
     TOOLS[name] = data

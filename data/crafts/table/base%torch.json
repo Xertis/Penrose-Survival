@@ -1,8 +1,8 @@
 {
     "craft": 
         [
-        [["noname:coal", 1]], 
-        [["noname:stick", 1]]
+        [["penrose:coal", 1]], 
+        [["penrose:stick", 1]]
         ],
     "count": 4
 }

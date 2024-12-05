@@ -1,5 +1,5 @@
 {
-    "craft": [[["noname:iron_ingot", 1], ["noname:iron_ingot", 1]], [["noname:stick", 1], ["noname:iron_ingot", 1]], [["noname:stick", 1], 0]],
+    "craft": [[["penrose:iron_ingot", 1], ["penrose:iron_ingot", 1]], [["penrose:stick", 1], ["penrose:iron_ingot", 1]], [["penrose:stick", 1], 0]],
     "count": 1
 }
   

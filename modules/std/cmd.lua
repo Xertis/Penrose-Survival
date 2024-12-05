@@ -1,7 +1,7 @@
 local stru = require "utils/string"
 local gamemodes = {}
 
-for _, mode in ipairs(file.list("noname:data/gamemodes")) do
+for _, mode in ipairs(file.list("penrose:data/gamemodes")) do
     local name = stru.path.parse_filename(mode)
     gamemodes[name] = json.parse(file.read(mode))
 end

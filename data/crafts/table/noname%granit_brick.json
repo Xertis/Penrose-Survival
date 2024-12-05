@@ -1,7 +1,7 @@
 {
     "craft": 
         [
-            [["noname:granit.item", 1], ["noname:granit.item", 1]], [["noname:granit.item", 1], ["noname:granit.item", 1]]
+            [["penrose:granit.item", 1], ["penrose:granit.item", 1]], [["penrose:granit.item", 1], ["penrose:granit.item", 1]]
         ],
     "count": 4
 }

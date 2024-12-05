@@ -1,7 +1,7 @@
 {
     "craft": 
         [
-            [["noname:yellow_dye", 1]], [["noname:wool_white.item", 1]]
+            [["penrose:yellow_dye", 1]], [["penrose:wool_white.item", 1]]
         ],
     "count": 1
 }

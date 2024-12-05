@@ -1,6 +1,6 @@
-local metadata = require "noname:files/metadata"
-local events = require "noname:events/events"
-local doc = Document.new("noname:bars")
+local metadata = require "penrose:files/metadata"
+local events = require "penrose:events/events"
+local doc = Document.new("penrose:bars")
 local SIZE = 257
 local module = {}
 

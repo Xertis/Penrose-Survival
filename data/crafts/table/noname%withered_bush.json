@@ -1,6 +1,6 @@
 {
     "craft": [
-      [["noname:stick", 1], 0, ["noname:stick", 1]], [0, ["noname:stick", 1], 0]
+      [["penrose:stick", 1], 0, ["penrose:stick", 1]], [0, ["penrose:stick", 1], 0]
     ],
     "count": 2
 }

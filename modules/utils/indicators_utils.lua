@@ -1,12 +1,12 @@
 local module = {}
 local Hp = {}
 
-local hp_bar = Document.new("noname:hp")
-local mana_bar = Document.new("noname:mana")
-local food_bar =  Document.new("noname:food")
-local water_bar = Document.new("noname:water")
-local armor_bar = Document.new("noname:armor")
-local mind_bar = Document.new("noname:mind")
+local hp_bar = Document.new("penrose:hp")
+local mana_bar = Document.new("penrose:mana")
+local food_bar =  Document.new("penrose:food")
+local water_bar = Document.new("penrose:water")
+local armor_bar = Document.new("penrose:armor")
+local mind_bar = Document.new("penrose:mind")
 
 Hp.__index = Hp
 

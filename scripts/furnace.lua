@@ -1,4 +1,4 @@
-local furnaces = require "noname:utils/furnaces"
+local furnaces = require "penrose:utils/furnaces"
 
 function on_broken(x, y, z)
     furnaces.unreg(x, y, z)

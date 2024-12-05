@@ -1,4 +1,4 @@
-local c = require "noname:constants"
+local c = require "penrose:constants"
 local module = {}
 
 function module.equals(craft1, craft2, MATERIALS)

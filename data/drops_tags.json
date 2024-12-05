@@ -4,29 +4,29 @@
     },
 
     "strings": {
-      "drop": [["noname:string", 1], ["noname:string", 1]],
+      "drop": [["penrose:string", 1], ["penrose:string", 1]],
       "chances": [1, 0.5]
     },
 
     "leaves": { 
-      "drop": [["noname:stick", 1]],
+      "drop": [["penrose:stick", 1]],
       "placeholder": [],
       "chances": [0.5]
     },
 
     "apple_tree": { 
-      "drop": [["noname:stick", 1], ["noname:apple", 1]],
+      "drop": [["penrose:stick", 1], ["penrose:apple", 1]],
       "placeholder": [],
       "chances": [0.5, -0.2]
     },
 
     "stone": {
-      "drop": [["noname:cobblestone.item", 1]],
+      "drop": [["penrose:cobblestone.item", 1]],
       "start-level": 1
     },
 
     "coal_ore": {
-      "drop": [["noname:coal", 1], ["noname:coal", 1]],
+      "drop": [["penrose:coal", 1], ["penrose:coal", 1]],
       "chances": [1, 0.5],
       "start-level": 1
     },
@@ -36,13 +36,13 @@
     },
 
     "gravel": {
-      "drop": [["noname:flint", 1]],
-      "placeholder": [["noname:gravel.item", 1]],
+      "drop": [["penrose:flint", 1]],
+      "placeholder": [["penrose:gravel.item", 1]],
       "chances": [0.15]
     },
 
     "iron_ore": {
-      "drop": [["noname:iron_ore.item", 1]],
+      "drop": [["penrose:iron_ore.item", 1]],
       "start-level": 2
     }
 }

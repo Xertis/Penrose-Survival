@@ -1,13 +1,13 @@
-local craftu = require "noname:utils/craft"
-local matrixu = require "noname:utils/matrix"
-local ctable = require "noname:frameworks/craft/table"
+local craftu = require "penrose:utils/craft"
+local matrixu = require "penrose:utils/matrix"
+local ctable = require "penrose:frameworks/craft/table"
 local const = nil
 local CRAFT = nil
 
 local ITEMS_AVAILABLE = nil
 
 function on_open()
-    const = require "noname:constants"
+    const = require "penrose:constants"
 end
 
 function check(invid, slot)

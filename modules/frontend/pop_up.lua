@@ -14,7 +14,7 @@ function module.open(text)
         module.pop_up_text = string.rep(" ", left_strip) .. text .. string.rep(" ", right_strip)
     end
 
-    hud.open_permanent("noname:pop_up")
+    hud.open_permanent("penrose:pop_up")
 end
 
 return module
