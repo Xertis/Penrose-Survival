@@ -24,8 +24,8 @@ function module.crop2D(matrix)
         return {}
     end
 
-    local start_row, end_row = 1, 3
-    local start_col, end_col = 1, 3
+    local start_row, end_row = 1, #matrix[1]
+    local start_col, end_col = 1, #matrix
 
     while start_row <= end_row and x_nil(matrix[start_row]) do
         start_row = start_row + 1
@@ -56,11 +56,14 @@ function module.crop2D(matrix)
     return cropped_matrix, {start_row, end_row, start_col, end_col}
 end
 
-function module.uncrop2D(cropped_matrix, bounds)
+function module.uncrop2D(cropped_matrix, bounds, size)
     local start_row, end_row, start_col, end_col = unpack(bounds)
 
-    local original_rows = math.max(end_row, 3)
-    local original_cols = math.max(end_col, 3)
+    local size_row = size or 3
+    local size_col = size or 3
+
+    local original_rows = math.max(end_row, size_row)
+    local original_cols = math.max(end_col, size_col)
 
     local original_matrix = {}
     for i = 1, original_rows do

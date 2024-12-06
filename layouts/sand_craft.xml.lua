@@ -11,7 +11,6 @@ function on_open()
 end
 
 function check(invid, slot)
-    print(invid)
     if not ITEMS_AVAILABLE then
         ITEMS_AVAILABLE = const.session.items_available
     end
@@ -33,7 +32,7 @@ function check(invid, slot)
             raw = {}
         end
     end
-    print(json.tostring({d = slots}))
+
     local craft, bounds = craftu.table.find_craft(slots)
     if craft then
         local id = nil
@@ -48,7 +47,7 @@ end
 
 function clear(invid)
     if CRAFT then
-        local enlarged_craft = matrixu.uncrop2D(CRAFT[1][2]["craft"], CRAFT[2])
+        local enlarged_craft = matrixu.uncrop2D(CRAFT[1][2]["craft"], CRAFT[2], 2)
 
         if ctable.equals(enlarged_craft, CRAFT[3]) then
             local slots = ctable.sub(CRAFT[3], enlarged_craft)
@@ -75,9 +74,22 @@ function clear(invid)
     check(invid)
 end
 
+function on_close(invid)
+    local size = inventory.size(invid)
+    local x, y, z = player.get_pos(hud.get_player())
+    for slot=0, size-2 do
+        local id, count = inventory.get(invid, slot)
+        entities.spawn("base:drop", {x, y+0.5, z}, {base__drop={
+            id=id,
+            count=count
+        }})
+    end
+
+end
+
 function all(invid)
     if CRAFT then
-        local enlarged_craft = matrixu.uncrop2D(CRAFT[1][2]["craft"], CRAFT[2])
+        local enlarged_craft = matrixu.uncrop2D(CRAFT[1][2]["craft"], CRAFT[2], 2)
         local res = 0
         if ctable.equals(enlarged_craft, CRAFT[3]) then
             local slots = CRAFT[3]
