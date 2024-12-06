@@ -1,9 +1,5 @@
 local stru = require "penrose:utils/string"
 
-local const = {
-
-}
-
 local items_available = {}
 local blocks_available = {}
 local crafts_available = {table = {}, furnace = {}}
@@ -75,5 +71,12 @@ local session_const = {
     fuels_available = fuels_available,
     food_available = food_available,
     blocks_durability = blocks_durability
+}
+
+local const = {
+    gamemode_tags = {
+        ["@infinite_items"] = player.set_infinite_items,
+        ["@instant_destruction"] = player.set_instant_destruction
+    }
 }
 return {init = init, const = const, session = session_const}

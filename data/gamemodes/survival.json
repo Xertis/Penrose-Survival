@@ -5,5 +5,7 @@
     "allow-noclip": false,
     "allow-cheat-movement": false,
     "allow-debug-cheats": false,
-    "allow-fast-interaction": false
+    "allow-fast-interaction": false,
+    "@infinite_items": false,
+    "@instant_destruction": false
 }

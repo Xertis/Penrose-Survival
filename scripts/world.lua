@@ -10,7 +10,7 @@ require "penrose:std/math"
 require "penrose:std/table"
 
 function on_world_open()
-    metadata.world.load()
+    metadata.open()
     constants.init()
     local rules_tbl = json.parse(file.read(PACK_ID .. ":data/rules.json"))
     for id, v in pairs(rules_tbl) do
@@ -21,7 +21,7 @@ end
 
 function on_world_quit()
     events_.quit()
-    metadata.world.save()
+    metadata.close()
 end
 
 function on_block_broken(id, x, y, z, pid)
