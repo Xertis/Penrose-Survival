@@ -9,7 +9,11 @@ function on_hud_open(pid)
 
     input.add_callback("penrose.craft", function ()
         local x, y, z = player.get_selected_block(pid)
-        if block.get(x, y, z) ~= block.index("base:sand") then
+        local px, py, pz = player.get_pos(pid)
+
+        px, py, pz = math.floor(px), math.floor(py), math.floor(pz)
+
+        if block.get(x, y, z) ~= block.index("base:sand") or block.get(px, py-1, pz) ~= block.index("base:sand") then
             return
         end
 
