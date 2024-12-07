@@ -9,6 +9,7 @@ function module.table.find_craft(slots)
     slots, bounds = matrixu.crop2D(slots)
     --print(json.tostring(slots))
     for _, craft in ipairs(const.session.crafts_available.table) do
+        --print(json.tostring(craft))
         if craft[2]["craft"] and ctable.equals(craft[2]["craft"], slots, const.session.materials_available) then
             return craft, bounds
         end
