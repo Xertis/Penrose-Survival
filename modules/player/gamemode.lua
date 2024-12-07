@@ -25,8 +25,7 @@ function module.init(pid)
     if mode then mode = mode["gamemode"] end
 
     if not mode then
-        mode = file.list(GAMEMODES_PATH)[1]
-        mode = stru.path.parse_filename(mode)
+        mode = "survival"
     end
 
     module.set_mode(mode, pid)

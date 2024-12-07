@@ -46,8 +46,8 @@ parameters = [
     {weight=0.8, value=0.3}
 ]
 layers = [
-    {below-sea-level=false, height=2, block="penrose:snow_1"},
-    {below-sea-level=false, height=4, block="penrose:rocky_dirt"},
+    {below-sea-level=false, height=2, block="penrose:snow_block"},
+    {below-sea-level=false, height=4, block="penrose:rooted_dirt"},
     {height=-1, block="base:stone"},
     {height=1, block="base:bazalt"}
 ]
@@ -58,7 +58,7 @@ sea-layers = [
 plant-chance = 0.4
 plants = [
     {weight=1, block="penrose:snow_grass"},
-    {weight=0.5, block="penrose:snow_4"},
+    {weight=0.5, block="penrose:snow"},
     {weight=0.03, block="penrose:withered_bush"}
 ]
 structure-chance = 0.0112

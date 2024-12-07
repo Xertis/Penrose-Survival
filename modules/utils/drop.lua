@@ -67,7 +67,7 @@ function module.get_drops_ids(id, pid)
     local start_level = drop_info["start-level"] or 0
 
     local item_id = invu.get_item(pid)
-    local level = toolsu.is_tool(item.name(item_id))
+    local level = toolsu.is_tool(item.name(item_id)) or 0
 
     if level and level < start_level then
         return {}
