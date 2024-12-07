@@ -41,6 +41,6 @@ function on_world_tick(tps)
 end
 
 function on_player_tick(pid, tps)
-    events_.player.tick(pid)
+    events_.player.tick(pid, tps)
     events.emit(PACK_ID..":player_tick", pid, tps)
 end

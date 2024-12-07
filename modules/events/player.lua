@@ -5,14 +5,14 @@ local pop_up = require "penrose:frontend/pop_up"
 local PLAYERS = {}
 local module = {}
 
-function module.base(pid)
+function module.base(pid, tps)
     if PLAYERS[tostring(pid)] == nil then
-        PLAYERS[tostring(pid)] = {0, 3*20*60, 0}
+        PLAYERS[tostring(pid)] = {0, 3*tps*60, 0}
         --fall_speed, saturation
     end
-    module.falling(pid)
-    module.death(pid)
-    module.saturation(pid)
+    module.falling(pid, tps)
+    module.death(pid, tps)
+    module.saturation(pid, tps)
 end
 
 function module.quit()
@@ -23,7 +23,7 @@ function module.open()
    PLAYERS = metadata.world.get("players_stats") or {}
 end
 
-function module.falling(pid)
+function module.falling(pid, tps)
     local e = entities.get(player.get_entity(pid))
     local body = e.rigidbody
     local fall_velocity = body:get_vel()[2]
@@ -38,13 +38,14 @@ function module.falling(pid)
     end
 end
 
-function module.saturation(pid)
+function module.saturation(pid, tps)
     local saturation = PLAYERS[tostring(pid)][2]
     if saturation > 0 then
         PLAYERS[tostring(pid)][2] = saturation - 1
     else
         player_bars.set_hunger(5)
-        PLAYERS[tostring(pid)][2] = 3*20*60
+        PLAYERS[tostring(pid)][2] = 3*tps*60
+        print(tps)
     end
 
     if player_bars.get_food() < 1 then
@@ -56,7 +57,7 @@ function module.saturation(pid)
     end
 end
 
-function module.death(pid)
+function module.death(pid, tps)
     if player_bars.get_hp() < 1 then
         local inv = player.get_inventory(pid)
         local size = inventory.size(inv)

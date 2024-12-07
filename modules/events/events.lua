@@ -31,10 +31,10 @@ function module.world.tick()
     end
 end
 
-function module.player.tick(pid)
+function module.player.tick(pid, tps)
     for i, event in ipairs(PLAYER_EVENTS) do
         local args = event[2]
-        local x = event[1](pid, unpack(args))
+        local x = event[1](pid, tps, unpack(args))
         if x == event[3] then
             table.remove(PLAYER_EVENTS, i)
         end
