@@ -45,7 +45,6 @@ function module.saturation(pid, tps)
     else
         player_bars.set_hunger(5)
         PLAYERS[tostring(pid)][2] = 3*tps*60
-        print(tps)
     end
 
     if player_bars.get_food() < 1 then

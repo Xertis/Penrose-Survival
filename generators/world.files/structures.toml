@@ -7,10 +7,16 @@ taiga_tree1 = { }
 taiga_tree2 = { }
 taiga_tree3 = { }
 
+teak_tree0 = { }
+teak_tree1 = { }
+teak_tree2 = { }
+
 sakura0 = { }
 sakura1 = { }
 sakura2 = { }
 sakura3 = { }
+
+bush0 = { }
 
 tower0 = { }
 tower1 = { }
