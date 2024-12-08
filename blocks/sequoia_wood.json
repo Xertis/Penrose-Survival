@@ -1,0 +1,12 @@
+{
+    "rotation": "pipe",
+    "material": "base:wood",
+    "texture-faces": [
+        "sequoia_wood",
+        "sequoia_wood",
+        "sequoia_wood_top",
+        "sequoia_wood_top",
+        "sequoia_wood",
+        "sequoia_wood"
+    ]
+}

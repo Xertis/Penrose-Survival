@@ -42,7 +42,7 @@ structures = [
 
 [taiga]
 parameters = [
-    {weight=0.1, value=0},
+    {weight=1, value=-0.5},
     {weight=0.8, value=0.3}
 ]
 layers = [
@@ -98,7 +98,7 @@ structures = [
 [plains]
 parameters = [
     {weight=0.6, value=0.5},
-    {weight=0.6, value=0.0}
+    {weight=0.6, value=0.5}
 ]
 layers = [
     {below-sea-level=false, height=1, block="base:grass_block"},
@@ -124,7 +124,7 @@ structures = [
 [bamboo_forest]
 parameters = [
     {weight=0.5, value=1},
-    {weight=0.5, value=0.5}
+    {weight=0.7, value=0.7}
 ]
 layers = [
     {below-sea-level=false, height=1, block="base:grass_block"},
@@ -151,8 +151,8 @@ structures = [
 
 [teak_forest]
 parameters = [
-    {weight=0.8, value=0},
-    {weight=0.6, value=0.2}
+    {weight=0.7, value=1},
+    {weight=0.7, value=1}
 ]
 layers = [
     {below-sea-level=false, height=1, block="base:grass_block"},
@@ -173,4 +173,29 @@ structures = [
     {name="teak_tree0", weight=1},
     {name="teak_tree1", weight=1},
     {name="teak_tree2", weight=1},
+]
+
+[sequoia_forest]
+parameters = [
+    {weight=0.7, value=2},
+    {weight=0.7, value=2}
+]
+layers = [
+    {below-sea-level=false, height=1, block="base:grass_block"},
+    {below-sea-level=false, height=7, block="base:dirt"},
+    {height=-1, block="base:stone"},
+    {height=1, block="base:bazalt"}
+]
+sea-layers = [
+    {height=-1, block="base:water"}
+]
+plant-chance = 0.4
+plants = [
+    {weight=1, block="base:grass"},
+    {weight=0.03, block="base:flower"}
+]
+structure-chance = 0.0038
+structures = [
+    {name="sequoia_tree0", weight=1},
+    {name="sequoia_tree1", weight=1}
 ]

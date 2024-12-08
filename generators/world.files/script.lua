@@ -1,6 +1,7 @@
 local _, dir = parse_path(__DIR__)
 local ores = require "penrose:generation/ores"
 ores.load(dir)
+math.randomseed(SEED)
 
 function place_structures(x, z, w, d, hmap, chunk_height)
     local placements = {}
