@@ -1,0 +1,4 @@
+<container size='500,600'>
+    <panel id="mechanics" size='453,204' pos="0,0" interval='8' color='0' max-length='380'>
+    </panel>
+</container>

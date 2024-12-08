@@ -1,0 +1,8 @@
+<container size="524,336" color='#0F1E2DB2' context='menu'>
+    <panel pos='6' size='100' color='0' interval='1'>
+        <button id='crafts' onclick='set_page("crafts")'>Crafts</button>
+        <button id='mechanics' onclick='set_page("mechanics")'>Mechanics</button>
+        <button id='commands' onclick='set_page("commands")'>Commands</button>
+    </panel>
+    <pagebox id='menu' pos='112,0' size='400'/>
+</container>

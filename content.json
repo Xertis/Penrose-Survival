@@ -78,7 +78,10 @@
     "iron_pickaxe",
     "iron_axe",
     "stone_axe",
-    "wooden_axe"
+    "wooden_axe",
+    "wooden_shovel",
+    "iron_shovel",
+    "stone_shovel"
   ],
   "entities": [
     "test"

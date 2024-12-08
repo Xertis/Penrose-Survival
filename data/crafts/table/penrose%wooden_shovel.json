@@ -1,0 +1,9 @@
+{
+    "craft": [
+      [["!plank", 1], 0], 
+      [["penrose:stick", 1], ["penrose:string", 1]], 
+      [["penrose:stick", 1], 0]
+    ],
+    "count": 1
+}
+  

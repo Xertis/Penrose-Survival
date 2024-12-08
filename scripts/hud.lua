@@ -21,4 +21,10 @@ function on_hud_open(pid)
             local inv = hud.open("penrose:sand_craft", false)
         end
     end)
+
+    --input.add_callback("penrose.guide", function ()
+        --if not hud.is_paused() then
+            --local inv = hud.show_overlay("penrose:guide_main", true)
+        --end
+    --end)
 end
