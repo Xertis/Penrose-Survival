@@ -28,13 +28,15 @@ local function repair_chances(chances, def_drop)
 end
 
 local function check_self(drop, id)
-    for _, i in ipairs(drop) do
+    local d = table.copy(drop)
+
+    for o, i in ipairs(d) do
         if i[1] == "!self" then
-            drop[_][1] = id
+            d[o][1] = id
         end
     end
 
-    return drop
+    return d
 end
 
 local function get_material_drop(block_id)
@@ -59,9 +61,7 @@ function module.get_drops_ids(id, pid)
     end
 
     if not drop_info then return {{id .. ".item", 1}} end
-
     local temp_drop = check_self(drop_info["drop"], id .. ".item")
-
     local chances = drop_info["chances"] or {}
     local placeholder = drop_info["placeholder"] or {}
     local start_level = drop_info["start-level"] or 0

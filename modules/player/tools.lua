@@ -1,4 +1,5 @@
 local stru = require "utils/string"
+local const = require "constants"
 
 local module = {}
 
@@ -11,10 +12,18 @@ for _, ttype in ipairs(file.list("penrose:data/tools")) do
     TOOLS[name] = data
 end
 
+local function get_material(item)
+    for i, material in pairs(const.session.materials_available) do
+        if table.has(material, item .. '.item') then
+            return i
+        end
+    end
+end
+
 local function find_tool(material, item)
     for _, t in pairs(TOOLS) do
         local i = table.index(t.levels, item)
-        if table.has(t.blocks_cracks, material) and i ~= -1 then
+        if (table.has(t.blocks_cracks, material) or table.has(t.blocks_cracks, get_material(material))) and i ~= -1 then
             return t
         end
     end

@@ -4,11 +4,9 @@
     "!wood": 2,
     "!leaves": 0.5,
     "!stone": 3.5,
-    "penrose:snow_1": 0.4,
-    "penrose:snow_4": 0.4,
+    "penrose:wet_dirt": 1,
     "penrose:fallen_sakura_flower": 0,
     "!ores": 3.5,
-    "penrose:wet_dirt": 1,
     "base:torch": 0,
     "!glass": 0.36
 }
