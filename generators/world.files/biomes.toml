@@ -30,7 +30,8 @@ sea-layers = [
 plant-chance = 0.4
 plants = [
     {weight=1, block="base:grass"},
-    {weight=0.03, block="base:flower"}
+    {weight=0.03, block="base:flower"},
+    {weight=0.03, block="penrose:rose"}
 ]
 structure-chance = 0.032
 structures = [
@@ -86,7 +87,8 @@ sea-layers = [
 plant-chance = 0.3
 plants = [
     {weight=1, block="base:grass"},
-    {weight=0.03, block="base:flower"}
+    {weight=0.03, block="base:flower"},
+    {weight=0.03, block="penrose:rose"}
 ]
 structure-chance=0.0002
 structures = [
@@ -112,7 +114,8 @@ sea-layers = [
 plant-chance = 0.3
 plants = [
     {weight=1, block="base:grass"},
-    {weight=0.03, block="base:flower"}
+    {weight=0.03, block="base:flower"},
+    {weight=0.03, block="penrose:rose"}
 ]
 structure-chance=0.0005
 structures = [
@@ -166,7 +169,8 @@ sea-layers = [
 plant-chance = 0.4
 plants = [
     {weight=1, block="base:grass"},
-    {weight=0.03, block="base:flower"}
+    {weight=0.03, block="base:flower"},
+    {weight=0.03, block="penrose:rose"}
 ]
 structure-chance = 0.0018
 structures = [
@@ -192,7 +196,8 @@ sea-layers = [
 plant-chance = 0.4
 plants = [
     {weight=1, block="base:grass"},
-    {weight=0.03, block="base:flower"}
+    {weight=0.03, block="base:flower"},
+    {weight=0.03, block="penrose:rose"}
 ]
 structure-chance = 0.0038
 structures = [
