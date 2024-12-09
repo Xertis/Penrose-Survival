@@ -1,7 +1,8 @@
 {
     "blocks_cracks": [
         "!stone",
-        "!ores"
+        "!ores",
+        "!stone_blocks"
     ], 
     "levels": ["penrose:wooden_pickaxe", "penrose:stone_pickaxe", "penrose:iron_pickaxe"]
 }
