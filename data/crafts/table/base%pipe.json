@@ -1,8 +1,8 @@
 {
     "craft": 
         [
-        [["base:metal.item", 1]], 
-        [["base:metal.item", 1]]
+        [["penrose:iron_ingot", 1]], 
+        [["penrose:iron_ingot", 1]]
         ],
-    "count": 4
+    "count": 1
 }

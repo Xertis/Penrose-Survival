@@ -8,5 +8,6 @@
     "penrose:fallen_sakura_flower": 0,
     "!ores": 3.5,
     "base:torch": 0,
-    "!glass": 0.36
+    "!glass": 0.36,
+    "!metalic": 4
 }
