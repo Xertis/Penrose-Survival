@@ -39,9 +39,17 @@ function module.falling(pid, tps)
 end
 
 function module.saturation(pid, tps)
+
+    local velocity = {player.get_vel(pid)}
+    local move_velocity = math.abs(velocity[1]) + math.abs(velocity[3])
+
     local saturation = PLAYERS[tostring(pid)][2]
     if saturation > 0 then
         PLAYERS[tostring(pid)][2] = saturation - 1
+
+        if move_velocity > 5.45 then
+            PLAYERS[tostring(pid)][2] = PLAYERS[tostring(pid)][2] - 1
+        end
     else
         player_bars.set_hunger(5)
         PLAYERS[tostring(pid)][2] = 3*tps*60
