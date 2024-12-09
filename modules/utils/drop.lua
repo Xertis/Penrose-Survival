@@ -72,7 +72,7 @@ function module.get_drops_ids(id, pid)
     local tool_by_item = toolsu.find_tool_by_item(item.name(item_id))
     local tool_by_material = toolsu.find_tool(id, nil)
 
-    if (level and level < start_level) or (tool_by_item ~= tool_by_material)  then
+    if ((level and level < start_level) or (tool_by_item ~= tool_by_material)) and start_level ~= 0 then
         return {}
     end
 
