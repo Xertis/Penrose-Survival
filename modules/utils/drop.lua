@@ -28,7 +28,7 @@ local function repair_chances(chances, def_drop)
 end
 
 local function check_self(drop, id)
-    local d = table.copy(drop)
+    local d = table.deep_copy(drop)
 
     for o, i in ipairs(d) do
         if i[1] == "!self" then
