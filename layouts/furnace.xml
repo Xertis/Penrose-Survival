@@ -1,20 +1,8 @@
 <inventory size="524,208">
-    <slots-grid 
-        updatefunc="check" rows="1" cols="1" 
-        start-index="0" pos="154,26" 
-    />
-    <container pos="156,132" size="51,51" color="#202020">
-        <container gravity="bottom-center" size="52,52" color="#FFA500" id="fuel_lvl"/>
-    </container>
-    <container pos="224,101" size="60,10" color="#202020">
-        <container gravity="bottom-center" size="0,10" color="#FFFFFF" id="cooking_lvl"/>
-    </container>
-    <slots-grid 
-        updatefunc="check" rows="1" cols="1" 
-        start-index="1" pos="154,130" 
-    />
-    <slots-grid 
-        rows="1" cols="1" 
-        start-index="2" pos="344,78" placing="false"
-    />
+    <container pos="157,133" size="51,51" color="#FFA500" id="fuel_lvl"/>
+    <container pos="224,101" size="0,10" color="#FFFFFF" id="cooking_lvl"/>
+
+    <slots-grid updatefunc="check" rows="1" cols="1" start-index="0" pos="154,26" />
+    <slots-grid updatefunc="check" rows="1" cols="1" start-index="1" pos="154,130" />
+    <slots-grid rows="1" cols="1" start-index="2" pos="344,78" placing="false"/>
 </inventory>
