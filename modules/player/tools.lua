@@ -13,6 +13,8 @@ for _, ttype in ipairs(file.list("penrose:data/tools")) do
 end
 
 local function get_material(item)
+    if not item then return end
+
     for i, material in pairs(const.session.materials_available) do
         if table.has(material, item .. '.item') then
             return i
@@ -20,10 +22,22 @@ local function get_material(item)
     end
 end
 
-local function find_tool(material, item)
+function module.find_tool_by_item(item)
     for _, t in pairs(TOOLS) do
-        local i = table.index(t.levels, item)
-        if (table.has(t.blocks_cracks, material) or table.has(t.blocks_cracks, get_material(material))) and i ~= -1 then
+        if table.index(t.levels, item) ~= -1 then
+            return t
+        end
+    end
+end
+
+function module.find_tool(material, item)
+    for _, t in pairs(TOOLS) do
+        if item then
+            local i = table.index(t.levels, item)
+            if (table.has(t.blocks_cracks, material) or table.has(t.blocks_cracks, get_material(material))) and i ~= -1 then
+                return t
+            end
+        elseif table.has(t.blocks_cracks, get_material(material)) then
             return t
         end
     end
@@ -44,7 +58,7 @@ end
 
 function module.get_durability(material, durability, item)
     durability = durability or 2
-    local tool = find_tool(material, item)
+    local tool = module.find_tool(material, item)
     local level = nil
 
     if tool then

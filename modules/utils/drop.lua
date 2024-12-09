@@ -69,7 +69,10 @@ function module.get_drops_ids(id, pid)
     local item_id = invu.get_item(pid)
     local level = toolsu.is_tool(item.name(item_id)) or 0
 
-    if level and level < start_level then
+    local tool_by_item = toolsu.find_tool_by_item(item.name(item_id))
+    local tool_by_material = toolsu.find_tool(id, nil)
+
+    if (level and level < start_level) or (tool_by_item ~= tool_by_material)  then
         return {}
     end
 
