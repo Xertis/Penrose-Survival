@@ -87,6 +87,9 @@ end
 function module.on_open(invid, x, y, z, d)
     FUELS = const.session.fuels_available
     oInvid = invid
+
+    doc.cooking_lvl.visible = false
+    doc.fuel_lvl.visible = false
 end
 
 function module.find_fuel(fuel)
