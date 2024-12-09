@@ -2,6 +2,7 @@
     "blocks_cracks": [
         "!plank",
         "!wood",
+        "!wooden_blocks",
         "penrose:bamboo"
     ], 
     "levels": ["penrose:wooden_axe", "penrose:stone_axe", "penrose:iron_axe"]
