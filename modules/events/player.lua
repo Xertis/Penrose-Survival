@@ -50,9 +50,7 @@ function module.madness(pid, tps)
 
     PLAYERS[tostring(pid)][3][2] = player_bars.get_madness()
 
-    if player_bars.get_madness() / 100 >= 0.5 then
-        player_bars.set_damage(0.1)
-    end
+    player_bars.set_damage(player_bars.get_madness() / 100)
 end
 
 function module.falling(pid, tps)
