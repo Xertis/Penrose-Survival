@@ -4,15 +4,13 @@ local metadata = require "penrose:files/metadata"
 local pop_up = require "penrose:frontend/pop_up"
 local faults = require "generation/faults"
 
-local fault_cash = {}
-
 local PLAYERS = {}
 local module = {}
 
 function module.base(pid, tps)
     if PLAYERS[tostring(pid)] == nil then
-        PLAYERS[tostring(pid)] = {0, 3*tps*60, 0}
-        --fall_speed, saturation
+        PLAYERS[tostring(pid)] = {0, 3*tps*60, {0, 0}}
+        --fall_speed, saturation, madness
     end
     module.falling(pid, tps)
     module.death(pid, tps)
@@ -32,22 +30,25 @@ function module.madness(pid, tps)
     local x, y, z = player.get_pos(pid)
     x, y, z = math.floor(x), math.floor(y), math.floor(z)
 
-    if not fault_cash[tostring(pid)] then
-        fault_cash[tostring(pid)] = 0
+    if not PLAYERS[tostring(pid)][3] then
+        PLAYERS[tostring(pid)][3] = {0, 0}
     end
+    player_bars.set_madness(PLAYERS[tostring(pid)][3][2])
 
     local fault_lvl = faults.at(x, z)
 
     if fault_lvl > 0.4 then
-        fault_cash[tostring(pid)] = math.clamp(fault_cash[tostring(pid)] + fault_lvl, -1, 1)
+        PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] + fault_lvl, -1, 1)
     else
-        fault_cash[tostring(pid)] = math.clamp(fault_cash[tostring(pid)] - fault_lvl, -1, 1)
+        PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] - fault_lvl, -1, 1)
     end
 
-    if fault_cash[tostring(pid)] == 1 or fault_cash[tostring(pid)] == -1 then
-        player_bars.set_solace(fault_cash[tostring(pid)])
-        fault_cash[tostring(pid)] = 0
+    if PLAYERS[tostring(pid)][3][1] == 1 or PLAYERS[tostring(pid)][3][1] == -1 then
+        player_bars.set_solace(PLAYERS[tostring(pid)][3][1])
+        PLAYERS[tostring(pid)][3][1] = 0
     end
+
+    PLAYERS[tostring(pid)][3][2] = player_bars.get_madness()
 
     if player_bars.get_madness() / 100 >= 0.5 then
         player_bars.set_damage(0.1)
