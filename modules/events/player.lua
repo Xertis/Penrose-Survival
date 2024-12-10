@@ -2,6 +2,10 @@ local player_bars = require "penrose:player/bars_manager"
 local events = require "penrose:events/events"
 local metadata = require "penrose:files/metadata"
 local pop_up = require "penrose:frontend/pop_up"
+local faults = require "generation/faults"
+
+local fault_cash = {}
+
 local PLAYERS = {}
 local module = {}
 
@@ -13,6 +17,7 @@ function module.base(pid, tps)
     module.falling(pid, tps)
     module.death(pid, tps)
     module.saturation(pid, tps)
+    module.madness(pid, tps)
 end
 
 function module.quit()
@@ -21,6 +26,32 @@ end
 
 function module.open()
    PLAYERS = metadata.world.get("players_stats") or {}
+end
+
+function module.madness(pid, tps)
+    local x, y, z = player.get_pos(pid)
+    x, y, z = math.floor(x), math.floor(y), math.floor(z)
+
+    if not fault_cash[tostring(pid)] then
+        fault_cash[tostring(pid)] = 0
+    end
+
+    local fault_lvl = faults.at(x, z)
+
+    if fault_lvl > 0.4 then
+        fault_cash[tostring(pid)] = math.clamp(fault_cash[tostring(pid)] + fault_lvl, -1, 1)
+    else
+        fault_cash[tostring(pid)] = math.clamp(fault_cash[tostring(pid)] - fault_lvl, -1, 1)
+    end
+
+    if fault_cash[tostring(pid)] == 1 or fault_cash[tostring(pid)] == -1 then
+        player_bars.set_solace(fault_cash[tostring(pid)])
+        fault_cash[tostring(pid)] = 0
+    end
+
+    if player_bars.get_madness() / 100 >= 0.5 then
+        player_bars.set_damage(0.1)
+    end
 end
 
 function module.falling(pid, tps)
@@ -82,6 +113,7 @@ function module.death(pid, tps)
         player.set_pos(pid, unpack({player.get_spawnpoint(pid)}))
         player_bars.set_hp(100)
         player_bars.set_food(100)
+        player_bars.set_madness(0)
         pop_up.open("You died.")
     end
 end

@@ -4,6 +4,7 @@ local player_events = require "events/player"
 
 function on_hud_open(pid)
     hud.open_permanent("penrose:bars")
+    hud.open_permanent("penrose:madness")
     gamemode.init(pid)
     events.player.reg(player_events.base, {}, true)
 

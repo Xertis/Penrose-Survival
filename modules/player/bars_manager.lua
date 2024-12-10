@@ -1,6 +1,9 @@
 local metadata = require "penrose:files/metadata"
 local events = require "penrose:events/events"
+
 local doc = Document.new("penrose:bars")
+local madness = Document.new("penrose:madness")
+
 local SIZE = 257
 local module = {}
 
@@ -31,6 +34,21 @@ end
 
 function module.set_hp(hp)
     doc.hp.size = {SIZE * (math.clamp(hp,0,100) / 100), doc.hp.size[2]}
+end
+
+function module.set_solace(solace)
+    module.set_madness(module.get_madness() + solace)
+end
+
+function module.set_madness(_madness)
+    local color = madness.root.color
+    color[4] = 255 * (math.clamp(_madness,0,100) / 100)
+    madness.root.color = color
+end
+
+function module.get_madness()
+    local color = madness.root.color
+    return (color[4] / 255) * 100
 end
 
 function module.set_food(food)

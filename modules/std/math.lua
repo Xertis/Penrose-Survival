@@ -21,3 +21,9 @@ function math.chance(chance)
 
     return result
 end
+
+function math.gen_seed()
+    local time = time.uptime()
+    local random_part = math.random(10000, 99999)
+    return time + random_part
+end
