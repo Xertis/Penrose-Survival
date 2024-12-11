@@ -1,0 +1,9 @@
+{
+    "craft": [
+      [0, ["penrose:sequoia_wood.item", 1], 0],
+      [["penrose:sequoia_wood.item", 1], ["penrose:iron_ingot", 1], ["penrose:sequoia_wood.item", 1]],
+      [0, ["penrose:sequoia_wood.item", 1], 0]
+    ],
+    "count": 1
+}
+  

@@ -10,12 +10,19 @@ local module = {}
 function module.base(pid, tps)
     if PLAYERS[tostring(pid)] == nil then
         PLAYERS[tostring(pid)] = {0, 3*tps*60, {0, 0}}
-        --fall_speed, saturation, madness
+        --fall_speed, saturation, madness, shield
     end
-    module.falling(pid, tps)
-    module.death(pid, tps)
     module.saturation(pid, tps)
-    module.madness(pid, tps)
+
+    if not PLAYERS[tostring(pid)][4] then PLAYERS[tostring(pid)][4] = 0 end
+
+    if PLAYERS[tostring(pid)][4] == 0 then
+        module.madness(pid, tps)
+        module.falling(pid, tps)
+        module.death(pid, tps)
+    else
+        PLAYERS[tostring(pid)][4] = PLAYERS[tostring(pid)][4] - 1
+    end
 end
 
 function module.quit()
@@ -36,7 +43,6 @@ function module.madness(pid, tps)
     player_bars.set_madness(PLAYERS[tostring(pid)][3][2])
 
     local fault_lvl = faults.at(x, z)
-    --print(fault_lvl)
 
     if fault_lvl > 0.4 then
         PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] + fault_lvl, -1, 1)
@@ -111,9 +117,17 @@ function module.death(pid, tps)
             inventory.set(inv, slot, 0, 0)
         end
         player.set_pos(pid, unpack({player.get_spawnpoint(pid)}))
+
+        local x, y, z = player.get_spawnpoint(pid)
+        x, y, z = math.floor(x), math.floor(y), math.floor(z)
+
         player_bars.set_hp(100)
         player_bars.set_food(100)
         player_bars.set_madness(0)
+
+        PLAYERS[tostring(pid)][4] = 200
+        PLAYERS[tostring(pid)][3] = {0, 0}
+
         pop_up.open("You died.")
     end
 end

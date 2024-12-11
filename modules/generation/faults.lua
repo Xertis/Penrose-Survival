@@ -1,4 +1,5 @@
 local events = require "penrose:events/events"
+local metadata = require "penrose:files/metadata"
 
 local module = {}
 local faultmap = nil
@@ -30,6 +31,12 @@ function module.gen_fault(x, y, w, h, new_seed_conf)
     return map
 end
 
+function module.load()
+    local data = metadata.world.get("fault-seed-data") or {}
+    seed_conf = data[1] or 2222
+    strength = data[2] or 0.1
+end
+
 function module.alteration()
     if not faultmap then
         faultmap = module.gen_fault(1, 1, 16, 16)
@@ -56,6 +63,11 @@ function module.at(x, z)
     return faultmap:at({x, z})
 end
 
-events.world.reg(module.alteration, {}, true, 60*20)
+events.world.reg(module.alteration, {}, true, 20*60*60)
+events.world.quit.reg(
+    function ()
+        metadata.world.set("fault-seed-data", {seed_conf, strength})
+    end
+, {})
 
 return module
