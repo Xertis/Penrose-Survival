@@ -36,6 +36,7 @@ function module.madness(pid, tps)
     player_bars.set_madness(PLAYERS[tostring(pid)][3][2])
 
     local fault_lvl = faults.at(x, z)
+    --print(fault_lvl)
 
     if fault_lvl > 0.4 then
         PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] + fault_lvl, -1, 1)

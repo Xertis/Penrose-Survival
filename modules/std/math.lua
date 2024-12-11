@@ -27,3 +27,13 @@ function math.gen_seed()
     local random_part = math.random(10000, 99999)
     return time + random_part
 end
+
+function math.in_range(num, min, max)
+    if num < min then
+        num = max
+    elseif num > max then
+        num = min
+    end
+
+    return num
+end

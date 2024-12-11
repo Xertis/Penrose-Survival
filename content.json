@@ -82,7 +82,8 @@
     "wooden_axe",
     "wooden_shovel",
     "iron_shovel",
-    "stone_shovel"
+    "stone_shovel",
+    "fault_detector"
   ],
   "entities": [
     "test"
