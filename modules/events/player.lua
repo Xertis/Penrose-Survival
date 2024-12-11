@@ -60,6 +60,11 @@ function module.madness(pid, tps)
     player_bars.set_damage(player_bars.get_madness() / 100)
 end
 
+function module.solace(pid, power)
+    PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] - power, -1, 1)
+    PLAYERS[tostring(pid)][3][2] = player_bars.get_madness() - power
+end
+
 function module.falling(pid, tps)
     local e = entities.get(player.get_entity(pid))
     local body = e.rigidbody
@@ -125,7 +130,12 @@ function module.death(pid, tps)
         player_bars.set_food(100)
         player_bars.set_madness(0)
 
-        PLAYERS[tostring(pid)][4] = 200
+        PLAYERS[tostring(pid)][4] = tps * 3
+
+        if faults.at(x, z) > 0.4 then
+            PLAYERS[tostring(pid)][4] = tps * 10
+        end
+
         PLAYERS[tostring(pid)][3] = {0, 0}
 
         pop_up.open("You died.")
