@@ -4,7 +4,7 @@
     "base:grass_block": "grass_block",
     "base:leaves": "apple_tree",
     "base:coal_ore": "coal_ore",
-    "penrose:iron_ore": "iron_ore",
+    "penrose:iron_ore": "2lvl",
     "penrose:withered_bush": "leaves",
     "!glass": "no_drop",
     "base:grass": "no_drop",
@@ -19,6 +19,7 @@
     "penrose:sequoia_leaves": "leaves",
     "penrose:spruce_leaves": "leaves",
     "penrose:fallen_sakura_flower": "no_drop",
-    "penrose:wet_dirt": "strings"
+    "penrose:wet_dirt": "strings",
+    "penrose:oppositional_iron_ore": "3lvl"
 }
   

@@ -10,5 +10,6 @@
     "model": "aabb",
     "hitbox": [0.38, 0.0, 0.38, 0.24, 1.0, 0.24],
     "light-passing": true,
+    "material": "base:metal",
     "rotation": "pipe"
 }

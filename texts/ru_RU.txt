@@ -1,4 +1,5 @@
 barrel=бочка
+fault detector=детектор разломов
 bamboo=бамбук
 bed=кровать
 bone block=костный блок

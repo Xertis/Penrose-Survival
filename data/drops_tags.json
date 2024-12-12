@@ -3,6 +3,10 @@
       "drop": []
     },
 
+    "self": {
+      "drop": [["!self", 1]]
+    },
+
     "strings": {
       "drop": [["penrose:string", 1], ["penrose:string", 1]],
       "chances": [1, 0.5]
@@ -11,7 +15,11 @@
     "leaves": { 
       "drop": [["penrose:stick", 1]],
       "placeholder": [],
-      "chances": [0.5]
+      "chances": [0.5],
+      "unique-drop": {
+        "tags": ["self"],
+        "tools": ["asds"]
+      }
     },
 
     "apple_tree": { 
@@ -46,9 +54,14 @@
       "chances": [0.15]
     },
 
-    "iron_ore": {
-      "drop": [["penrose:iron_ore.item", 1]],
+    "2lvl": {
+      "drop": [["!self", 1]],
       "start-level": 2
+    },
+
+    "3lvl": {
+      "drop": [["!self", 1]],
+      "start-level": 3
     }
 }
   

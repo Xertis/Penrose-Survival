@@ -55,7 +55,7 @@ function module.tick(pid)
         if block.get(bx, by, bz) ~= -1 then
             local px, py, pz = player.get_pos()
             local distance = dist(bx, by, bz, px, py, pz)
-            print(distance, power)
+            --print(distance, power)
             if distance <= power then
                 player_events.solace(pid, power - distance)
             end
@@ -64,5 +64,6 @@ function module.tick(pid)
 end
 
 events.player.reg(module.tick, {}, true)
+events.world.quit.reg(module.quit, {})
 
 return module

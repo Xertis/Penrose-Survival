@@ -45,7 +45,7 @@ function module.alteration()
 
         faultmap:mixin(new_map, strength)
 
-        strength = strength + (0.1)
+        strength = strength + (0.025)
         if strength >= max_strength then
             faultmap = new_map
             seed_conf = seed_conf + 1111

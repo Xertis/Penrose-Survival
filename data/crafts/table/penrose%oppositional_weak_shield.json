@@ -1,0 +1,9 @@
+{
+    "craft": [
+        [0, ["penrose:oppositional_iron_ingot", 1], 0], 
+        [["penrose:oppositional_iron_ingot", 1], ["penrose:oppositional_iron_ingot", 1], ["penrose:oppositional_iron_ingot", 1]], 
+        [0, ["penrose:pipe.item", 1], 0]
+    ],
+    "count": 1
+}
+  

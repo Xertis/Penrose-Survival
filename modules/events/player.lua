@@ -110,20 +110,22 @@ function module.death(pid, tps)
     if player_bars.get_hp() < 1 then
         local inv = player.get_inventory(pid)
         local size = inventory.size(inv)
+        local x, y, z = player.get_pos(pid)
+        x, y, z = math.floor(x), math.floor(y), math.floor(z)
 
         for slot=0, size-1 do
             local id, count = inventory.get(inv, slot)
-            local x, y, z = player.get_pos(pid)
-            x, y, z = math.floor(x), math.floor(y), math.floor(z)
-            entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
-                id=id,
-                count=count
-            }})
+            if id ~= 0 then
+                entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
+                    id=id,
+                    count=count
+                }})
+            end
             inventory.set(inv, slot, 0, 0)
         end
         player.set_pos(pid, unpack({player.get_spawnpoint(pid)}))
 
-        local x, y, z = player.get_spawnpoint(pid)
+        x, y, z = player.get_spawnpoint(pid)
         x, y, z = math.floor(x), math.floor(y), math.floor(z)
 
         player_bars.set_hp(100)

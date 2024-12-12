@@ -9,6 +9,10 @@ function on_use(pid)
     local fault_lvl = faults.at(x, z)
 
     if fault_lvl > 0.3 then
+        t = 'M'
+    end
+
+    if fault_lvl > 0.35 then
         t = 'H'
     end
     pop_up.open(string.format("FAULT LVL: %.5f (%s)", fault_lvl, t))

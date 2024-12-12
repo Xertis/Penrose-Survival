@@ -1,0 +1,9 @@
+{
+    "craft": [
+      [["penrose:stick", 1], 0, ["penrose:stick", 1]], 
+      [["penrose:stick", 1], ["penrose:stick", 1], ["penrose:stick", 1]], 
+      [["penrose:stick", 1], 0, ["penrose:stick", 1]]
+    ],
+    "count": 9
+}
+  

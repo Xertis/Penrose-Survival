@@ -63,7 +63,9 @@
     "sequoia_leaves",
     "sequoia_planks",
     "sequoia_wood",
-    "rose"
+    "rose",
+    "oppositional_iron_ore",
+    "oppositional_weak_shield"
   ],
   "items": [
     "coal",
@@ -83,7 +85,9 @@
     "wooden_shovel",
     "iron_shovel",
     "stone_shovel",
-    "fault_detector"
+    "fault_detector",
+    "oppositional_mixture",
+    "oppositional_iron_ingot"
   ],
   "entities": [
     "test"

@@ -1,0 +1,18 @@
+{
+    "texture-faces": [
+        "oppositional_shield_side",
+        "oppositional_shield_side",
+        "pipe_hole_maybe",
+        "oppositional_shield_top",
+        "oppositional_shield_side",
+        "oppositional_shield_side"
+    ],
+    "light-passing": true,
+    "sky-light-passing": true,
+    "size": [1, 2, 1],
+    "rotation": "pane",
+    "model": "aabb",
+    "emission": [0, 7, 7],
+    "material": "base:metal",
+    "hitbox": [0.38, 0.0, 0.38, 0.24, 1.5, 0.24]
+}
