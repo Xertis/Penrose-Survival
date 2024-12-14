@@ -56,7 +56,7 @@ end
 
 function module.at(x, z)
     faultmap = module.gen_fault(x, z, 16, 16)
-    local new_map = module.gen_fault(1, 1, 16, 16, 1111)
+    local new_map = module.gen_fault(x, z, 16, 16, 1111)
 
     faultmap:mixin(new_map, strength)
 
