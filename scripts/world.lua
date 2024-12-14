@@ -1,15 +1,10 @@
---require("penrose:player/blocked")
 require "penrose:utils/craft"
-require "penrose:std/math"
-require "penrose:std/table"
+require "penrose:std/min"
 
 local dropu = require "penrose:utils/drop"
-local invu = require "penrose:utils/inventory"
-local block_destroy = require "player/block_destroy"
 local events_ = require "penrose:events/events"
 local constants = require "penrose:constants"
 local metadata = require "penrose:files/metadata"
-local faults = require "generation/faults"
 
 function on_world_open()
     metadata.open()

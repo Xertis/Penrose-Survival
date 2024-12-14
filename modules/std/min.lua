@@ -1,3 +1,18 @@
+load_script = function (path)
+    local prefix = ''
+    local extension = ''
+
+    if not string.find(path, ':') then
+        prefix, _ = parse_path(debug.getinfo(2).source)
+        prefix = prefix .. ':'
+    end
+
+    if not string.find(path, '.') then
+        extension = '.lua'
+    end
+
+    return __load_script(prefix .. path .. extension)
+end
 
 function math.chance(chance)
     if type(chance) ~= "table" then
@@ -36,4 +51,19 @@ function math.in_range(num, min, max)
     end
 
     return num
+end
+
+function table.easy_concat(tbl)
+    local output = ""
+    for i, value in pairs(tbl) do
+        output = output .. tostring(value)
+        if i ~= #tbl then
+            output = output .. ", "
+        end
+    end
+    return output
+end
+
+function table.equals(tbl1, tbl2)
+    return table.easy_concat(tbl1) == table.easy_concat(tbl2)
 end

@@ -4,6 +4,7 @@ local player_bars = require "player/bars_manager"
 local player_events = require "events/player"
 local not_crafting = require "supports/not_crafting"
 local faults = require "generation/faults"
+--local world_events = require "events/world"
 require "std/cmd"
 
 furnaces.load()
@@ -12,6 +13,7 @@ player_events.open()
 not_crafting.load()
 faults.load()
 solace_blocks.load()
+--world_events.load()
 
 --local paths = file.list("penrose:s")
 
