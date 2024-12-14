@@ -79,10 +79,12 @@ function on_close(invid)
     local x, y, z = player.get_pos(hud.get_player())
     for slot=0, size-2 do
         local id, count = inventory.get(invid, slot)
-        entities.spawn("base:drop", {x, y+0.5, z}, {base__drop={
-            id=id,
-            count=count
-        }})
+        if id ~= 0 then
+            entities.spawn("base:drop", {x, y+0.5, z}, {base__drop={
+                id=id,
+                count=count
+            }})
+        end
     end
 
 end

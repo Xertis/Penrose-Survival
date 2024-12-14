@@ -5,8 +5,8 @@ function on_random_update(x, y, z)
     local fault_lvl = faults.at(x, z)
 
     if fault_lvl > 0.4 then
-        block.set(x, y, z, oppositional_ore)
+        block.set(x, y, z, oppositional_ore, 0, true)
     elseif fault_lvl > 0.35 and math.random(0, 3) == 2 then
-        block.set(x, y, z, oppositional_ore)
+        block.set(x, y, z, oppositional_ore, 0, true)
     end
 end

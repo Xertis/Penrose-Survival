@@ -1,2 +1,2 @@
-<container size="4000, 4000" color="#FFFFFF00" interactive="false" z-index="-5">
+<container color="#FFFFFF00" interactive="false" z-index="-5" size-func="gui.get_viewport()[1],gui.get_viewport()[2]">
 </container>
