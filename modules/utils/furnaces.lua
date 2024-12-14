@@ -8,9 +8,6 @@ local doc = Document.new("penrose:furnace")
 
 local oInvid = nil
 
-local total_cooking_ticks = 0
-local total_fuel_ticks = 0
-
 local FURNACES = {}
 
 --Тики до того, как закончится топливо
@@ -21,7 +18,7 @@ function module.reg(x, y, z)
     if module.get(x, y, z) ~= nil then
         return
     end
-    table.insert(FURNACES, {x, y, z, 0, 0, false, inventory.get_block(x, y, z)})
+    table.insert(FURNACES, {x, y, z, {0, 0}, 0, false, inventory.get_block(x, y, z)})
 end
 
 function module.unreg(x, y, z)
@@ -42,22 +39,19 @@ function module.get(x, y, z)
 end
 
 function module.tick()
-    local function calc(ticks, value, size)
-        return size * (value / ticks)
+    local function calc(value, max_value, size)
+        return size * (value / max_value)
     end
 
     for i, b in ipairs(FURNACES) do
         module.check(inventory.get_block(b[1], b[2], b[3]), 0, b[1], b[2], b[3])
 
-        total_cooking_ticks = math.max(b[5], total_cooking_ticks)
-        total_fuel_ticks = math.max(b[4], total_fuel_ticks)
-
         if b[5] > 0 then
            b[5] = b[5] - 0.05
         end
 
-        if b[4] > 0 then
-            b[4] = b[4] - 0.05
+        if b[4][1] > 0 then
+            b[4][1] = b[4][1] - 0.05
         end
 
         if b[7] == oInvid then
@@ -66,11 +60,11 @@ function module.tick()
             local size_f = doc.fuel_lvl.size
 
 
-            doc.cooking_lvl.size = {calc(total_cooking_ticks, b[5], 80), size_c[2]}
-            doc.fuel_lvl.size = {size_f[1], calc(total_fuel_ticks, b[4], 51)}
+            doc.cooking_lvl.size = {calc(b[5], 10, 80), size_c[2]}
+            doc.fuel_lvl.size = {size_f[1], calc(b[4][1], b[4][2], 51)}
 
             if b[5] <= 0 then doc.cooking_lvl.visible = false else doc.cooking_lvl.visible = true end
-            if b[4] <= 0 then doc.fuel_lvl.visible = false else doc.fuel_lvl.visible = true end
+            if b[4][1] <= 0 then doc.fuel_lvl.visible = false else doc.fuel_lvl.visible = true end
 
         end
     end
@@ -132,7 +126,7 @@ function module.check(invid, slot, x, y, z)
     local FUEL_SLOT = 1
     local OUTPU_SLOT = 2
 
-    local fuel_lvl = furnace[1]
+    local fuel_lvl = furnace[1][1]
     local cooking_lvl = furnace[2]
     local is_not_start = furnace[3]
     local reg_id = furnace[4]
@@ -146,17 +140,18 @@ function module.check(invid, slot, x, y, z)
 
             if in_input_id ~= 0 and energy then
                 inventory.set(invid, FUEL_SLOT, fuel_id, fuel_count-1)
-                FURNACES[reg_id][4] = energy
+                FURNACES[reg_id][4][1] = energy
+                FURNACES[reg_id][4][2] = energy
                 --print(cooking_lvl, "кук левеле")
             end
         else
-            FURNACES[reg_id][4] = 0.05
+            FURNACES[reg_id][4][1] = 0.05
             FURNACES[reg_id][5] = 0.05
             return
         end
     end
 
-    fuel_lvl = FURNACES[reg_id][4]
+    fuel_lvl = FURNACES[reg_id][4][1]
 
     if fuel_lvl > 0 and cooking_lvl < 0 and is_not_start then
         local craft = get_craft()
@@ -183,8 +178,9 @@ function module.check(invid, slot, x, y, z)
             return
         end
     end
+
     if fuel_lvl > 0 and cooking_lvl <= 0 and inventory.get(invid, INPUT_SLOT) ~= 0 then
-        FURNACES[reg_id][5] = 10
+        FURNACES[reg_id][5] = 9.95
         FURNACES[reg_id][6] = true
     end
 end
