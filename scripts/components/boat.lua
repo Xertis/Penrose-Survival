@@ -7,11 +7,6 @@ local function swim()
 
     local epos = tsf:get_pos()
 
-    player.set_vel(PID, 0, 0, 0)
-
-
-    player.set_pos(PID, epos[1], epos[2], epos[3])
-
     local x, y, z = math.floor(epos[1]), math.floor(epos[2]), math.floor(epos[3])
     if block.get(x, y, z) == water then
         local vel = body:get_vel()
@@ -85,7 +80,7 @@ function on_used(pid)
     PID = pid
 end
 
-function on_attacked(_, pid)
+function on_attacked()
     if PID then
         PID = nil
         return
@@ -102,11 +97,19 @@ function on_attacked(_, pid)
     entity:despawn()
 end
 
+function tp_player()
+    player.set_vel(PID, 0, 0, 0)
+    local epos = tsf:get_pos()
+
+    player.set_pos(PID, epos[1], epos[2]-0.4, epos[3])
+end
+
 function on_render()
     body:set_linear_damping(0.9)
+    swim()
     if PID then
         navigate()
-        swim()
+        tp_player()
         rot()
     end
 end
