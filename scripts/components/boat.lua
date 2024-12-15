@@ -14,7 +14,12 @@ local function swim()
         body:set_gravity_scale(0)
         body:set_vel(vel)
 
-    elseif block.get(x, y-1, z) == water and block.get(x, y+ 1, z) ~= water then
+    elseif block.get(x, y-1, z) == water and block.get(x, y+1, z) ~= water then
+        if tsf:get_pos()[2]-y ~= 0 then
+            local pos = tsf:get_pos()
+            pos[2] = pos[2]-(pos[2]-y)+0.2
+            tsf:set_pos(pos)
+        end
         local vel = body:get_vel()
         vel[2] = 0
         body:set_gravity_scale(0)
@@ -101,7 +106,7 @@ function tp_player()
     player.set_vel(PID, 0, 0, 0)
     local epos = tsf:get_pos()
 
-    player.set_pos(PID, epos[1], epos[2]-0.4, epos[3])
+    player.set_pos(PID, epos[1], epos[2]+0.2, epos[3])
 end
 
 function on_render()
