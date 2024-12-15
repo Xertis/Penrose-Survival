@@ -1,0 +1,6 @@
+{
+    "components": [
+        "penrose:boat"
+    ],
+    "hitbox": [1, 1, 1]
+}

@@ -14,6 +14,16 @@ load_script = function (path)
     return __load_script(prefix .. path .. extension)
 end
 
+entities.utils = {}
+
+function entities.utils.move_in_dir(dir, vel)
+
+    local n = vec3.normalize(dir)
+    local m = vec3.length(vel)
+
+    return vec3.mul(n, m)
+end
+
 function math.chance(chance)
     if type(chance) ~= "table" then
         return math.random() <= chance

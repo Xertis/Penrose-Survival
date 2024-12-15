@@ -87,9 +87,11 @@
     "stone_shovel",
     "fault_detector",
     "oppositional_mixture",
-    "oppositional_iron_ingot"
+    "oppositional_iron_ingot",
+    "boat.item"
   ],
   "entities": [
-    "test"
+    "test",
+    "boat"
   ]
 }
