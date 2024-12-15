@@ -1,6 +1,7 @@
 local PID = nil
 local tsf = entity.transform
 local body = entity.rigidbody
+local last_vel = 2
 
 local function swim()
     local water = block.index("base:water")
@@ -46,22 +47,25 @@ local function get_speed()
     local x, y, z = math.floor(epos[1]), math.floor(epos[2]), math.floor(epos[3])
 
     local water = block.index("base:water")
-    local ice = block.index("penrose:ice")
+    local ice = {block.index("penrose:ice"), block.index("base:ice")}
 
     local in_cord = block.get(x, y-1, z)
 
     if in_cord == water then
+        last_vel = 10
         return 10
     end
 
-    if in_cord == ice then
+    if table.index(ice, in_cord) ~= -1 then
+        last_vel = 20
         return 20
     end
 
     if in_cord == 0 then
-        return 15
+        return last_vel
     end
 
+    last_vel = 2
     return 2
 end
 

@@ -1,5 +1,6 @@
 require "penrose:utils/craft"
 require "penrose:std/min"
+require "player/block_destroy"
 
 local dropu = require "penrose:utils/drop"
 local events_ = require "penrose:events/events"
