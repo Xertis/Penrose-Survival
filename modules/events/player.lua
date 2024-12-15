@@ -1,5 +1,5 @@
 local player_bars = require "penrose:player/bars_manager"
-local events = require "penrose:events/events"
+local _events = require "penrose:events/events"
 local metadata = require "penrose:files/metadata"
 local pop_up = require "penrose:frontend/pop_up"
 local faults = require "generation/faults"
@@ -108,6 +108,7 @@ end
 
 function module.death(pid, tps)
     if player_bars.get_hp() < 1 then
+        events.emit("penrose:player_death", pid)
         local inv = player.get_inventory(pid)
         local size = inventory.size(inv)
         local x, y, z = player.get_pos(pid)
@@ -144,6 +145,6 @@ function module.death(pid, tps)
     end
 end
 
-events.world.quit.reg(module.quit, {})
+_events.world.quit.reg(module.quit, {})
 
 return module

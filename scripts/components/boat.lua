@@ -1,3 +1,5 @@
+local function resource(name) return  "penrose:" .. name end;
+
 local PID = nil
 local tsf = entity.transform
 local body = entity.rigidbody
@@ -75,7 +77,6 @@ local function navigate()
         local vel = body:get_vel()
         local vely = vel[2]
         vel = {speed, 0, 0}
-        local rx, ry, rz = player.get_rot(PID)
 
         vel = entities.utils.move_in_dir(player.get_dir(PID),
                                         vel
@@ -113,6 +114,10 @@ function tp_player()
     player.set_pos(PID, epos[1], epos[2]+0.2, epos[3])
 end
 
+local function player_die()
+    PID = nil
+end
+
 function on_render()
     body:set_linear_damping(0.9)
     swim()
@@ -122,3 +127,5 @@ function on_render()
         rot()
     end
 end
+
+events.on(resource("player_death"), player_die)
