@@ -22,18 +22,20 @@ function module.load(pid)
     if player_data and player_data["player-stats-major"] then
         player_data = player_data["player-stats-major"]
     else
-        player_data = {hp = 100, food = 100}
+        player_data = {hp = 100, food = 100, oxygen = 100}
     end
 
     module.set_hp(player_data.hp)
     module.set_food(player_data.food)
+    module.set_oxygen(player_data.oxygen)
 end
 
 function module.quit()
     for pid, _player_data in pairs(PLAYERS) do
         local player_data = {
             hp = module.get_hp(),
-            food = module.get_food()
+            food = module.get_food(),
+            oxygen = module.get_oxygen()
         }
         local pname = player.get_name(pid)
         metadata.player.set(pname, "player-stats-major", player_data)
@@ -45,13 +47,29 @@ function module.set_damage(damage)
     module.set_hp(module.get_hp() - damage)
 end
 
+function module.set_hp(hp)
+    doc.hp.size = {SIZE * (math.clamp(hp,0,100) / 100), doc.hp.size[2]}
+end
+
+function module.get_hp()
+    return (doc.hp.size[1] / SIZE) * 100
+end
+
+----
+
+function module.set_food(food)
+    doc.food.size = {SIZE * (math.clamp(food,0,100) / 100), doc.food.size[2]}
+end
+
+function module.get_food()
+    return (doc.food.size[1] / SIZE) * 100
+end
+
 function module.set_hunger(hunger)
     module.set_food(module.get_food() - hunger)
 end
 
-function module.set_hp(hp)
-    doc.hp.size = {SIZE * (math.clamp(hp,0,100) / 100), doc.hp.size[2]}
-end
+----
 
 function module.set_solace(solace)
     module.set_madness(module.get_madness() + solace)
@@ -68,18 +86,24 @@ function module.get_madness()
     return (color[4] / 255) * 100
 end
 
-function module.set_food(food)
-    doc.food.size = {SIZE * (math.clamp(food,0,100) / 100), doc.food.size[2]}
+----
+
+function module.set_oxygen(oxygen)
+    if module.get_oxygen() >= 100 then
+        doc.oxygen_cont.visible = false
+    else
+        doc.oxygen_cont.visible = true
+    end
+    doc.oxygen.size = {SIZE * (math.clamp(oxygen,0,100) / 100), doc.oxygen.size[2]}
 end
 
-function module.get_hp()
-    return (doc.hp.size[1] / SIZE) * 100
+function module.get_oxygen()
+    return (doc.oxygen.size[1] / SIZE) * 100
 end
 
-function module.get_food()
-    return (doc.food.size[1] / SIZE) * 100
+function module.set_suffocation(oxygen)
+    module.set_oxygen(module.get_oxygen() - oxygen)
 end
-
 events.on(resource("player_join"), module.load)
 _events.world.quit.reg(module.quit, {})
 

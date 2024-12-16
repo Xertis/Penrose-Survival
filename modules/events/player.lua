@@ -14,7 +14,12 @@ function module.base(pid, tps)
         if player_data and player_data["player-stats-minor"] then
             PLAYERS[tostring(pid)] = player_data["player-stats-minor"]
         else
-            PLAYERS[tostring(pid)] = {fall_velocity = 0, saturation = 3*tps*60, madness = {lunacy = 0, madness_lvl = 0}, shield = 0}
+            PLAYERS[tostring(pid)] = {
+                fall_velocity = 0,
+                saturation = 3*tps*60,
+                madness = {lunacy = 0, madness_lvl = 0},
+                shield = 0
+            }
             --fall_speed, saturation, madness, shield
         end
     end
@@ -27,6 +32,7 @@ function module.base(pid, tps)
         module.madness(pid, tps)
         module.falling(pid, tps)
         module.death(pid, tps)
+        module.oxygen(pid, tps)
     else
         PLAYERS[tostring(pid)].shield = PLAYERS[tostring(pid)].shield - 1
     end
@@ -35,6 +41,21 @@ end
 function module.quit()
     for pid, data in pairs(PLAYERS) do
         metadata.player.set(player.get_name(pid), "player-stats-minor", data)
+    end
+end
+
+function module.oxygen(pid, tps)
+    local x, y, z = player.get_pos(pid)
+    x, y, z = math.floor(x), math.floor(y+1), math.floor(z)
+
+    if block.get(x, y, z) == block.index("base:water") then
+        player_bars.set_suffocation(0.08)
+    else
+        player_bars.set_suffocation(-0.08)
+    end
+
+    if player_bars.get_oxygen() < 1 then
+        player_bars.set_damage(0.2)
     end
 end
 
@@ -136,6 +157,7 @@ function module.death(pid, tps)
 
         player_bars.set_hp(100)
         player_bars.set_food(100)
+        player_bars.set_oxygen(100)
         player_bars.set_madness(0)
 
         PLAYERS[tostring(pid)].shield = tps * 3
