@@ -14,21 +14,21 @@ function module.base(pid, tps)
         if player_data and player_data["player-stats-minor"] then
             PLAYERS[tostring(pid)] = player_data["player-stats-minor"]
         else
-            PLAYERS[tostring(pid)] = {0, 3*tps*60, {0, 0}}
+            PLAYERS[tostring(pid)] = {fall_velocity = 0, saturation = 3*tps*60, madness = {lunacy = 0, madness_lvl = 0}, shield = 0}
             --fall_speed, saturation, madness, shield
         end
     end
 
     module.saturation(pid, tps)
 
-    if not PLAYERS[tostring(pid)][4] then PLAYERS[tostring(pid)][4] = 0 end
+    if not PLAYERS[tostring(pid)].shield then PLAYERS[tostring(pid)].shield = 0 end
 
-    if PLAYERS[tostring(pid)][4] == 0 then
+    if PLAYERS[tostring(pid)].shield == 0 then
         module.madness(pid, tps)
         module.falling(pid, tps)
         module.death(pid, tps)
     else
-        PLAYERS[tostring(pid)][4] = PLAYERS[tostring(pid)][4] - 1
+        PLAYERS[tostring(pid)].shield = PLAYERS[tostring(pid)].shield - 1
     end
 end
 
@@ -42,32 +42,32 @@ function module.madness(pid, tps)
     local x, y, z = player.get_pos(pid)
     x, y, z = math.floor(x), math.floor(y), math.floor(z)
 
-    if not PLAYERS[tostring(pid)][3] then
-        PLAYERS[tostring(pid)][3] = {0, 0}
+    if not PLAYERS[tostring(pid)].madness then
+        PLAYERS[tostring(pid)].madness = {lunacy = 0, madness_lvl = 0}
     end
-    player_bars.set_madness(PLAYERS[tostring(pid)][3][2])
+    player_bars.set_madness(PLAYERS[tostring(pid)].madness.madness_lvl)
 
     local fault_lvl = faults.at(x, z)
 
     if fault_lvl > 0.4 then
-        PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] + fault_lvl, -1, 1)
+        PLAYERS[tostring(pid)].madness.lunacy = math.clamp(PLAYERS[tostring(pid)].madness.lunacy + fault_lvl, -1, 1)
     else
-        PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] - fault_lvl, -1, 1)
+        PLAYERS[tostring(pid)].madness.lunacy = math.clamp(PLAYERS[tostring(pid)].madness.lunacy - fault_lvl, -1, 1)
     end
 
-    if PLAYERS[tostring(pid)][3][1] == 1 or PLAYERS[tostring(pid)][3][1] == -1 then
-        player_bars.set_solace(PLAYERS[tostring(pid)][3][1])
-        PLAYERS[tostring(pid)][3][1] = 0
+    if PLAYERS[tostring(pid)].madness.lunacy == 1 or PLAYERS[tostring(pid)].madness.lunacy == -1 then
+        player_bars.set_solace(PLAYERS[tostring(pid)].madness.lunacy)
+        PLAYERS[tostring(pid)].madness.lunacy = 0
     end
 
-    PLAYERS[tostring(pid)][3][2] = player_bars.get_madness()
+    PLAYERS[tostring(pid)].madness.madness_lvl = player_bars.get_madness()
 
     player_bars.set_damage(player_bars.get_madness() / 100)
 end
 
 function module.solace(pid, power)
-    PLAYERS[tostring(pid)][3][1] = math.clamp(PLAYERS[tostring(pid)][3][1] - power, -1, 1)
-    PLAYERS[tostring(pid)][3][2] = player_bars.get_madness() - power
+    PLAYERS[tostring(pid)].madness.lunacy = math.clamp(PLAYERS[tostring(pid)].madness.lunacy - power, -1, 1)
+    PLAYERS[tostring(pid)].madness.madness_lvl = player_bars.get_madness() - power
 end
 
 function module.falling(pid, tps)
@@ -76,12 +76,12 @@ function module.falling(pid, tps)
     local fall_velocity = body:get_vel()[2]
 
     if fall_velocity <= -15 then
-        PLAYERS[tostring(pid)][1] = fall_velocity
+        PLAYERS[tostring(pid)].fall_velocity = fall_velocity
     end
 
     if PLAYERS[tostring(pid)] ~= 0 and body:is_grounded() then
-        player_bars.set_damage(math.abs(PLAYERS[tostring(pid)][1]))
-        PLAYERS[tostring(pid)][1] = 0
+        player_bars.set_damage(math.abs(PLAYERS[tostring(pid)].fall_velocity))
+        PLAYERS[tostring(pid)].fall_velocity = 0
     end
 end
 
@@ -90,16 +90,16 @@ function module.saturation(pid, tps)
     local velocity = {player.get_vel(pid)}
     local move_velocity = math.abs(velocity[1]) + math.abs(velocity[3])
 
-    local saturation = PLAYERS[tostring(pid)][2]
+    local saturation = PLAYERS[tostring(pid)].saturation
     if saturation > 0 then
-        PLAYERS[tostring(pid)][2] = saturation - 1
+        PLAYERS[tostring(pid)].saturation = saturation - 1
 
         if move_velocity > 5.45 then
-            PLAYERS[tostring(pid)][2] = PLAYERS[tostring(pid)][2] - 1
+            PLAYERS[tostring(pid)].saturation = PLAYERS[tostring(pid)].saturation - 1
         end
     else
         player_bars.set_hunger(5)
-        PLAYERS[tostring(pid)][2] = 3*tps*60
+        PLAYERS[tostring(pid)].saturation = 3*tps*60
     end
 
     if player_bars.get_food() < 1 then
@@ -138,13 +138,13 @@ function module.death(pid, tps)
         player_bars.set_food(100)
         player_bars.set_madness(0)
 
-        PLAYERS[tostring(pid)][4] = tps * 3
+        PLAYERS[tostring(pid)].shield = tps * 3
 
         if faults.at(x, z) > 0.4 then
-            PLAYERS[tostring(pid)][4] = tps * 10
+            PLAYERS[tostring(pid)].shield = tps * 10
         end
 
-        PLAYERS[tostring(pid)][3] = {0, 0}
+        PLAYERS[tostring(pid)].madness = {lunacy = 0, madness_lvl = 0}
 
         pop_up.open("You died.")
     end

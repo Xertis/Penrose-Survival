@@ -88,7 +88,8 @@
     "fault_detector",
     "oppositional_mixture",
     "oppositional_iron_ingot",
-    "boat.item"
+    "boat.item",
+    "red_dye"
   ],
   "entities": [
     "test",
