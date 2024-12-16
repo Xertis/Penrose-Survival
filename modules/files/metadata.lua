@@ -96,8 +96,6 @@ function module.load()
         local bytes = file.read_bytes(path)
         OWN_META = bjson.frombytes(bytes)
     end
-
-    print(json.tostring(PLAYERS_META))
 end
 
 function module.player.load()
