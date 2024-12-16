@@ -2,8 +2,21 @@ local _events = require "events/events"
 local gamemode = require "player/gamemode"
 local player_events = require "events/player"
 local const = require "penrose:constants"
+local metadata = require "penrose:files/metadata"
 
 function on_hud_open(pid)
+    if player.get_name(pid) == '' then
+        local name = "player_"
+        local index = 0
+
+        while metadata.player.get(name .. index) ~= nil do
+            index = index + 1
+            print(name .. index)
+        end
+
+        player.set_name(pid, name .. index)
+    end
+
     table.insert(const.session.players_online, pid)
     gamemode.init(pid)
     events.emit(PACK_ID..":player_join", pid)

@@ -46,15 +46,25 @@ function module.world.save()
    file.write_bytes(path, bjson.tobytes(WORLD_META, true))
 end
 
-function module.player.set(pid, key, val)
-    if PLAYERS_META[pid] == nil then
-        PLAYERS_META[pid] = {}
+function module.player.set(pname, key, val)
+    if PLAYERS_META[pname] == nil then
+        PLAYERS_META[pname] = {}
     end
-    PLAYERS_META[pid][key] = val
+    PLAYERS_META[pname][key] = val
 end
 
-function module.player.get(pid)
-    return PLAYERS_META[pid]
+function module.player.get(pname)
+    return PLAYERS_META[pname]
+end
+
+function module.player.get_names()
+    local names = {}
+
+    for name, _ in pairs(PLAYERS_META) do
+        table.insert(names, name)
+    end
+
+    return names
 end
 
 function module.save()
@@ -86,6 +96,8 @@ function module.load()
         local bytes = file.read_bytes(path)
         OWN_META = bjson.frombytes(bytes)
     end
+
+    print(json.tostring(PLAYERS_META))
 end
 
 function module.player.load()

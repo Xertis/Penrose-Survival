@@ -11,7 +11,8 @@ local module = {}
 local PLAYERS = {}
 
 function module.load(pid)
-    local player_data = metadata.player.get(tostring(pid))
+    local pname = player.get_name(pid)
+    local player_data = metadata.player.get(pname)
 
     hud.open_permanent("penrose:bars")
     hud.open_permanent("penrose:madness")
@@ -34,7 +35,8 @@ function module.quit()
             hp = module.get_hp(),
             food = module.get_food()
         }
-        metadata.player.set(pid, "player-stats-major", player_data)
+        local pname = player.get_name(pid)
+        metadata.player.set(pname, "player-stats-major", player_data)
     end
 end
 
