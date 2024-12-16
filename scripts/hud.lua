@@ -8,7 +8,7 @@ function on_hud_open(pid)
     hud.open_permanent("penrose:bars")
     hud.open_permanent("penrose:madness")
     gamemode.init(pid)
-    events.emit(PACK_ID..":player_invite", hud.get_player())
+    events.emit(PACK_ID..":player_invite", pid)
     _events.player.reg(player_events.base, {}, true)
 
     input.add_callback("penrose.craft", function ()
