@@ -1,6 +1,7 @@
+
 local function resource(name) return  "penrose:" .. name end;
 
-local PID = nil
+local PID = SAVED_DATA.pid
 local tsf = entity.transform
 local body = entity.rigidbody
 local last_vel = 2
@@ -20,7 +21,7 @@ local function swim()
     elseif block.get(x, y-1, z) == water and block.get(x, y+1, z) ~= water then
         if tsf:get_pos()[2]-y ~= 0 then
             local pos = tsf:get_pos()
-            pos[2] = pos[2]-(pos[2]-y)+0.2
+            pos[2] = pos[2]-(pos[2]-y)+0.369
             tsf:set_pos(pos)
         end
         local vel = body:get_vel()
@@ -114,10 +115,6 @@ function tp_player()
     player.set_pos(PID, epos[1], epos[2]+0.2, epos[3])
 end
 
-local function player_die()
-    PID = nil
-end
-
 function on_render()
     body:set_linear_damping(0.9)
     swim()
@@ -126,6 +123,16 @@ function on_render()
         tp_player()
         rot()
     end
+end
+
+local function player_die(pid)
+    if PID == pid then
+        PID = nil
+    end
+end
+
+function on_save()
+    SAVED_DATA.pid = PID
 end
 
 events.on(resource("player_death"), player_die)

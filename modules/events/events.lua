@@ -18,6 +18,7 @@ local PLAYER_EVENTS = {
 }
 
 function module.quit()
+    events.emit("penrose:world_quit")
     module.world.world_quit()
 end
 

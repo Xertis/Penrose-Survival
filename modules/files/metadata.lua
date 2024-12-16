@@ -1,20 +1,29 @@
 local module = {
     block = {},
     world = {},
-    player = {}
+    player = {},
+    own = {}
 }
 
 local WORLD_META = {}
 local PLAYERS_META = {}
+local OWN_META = {}
 
 function module.open()
-    module.world.load()
-    module.player.load()
+    module.load()
+    module.load()
 end
 
 function module.close()
-    module.world.save()
-    module.player.save()
+    module.save()
+end
+
+function module.own.set(name, key, val)
+    if OWN_META[name] == nil then
+        OWN_META[name] = {}
+    end
+
+    OWN_META[name][key] = val
 end
 
 function module.block.set(x, y, z, key, val)
@@ -38,14 +47,6 @@ function module.world.save()
    file.write_bytes(path, bjson.tobytes(WORLD_META, true))
 end
 
-function module.world.load()
-    local path = pack.data_file("penrose", "world_metadata.bjson")
-    if file.exists(path) then
-        local bytes = file.read_bytes(path)
-        WORLD_META = bjson.frombytes(bytes)
-    end
-end
-
 function module.player.set(pid, key, val)
     if PLAYERS_META[pid] == nil then
         PLAYERS_META[pid] = {}
@@ -57,10 +58,36 @@ function module.player.get(pid)
     return PLAYERS_META[pid]
 end
 
-function module.player.save()
-    local path = pack.data_file("penrose", "players_metadata.bjson")
+function module.save()
+    local path = pack.data_file("penrose", "world_metadata.bjson")
+    file.write_bytes(path, bjson.tobytes(WORLD_META, true))
+
+    path = pack.data_file("penrose", "players_metadata.bjson")
     file.write_bytes(path, bjson.tobytes(PLAYERS_META, true))
- end
+
+    path = pack.data_file("penrose", "own_metadata.bjson")
+    file.write_bytes(path, bjson.tobytes(OWN_META, true))
+end
+
+function module.load()
+    local path = pack.data_file("penrose", "world_metadata.bjson")
+    if file.exists(path) then
+        local bytes = file.read_bytes(path)
+        WORLD_META = bjson.frombytes(bytes)
+    end
+
+    path = pack.data_file("penrose", "players_metadata.bjson")
+    if file.exists(path) then
+        local bytes = file.read_bytes(path)
+        PLAYERS_META = bjson.frombytes(bytes)
+    end
+
+    path = pack.data_file("penrose", "own_metadata.bjson")
+    if file.exists(path) then
+        local bytes = file.read_bytes(path)
+        OWN_META = bjson.frombytes(bytes)
+    end
+end
 
 function module.player.load()
     local path = pack.data_file("penrose", "players_metadata.bjson")
