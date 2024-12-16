@@ -16,12 +16,12 @@ end
 
 local function on_close()
     for pid, mode in pairs(players) do
-        metadata.player.set(tostring(pid), "gamemode", mode)
+        metadata.player.set(player.get_name(pid), "gamemode", mode)
     end
 end
 
 function module.init(pid)
-    local mode = metadata.player.get(tostring(pid))
+    local mode = metadata.player.get(player.get_name(pid))
     if mode then mode = mode["gamemode"] end
 
     if not mode then

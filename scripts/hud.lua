@@ -20,7 +20,7 @@ function on_hud_open(pid)
     end
 
     table.insert(const.session.players_online, pid)
-    gamemode.init(pname)
+    gamemode.init(pid)
     events.emit(PACK_ID..":player_join", pid)
     _events.player.reg(player_events.base, {}, true)
 
