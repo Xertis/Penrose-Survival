@@ -12,6 +12,10 @@ local PLAYERS = {}
 
 function module.load(pid)
     local player_data = metadata.player.get(tostring(pid))
+
+    hud.open_permanent("penrose:bars")
+    hud.open_permanent("penrose:madness")
+
     PLAYERS[tostring(pid)] = 1
 
     if player_data and player_data["player-stats-major"] then
@@ -74,7 +78,7 @@ function module.get_food()
     return (doc.food.size[1] / SIZE) * 100
 end
 
-events.on(resource("player_invite"), module.load)
+events.on(resource("player_join"), module.load)
 _events.world.quit.reg(module.quit, {})
 
 return module
