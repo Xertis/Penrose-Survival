@@ -11,7 +11,6 @@ local OWN_META = {}
 
 function module.open()
     module.load()
-    module.load()
 end
 
 function module.close()
