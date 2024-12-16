@@ -5,7 +5,8 @@ local const = require "penrose:constants"
 local metadata = require "penrose:files/metadata"
 
 function on_hud_open(pid)
-    if player.get_name(pid) == '' then
+    local pname = player.get_name(pid)
+    if pname == '' then
         local name = "player_"
         local index = 0
 
@@ -15,10 +16,11 @@ function on_hud_open(pid)
         end
 
         player.set_name(pid, name .. index)
+        pname = name .. index
     end
 
     table.insert(const.session.players_online, pid)
-    gamemode.init(pid)
+    gamemode.init(pname)
     events.emit(PACK_ID..":player_join", pid)
     _events.player.reg(player_events.base, {}, true)
 

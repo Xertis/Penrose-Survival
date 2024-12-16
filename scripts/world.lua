@@ -10,10 +10,7 @@ local metadata = require "penrose:files/metadata"
 function on_world_open()
     metadata.open()
     constants.init()
-    local rules_tbl = json.parse(file.read(PACK_ID .. ":data/rules.json"))
-    for id, v in pairs(rules_tbl) do
-        rules.set(id, v)
-    end
+
     require "penrose:std/on_open"
 end
 
