@@ -1,12 +1,15 @@
-local events = require "events/events"
+local _events = require "events/events"
 local gamemode = require "player/gamemode"
 local player_events = require "events/player"
+local const = require "penrose:constants"
 
 function on_hud_open(pid)
+    table.insert(const.session.players_online, pid)
     hud.open_permanent("penrose:bars")
     hud.open_permanent("penrose:madness")
     gamemode.init(pid)
-    events.player.reg(player_events.base, {}, true)
+    events.emit(PACK_ID..":player_invite", hud.get_player())
+    _events.player.reg(player_events.base, {}, true)
 
     input.add_callback("penrose.craft", function ()
         local x, y, z = player.get_selected_block(pid)
@@ -28,4 +31,12 @@ function on_hud_open(pid)
             --local inv = hud.show_overlay("penrose:guide_main", true)
         --end
     --end)
+end
+
+function on_hud_close(pid)
+    local index = table.index(const.session.players_online, pid)
+
+    if index ~= -1 then
+        table.remove(const.session.players_online, index)
+    end
 end

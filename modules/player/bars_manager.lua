@@ -1,26 +1,37 @@
+local function resource(name) return  "penrose:" .. name end
+
 local metadata = require "penrose:files/metadata"
-local events = require "penrose:events/events"
+local _events = require "penrose:events/events"
 
 local doc = Document.new("penrose:bars")
 local madness = Document.new("penrose:madness")
 
 local SIZE = 257
 local module = {}
+local PLAYERS = {}
 
-function module.load()
-    local player_data = metadata.world.get("player-data") or {hp = 100, food = 100}
+function module.load(pid)
+    local player_data = metadata.player.get(tostring(pid))
+    PLAYERS[tostring(pid)] = 1
+
+    if player_data and player_data["player-stats-major"] then
+        player_data = player_data["player-stats-major"]
+    else
+        player_data = {hp = 100, food = 100}
+    end
 
     module.set_hp(player_data.hp)
     module.set_food(player_data.food)
 end
 
 function module.quit()
-    local player_data = {
-        hp = module.get_hp(),
-        food = module.get_food()
-    }
-
-    metadata.world.set("player-data", player_data)
+    for pid, _player_data in pairs(PLAYERS) do
+        local player_data = {
+            hp = module.get_hp(),
+            food = module.get_food()
+        }
+        metadata.player.set(pid, "player-stats-major", player_data)
+    end
 end
 
 
@@ -63,6 +74,7 @@ function module.get_food()
     return (doc.food.size[1] / SIZE) * 100
 end
 
-events.world.quit.reg(module.quit, {})
+events.on(resource("player_invite"), module.load)
+_events.world.quit.reg(module.quit, {})
 
 return module

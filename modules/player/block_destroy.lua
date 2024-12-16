@@ -1,5 +1,6 @@
 local const = require "constants"
 local tools = require "player/tools"
+local events_ = require "penrose:events/events"
 
 -- not_survival необходимо изменить под себя.
 local PACK_ID = PACK_ID or "penrose";
@@ -61,7 +62,7 @@ local function stop_breaking(pid, target)
   target.breaking = false
 end
 
-events.on(resource("player_tick"), function(pid, tps)
+events_.player.reg(function(pid, tps)
   if not is_survival(pid) then return end;
 
   local target = breaking_blocks[pid]
@@ -99,7 +100,7 @@ events.on(resource("player_tick"), function(pid, tps)
   elseif target.wrapper then
     stop_breaking(pid, target)
   end
-end)
+end, {}, true)
 
 -- from base_survival:scripts/hud.lua
 

@@ -1,5 +1,5 @@
 
-local function resource(name) return  "penrose:" .. name end;
+local function resource(name) return  "penrose:" .. name end
 
 local PID = SAVED_DATA.pid
 local tsf = entity.transform

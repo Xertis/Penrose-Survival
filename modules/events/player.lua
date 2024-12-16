@@ -8,10 +8,17 @@ local PLAYERS = {}
 local module = {}
 
 function module.base(pid, tps)
+
     if PLAYERS[tostring(pid)] == nil then
-        PLAYERS[tostring(pid)] = {0, 3*tps*60, {0, 0}}
-        --fall_speed, saturation, madness, shield
+        local player_data = metadata.player.get(tostring(pid))
+        if player_data and player_data["player-stats-minor"] then
+            PLAYERS[tostring(pid)] = player_data["player-stats-minor"]
+        else
+            PLAYERS[tostring(pid)] = {0, 3*tps*60, {0, 0}}
+            --fall_speed, saturation, madness, shield
+        end
     end
+
     module.saturation(pid, tps)
 
     if not PLAYERS[tostring(pid)][4] then PLAYERS[tostring(pid)][4] = 0 end
@@ -26,11 +33,9 @@ function module.base(pid, tps)
 end
 
 function module.quit()
-    metadata.world.set("players_stats", PLAYERS)
-end
-
-function module.open()
-   PLAYERS = metadata.world.get("players_stats") or {}
+    for pid, data in pairs(PLAYERS) do
+        metadata.player.set(pid, "player-stats-minor", data)
+    end
 end
 
 function module.madness(pid, tps)

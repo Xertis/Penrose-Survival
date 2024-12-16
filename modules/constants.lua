@@ -70,7 +70,8 @@ local session_const = {
     crafts_available = crafts_available,
     fuels_available = fuels_available,
     food_available = food_available,
-    blocks_durability = blocks_durability
+    blocks_durability = blocks_durability,
+    players_online = {}
 }
 
 local const = {
