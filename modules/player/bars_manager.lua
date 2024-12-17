@@ -1,3 +1,4 @@
+local var = require "utils/variables".player
 local function resource(name) return  "penrose:" .. name end
 
 local metadata = require "penrose:files/metadata"
@@ -48,21 +49,21 @@ function module.set_damage(damage)
 end
 
 function module.set_hp(hp)
-    doc.hp.size = {SIZE * (math.clamp(hp,0,100) / 100), doc.hp.size[2]}
+    doc.hp.size = {SIZE * (math.clamp(hp, 0, var.hp) / var.hp), doc.hp.size[2]}
 end
 
 function module.get_hp()
-    return (doc.hp.size[1] / SIZE) * 100
+    return (doc.hp.size[1] / SIZE) * var.hp
 end
 
 ----
 
 function module.set_food(food)
-    doc.food.size = {SIZE * (math.clamp(food,0,100) / 100), doc.food.size[2]}
+    doc.food.size = {SIZE * (math.clamp(food, 0, var.food) / var.food), doc.food.size[2]}
 end
 
 function module.get_food()
-    return (doc.food.size[1] / SIZE) * 100
+    return (doc.food.size[1] / SIZE) * var.food
 end
 
 function module.set_hunger(hunger)
@@ -89,16 +90,16 @@ end
 ----
 
 function module.set_oxygen(oxygen)
-    if module.get_oxygen() >= 100 then
+    if module.get_oxygen() >= var.oxygen then
         doc.oxygen_cont.visible = false
     else
         doc.oxygen_cont.visible = true
     end
-    doc.oxygen.size = {SIZE * (math.clamp(oxygen,0,100) / 100), doc.oxygen.size[2]}
+    doc.oxygen.size = {SIZE * (math.clamp(oxygen, 0, var.oxygen) / var.oxygen), doc.oxygen.size[2]}
 end
 
 function module.get_oxygen()
-    return (doc.oxygen.size[1] / SIZE) * 100
+    return (doc.oxygen.size[1] / SIZE) * var.oxygen
 end
 
 function module.set_suffocation(oxygen)

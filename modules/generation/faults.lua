@@ -45,11 +45,11 @@ function module.alteration()
 
         faultmap:mixin(new_map, strength)
 
-        strength = strength + (0.025)
+        strength = strength + (0.0025)
         if strength >= max_strength then
             faultmap = new_map
             seed_conf = seed_conf + 1111
-            strength = 0.1
+            strength = 0.01
         end
     end
 end
@@ -63,7 +63,7 @@ function module.at(x, z)
     return faultmap:at({x, z})
 end
 
-events.world.reg(module.alteration, {}, true, 20*60*60)
+events.world.reg(module.alteration, {}, true, 20*60*6)
 events.world.quit.reg(
     function ()
         metadata.world.set("fault-seed-data", {seed_conf, strength})

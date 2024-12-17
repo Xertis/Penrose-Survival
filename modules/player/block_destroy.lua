@@ -1,13 +1,14 @@
 local const = require "constants"
 local tools = require "player/tools"
 local events_ = require "penrose:events/events"
+local gamemode = require "player/gamemode"
 
 -- not_survival необходимо изменить под себя.
 local PACK_ID = PACK_ID or "penrose";
 local function resource(name) return PACK_ID .. ":" .. name end;
 
 local function is_survival(pid)
-  return true
+  return not player.is_instant_destruction(pid)
 end
 
 ---@author MihailRis

@@ -20,14 +20,16 @@ function on_world_quit()
 end
 
 function on_block_broken(id, x, y, z, pid)
-    x, y, z = math.floor(x), math.floor(y), math.floor(z)
-    local drop = dropu.get_drops_ids(block.name(id), pid)
-    for _, v in ipairs(drop) do
-        local count = v[2]
-        entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
-            id=item.index(v[1]),
-            count=count
-        }})
+    if id ~= 0 then
+        x, y, z = math.floor(x), math.floor(y), math.floor(z)
+        local drop = dropu.get_drops_ids(block.name(id), pid)
+        for _, v in ipairs(drop) do
+            local count = v[2]
+            entities.spawn("base:drop", {x+0.5, y+0.5, z+0.5}, {base__drop={
+                id=item.index(v[1]),
+                count=count
+            }})
+        end
     end
 end
 
