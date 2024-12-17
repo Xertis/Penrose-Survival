@@ -91,9 +91,11 @@ function on_used(pid)
     PID = pid
 end
 
-function on_attacked()
-    if PID then
+function on_attacked(_, pid)
+    if PID and PID == pid then
         PID = nil
+        return
+    elseif PID then
         return
     end
 
@@ -118,10 +120,13 @@ end
 function on_render()
     body:set_linear_damping(0.9)
     swim()
-    if PID then
+    if PID and (player.get_name(PID) == SAVED_DATA.pname or not SAVED_DATA.pname) then
         navigate()
         tp_player()
         rot()
+    elseif player.get_name(PID) ~= SAVED_DATA.pname then
+        PID = nil
+        SAVED_DATA.pname = nil
     end
 end
 
@@ -132,6 +137,7 @@ local function player_die(pid)
 end
 
 function on_save()
+    SAVED_DATA.pname = player.get_name(PID)
     SAVED_DATA.pid = PID
 end
 
