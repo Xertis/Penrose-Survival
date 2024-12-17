@@ -124,7 +124,7 @@ function on_render()
         navigate()
         tp_player()
         rot()
-    elseif player.get_name(PID) ~= SAVED_DATA.pname then
+    elseif player.get_name(PID) and player.get_name(PID) ~= SAVED_DATA.pname then
         PID = nil
         SAVED_DATA.pname = nil
     end
