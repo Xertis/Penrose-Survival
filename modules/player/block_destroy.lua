@@ -40,9 +40,15 @@ local function get_durability(id, pid)
       end
   end
 
-  local durability = block_durability or block.properties[id]["base:durability"]
-  if block.properties[id]["breakable"] == false then
+  local durability = nil
+  local props = block.properties[id]
+  if props then
+    durability = block_durability or props["base:durability"]
+    if block.properties[id]["breakable"] == false then
       return 2^64
+    end
+  else
+    return 2^64
   end
 
   local n_durability = tools.get_durability(material, durability, item.name(item_in_slot))
