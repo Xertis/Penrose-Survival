@@ -80,6 +80,9 @@ function generate_heightmap(x, y, w, h, s, inputs)
     desertmap:cellnoise({x+52, y+326}, 0.3*s, 2, 0.2)
     desertmap:add(0.5)
     map:mixin(desertmap, inputs[1])
+
+    map:pow(0.5)
+    map:mixin(0, 0.3)
     return map
 end
 
@@ -89,10 +92,19 @@ function generate_biome_parameters(x, y, w, h, s)
     tempmap:noise({x, y}, 0.08*s, 6)
     tempmap:mul(0.5)
     tempmap:add(0.5)
+
     local hummap = Heightmap(w, h)
     hummap.noiseSeed = SEED + 953
     hummap:noise({x, y}, 0.08*s, 6)
+
+    local windmap = Heightmap(w, h)
+    windmap.noiseSeed = SEED + 23122
+    windmap:noise({x, y}, 0.08*s, 6)
+
+
     tempmap:pow(3)
     hummap:pow(3)
-    return tempmap, hummap
+    windmap:pow(3)
+
+    return tempmap, hummap, windmap
 end
