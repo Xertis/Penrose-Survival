@@ -74,6 +74,29 @@ function table.easy_concat(tbl)
     return output
 end
 
+function table.shuffle(t)
+    for i = #t, 2, -1 do
+        local j = math.random(i)
+        t[i], t[j] = t[j], t[i]
+    end
+
+    return t
+end
+
+function table.gen_matrix(rows, cols, e)
+    e = e or 0
+    local matrix = {}
+
+    for i = 1, rows do
+        matrix[i] = {}
+        for j = 1, cols do
+            matrix[i][j] = e
+        end
+    end
+
+    return matrix
+end
+
 function table.equals(tbl1, tbl2)
     return table.easy_concat(tbl1) == table.easy_concat(tbl2)
 end

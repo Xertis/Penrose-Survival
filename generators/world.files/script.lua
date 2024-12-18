@@ -1,11 +1,17 @@
 local _, dir = parse_path(__DIR__)
+
 local ores = require "penrose:generation/ores"
+local pg = require "penrose:generation/procedural_generation"
+
 ores.load(dir)
+pg.load(dir)
+
 math.randomseed(SEED)
 
 function place_structures(x, z, w, d, hmap, chunk_height)
     local placements = {}
     ores.place(placements, x, z, w, d, SEED, hmap, chunk_height)
+    --pg.place(placements, x, z, w, d, SEED, hmap, chunk_height)
     return placements
 end
 

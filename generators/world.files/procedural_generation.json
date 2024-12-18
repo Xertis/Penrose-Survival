@@ -1,0 +1,7 @@
+{
+    "mines": {
+        "rarity": 4400,
+        "max-depth": 30,
+        "structures": ["bamboo"]
+    }
+}
