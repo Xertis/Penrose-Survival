@@ -93,4 +93,6 @@ iron shovel=железная лопата
 sequoia wood=секвойное бревно
 sequoia planks=секвойные доски
 sequoia leaves=листья секвойи
+
 yellow dye=желтый краситель
+red dye=красный краситель
