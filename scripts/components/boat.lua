@@ -88,7 +88,9 @@ local function navigate()
 end
 
 function on_used(pid)
+    events.emit(resource("leave_vehicle"), pid)
     PID = pid
+    SAVED_DATA.pname = player.get_name(pid)
 end
 
 function on_attacked(_, pid)
@@ -136,9 +138,18 @@ local function player_die(pid)
     end
 end
 
+local function leave(pid)
+    if PID == pid then
+        PID = nil
+    end
+end
+
 function on_save()
     SAVED_DATA.pname = player.get_name(PID)
     SAVED_DATA.pid = PID
 end
+
+
+events.on(resource("leave_vehicle"), leave)
 
 events.on(resource("player_death"), player_die)
