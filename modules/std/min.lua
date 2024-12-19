@@ -63,6 +63,22 @@ function math.in_range(num, min, max)
     return num
 end
 
+if not table.deep_copy then
+    table.deep_copy = function (t)
+        local copied = {}
+
+        for k, v in pairs(t) do
+            if type(v) == "table" then
+                copied[k] = table.deep_copy(v)
+            else
+                copied[k] = v
+            end
+        end
+
+        return copied
+    end
+end
+
 function table.easy_concat(tbl)
     local output = ""
     for i, value in pairs(tbl) do
