@@ -53,7 +53,7 @@ function module.tick(pid)
         local power = b[4] or 1
 
         if block.get(bx, by, bz) ~= -1 then
-            local px, py, pz = player.get_pos()
+            local px, py, pz = player.get_pos(pid)
             local distance = dist(bx, by, bz, px, py, pz)
             --print(distance, power)
             if distance <= power then

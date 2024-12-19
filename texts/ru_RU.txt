@@ -1,10 +1,12 @@
 barrel=бочка
 
-fault detector=детектор разломов
+faults detector=детектор разломов
 oppositional mixture=оппозиционная смесь
 oppositional iron ingot=оппозиционный железный слиток
 oppositional iron ore=оппозиционная железная руда
 oppositional weak torch=слабый оппозиционный факел
+
+boat.item=лодка
 
 rose=роза
 

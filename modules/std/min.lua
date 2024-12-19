@@ -83,6 +83,16 @@ function table.shuffle(t)
     return t
 end
 
+function table.keys(t)
+    local keys = {}
+
+    for key, _ in pairs(t) do
+        table.insert(keys, key)
+    end
+
+    return keys
+end
+
 function table.gen_matrix(rows, cols, e)
     e = e or 0
     local matrix = {}

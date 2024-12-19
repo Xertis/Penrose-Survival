@@ -87,8 +87,11 @@ function module.madness(pid, tps)
 end
 
 function module.solace(pid, power)
-    PLAYERS[tostring(pid)].madness.lunacy = math.clamp(PLAYERS[tostring(pid)].madness.lunacy - power, -1, 1)
-    PLAYERS[tostring(pid)].madness.madness_lvl = player_bars.get_madness() - power
+
+    if table.has(table.keys(PLAYERS), tostring(pid)) then
+        PLAYERS[tostring(pid)].madness.lunacy = math.clamp(PLAYERS[tostring(pid)].madness.lunacy - power, -1, 1)
+        PLAYERS[tostring(pid)].madness.madness_lvl = player_bars.get_madness() - power
+    end
 end
 
 function module.falling(pid, tps)
