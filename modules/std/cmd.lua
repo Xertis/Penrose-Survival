@@ -18,3 +18,11 @@ console.add_command(
         return send("game", string.format("The %s game mode was not found", args[1]))
     end
 )
+
+console.add_command(
+    "p.seed",
+    "Display seed",
+    function ()
+        return send("world", string.format("Seed: %s", world.get_seed()))
+    end
+)
