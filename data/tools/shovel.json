@@ -1,6 +1,7 @@
 {
     "blocks_cracks": [
-        "!dirt"
+        "!dirt",
+	"!snow"
     ], 
     "levels": ["penrose:wooden_shovel", "penrose:stone_shovel", "penrose:iron_shovel"]
 }
