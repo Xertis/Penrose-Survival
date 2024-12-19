@@ -1,6 +1,4 @@
-local _events = require "events/events"
 local gamemode = require "player/gamemode"
-local player_events = require "events/player"
 local const = require "penrose:constants"
 local metadata = require "penrose:files/metadata"
 
@@ -22,7 +20,6 @@ function on_hud_open(pid)
     table.insert(const.session.players_online, pid)
     gamemode.init(pid)
     events.emit(PACK_ID..":player_join", pid)
-    _events.player.reg(player_events.base, {}, true)
 
     input.add_callback("penrose.craft", function ()
         local x, y, z = player.get_selected_block(pid)

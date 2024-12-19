@@ -6,12 +6,15 @@ local dropu = require "penrose:utils/drop"
 local events_ = require "penrose:events/events"
 local constants = require "penrose:constants"
 local metadata = require "penrose:files/metadata"
+local player_events = require "events/player"
 
 function on_world_open()
     metadata.open()
     constants.init()
 
     require "penrose:std/on_open"
+
+    events_.player.reg(player_events.base, {}, true)
 end
 
 function on_world_quit()
