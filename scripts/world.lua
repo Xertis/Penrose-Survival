@@ -7,6 +7,7 @@ local events_ = require "penrose:events/events"
 local constants = require "penrose:constants"
 local metadata = require "penrose:files/metadata"
 local player_events = require "events/player"
+local if_first_tick = false
 
 function on_world_open()
     metadata.open()
@@ -23,7 +24,7 @@ function on_world_quit()
 end
 
 function on_block_broken(id, x, y, z, pid)
-    if id ~= 0 then
+    if id ~= 0 and constants.session.penrose_mode == "penrose" then
         x, y, z = math.floor(x), math.floor(y), math.floor(z)
         local drop = dropu.get_drops_ids(block.name(id), pid)
         for _, v in ipairs(drop) do
@@ -37,6 +38,10 @@ function on_block_broken(id, x, y, z, pid)
 end
 
 function on_world_tick(tps)
+    if not if_first_tick then
+        if_first_tick = true
+        events.emit("penrose:first_tick")
+    end
     events_.world.tick()
 end
 

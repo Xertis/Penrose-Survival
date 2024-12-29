@@ -1,0 +1,10 @@
+{
+  "root": {
+    "nodes": [
+      {
+        "name": "float",
+        "model": "float"
+      }
+    ]
+  }
+}

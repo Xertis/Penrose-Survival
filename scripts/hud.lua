@@ -3,6 +3,10 @@ local const = require "penrose:constants"
 local metadata = require "penrose:files/metadata"
 
 function on_hud_open(pid)
+    if pack.is_installed("not_survival") then
+        require "supports/not_abuse/main"
+    end
+
     local pname = player.get_name(pid)
     if pname == '' then
         local name = "player_"
@@ -10,7 +14,6 @@ function on_hud_open(pid)
 
         while metadata.player.get(name .. index) ~= nil do
             index = index + 1
-            print(name .. index)
         end
 
         player.set_name(pid, name .. index)
@@ -18,6 +21,7 @@ function on_hud_open(pid)
     end
 
     table.insert(const.session.players_online, pid)
+
     gamemode.init(pid)
     events.emit(PACK_ID..":player_join", pid)
 

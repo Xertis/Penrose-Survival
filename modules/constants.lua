@@ -7,6 +7,7 @@ local fuels_available = {}
 local food_available = {}
 local materials_available = {}
 local blocks_durability = {}
+local drops_available = {}
 
 local function init()
     for i=0, item.defs_count()-1 do
@@ -22,6 +23,7 @@ local function init()
     local fuel = file.read("penrose:data/fuels.json")
     local __blocks_durability = file.read("penrose:data/blocks_durability.json")
     local food = file.read("penrose:data/food.json")
+    local drops = {}
 
     for i, path in ipairs(crafts) do
         if stru.path.parse_file_extension(path) then
@@ -61,6 +63,13 @@ local function init()
     for i, v in pairs(json.parse(food)) do
         food_available[i] = v
     end
+
+    drops = json.parse(file.read("penrose:data/drops.json"))
+    local tags = json.parse(file.read("penrose:data/drops_tags.json"))
+
+    for i, tag in pairs(drops) do
+        drops_available[i] = tags[tag]
+    end
 end
 
 local session_const = {
@@ -70,8 +79,11 @@ local session_const = {
     crafts_available = crafts_available,
     fuels_available = fuels_available,
     food_available = food_available,
+    drops_available = drops_available,
     blocks_durability = blocks_durability,
-    players_online = {}
+    players_online = {},
+    players_slot_data = {},
+    penrose_mode = "penrose"
 }
 
 local const = {

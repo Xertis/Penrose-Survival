@@ -76,6 +76,7 @@ function module.save()
 
     path = pack.data_file("penrose", "own_metadata.bjson")
     file.write_bytes(path, bjson.tobytes(OWN_META, true))
+    print(json.tostring(PLAYERS_META))
 end
 
 function module.load()

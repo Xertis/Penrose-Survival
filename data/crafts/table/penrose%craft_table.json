@@ -1,6 +1,6 @@
 {
     "craft": [
-        [["penrose:stick", 1], ["penrose:stick", 1]], [["!plank", 2], ["penrose:stick", 1]]
+        [["!stick", 1], ["!stick", 1]], [["!plank", 2], ["!stick", 1]]
     ],
     "count": 1
 }

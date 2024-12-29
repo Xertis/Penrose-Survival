@@ -1,0 +1,7 @@
+{
+    "components": [
+        "penrose:float"
+    ],
+    "body-type": "dynamic",
+    "hitbox": [0.07, 0.07, 0.07]
+}

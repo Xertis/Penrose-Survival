@@ -89,10 +89,12 @@
     "oppositional_iron_ingot",
     "boat.item",
     "red_dye",
-    "faults_detector"
+    "faults_detector",
+    "spawner"
   ],
   "entities": [
     "test",
-    "boat"
+    "boat",
+    "float"
   ]
 }

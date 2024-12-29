@@ -16,6 +16,15 @@ end
 
 entities.utils = {}
 
+time.utils = {}
+
+function time.utils.normalize(cof)
+    local wtime = world.get_total_time()
+    local time = wtime / cof
+
+    return time % 1
+end
+
 function entities.utils.move_in_dir(dir, vel)
 
     local n = vec3.normalize(dir)
@@ -47,10 +56,30 @@ function math.chance(chance)
     return result
 end
 
+function math.normalize(num, conf)
+    conf = conf or 10
+
+    local normalized_num = num / conf
+
+    return normalized_num % 1
+end
+
+function math.randomize(pos, seed, min, max)
+    local x, y, z = unpack(pos)
+    math.randomseed(math.floor((x * 1000 + y * 100 + z * 10) * seed))
+
+    return math.random(min, max)
+end
+
 function math.gen_seed()
     local time = time.uptime()
     local random_part = math.random(10000, 99999)
     return time + random_part
+end
+
+function math.round(num, places)
+    local mult = 10 ^ (places or 0)
+    return math.floor(num * mult + 0.5) / mult
 end
 
 function math.in_range(num, min, max)

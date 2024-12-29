@@ -2,18 +2,7 @@ local toolsu = require "player/tools"
 local invu = require "utils/inventory"
 local const = require "constants"
 local module = {}
-local drops = nil
-
-local function parse_drop()
-    if not drops then
-        drops = json.parse(file.read("penrose:data/drops.json"))
-        local tags = json.parse(file.read("penrose:data/drops_tags.json"))
-
-        for i, tag in pairs(drops) do
-            drops[i] = tags[tag]
-        end
-    end
-end
+local drops = const.session.drops_available
 
 local function repair_chances(chances, def_drop)
     local add = 0
@@ -48,9 +37,6 @@ local function get_material_drop(block_id)
 end
 
 function module.get_drops_ids(id, pid)
-    if not drops then
-        parse_drop()
-    end
 
     local drop_info = drops[id]
     local t_id = nil
